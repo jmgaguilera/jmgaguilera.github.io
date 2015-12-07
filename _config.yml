@@ -1,0 +1,15 @@
+# Site settings
+title: José Miguel González Aguilera
+subtitle: Siempre buscando soluciones a los problemas sin poner problemas a la solución
+email: jmgaguilera@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Bienvenid@s al blog de José Miguel González Aguilera.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://jmgaguilera.github.io" # the base hostname & protocol for your site
+twitter_username: jmgaguilera
+github_username:  jmgaguilera
+linkedin_href: jose-miguel-gonzalez-aguilera-a727b010
+linkedin_username: jmgaguilera
+
+# Build settings
+markdown: kramdown
