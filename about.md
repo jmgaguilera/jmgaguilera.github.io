@@ -13,7 +13,7 @@ Me gusta encontrar soluciones simples y elegantes a los problemas,
 aunque lo simple, nunca es lo más sencillo.
 
 Mi titulación y experiencia completa la podéis consultar en mi [perfil de
-linkedin](http:// http://es.linkedin.com/in/jose-miguel-gonzalez-aguilera-a727b010).
+linkedin](http://es.linkedin.com/in/jose-miguel-gonzalez-aguilera-a727b010).
 
 Estoy a vuestra disposición en el correo y redes sociales que aparecen
 al final de la página.
