@@ -15,7 +15,7 @@ layout: default
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
 
-        <a class="post-meta" href="http://www.jmgaguilera.com/{{ post.url | prepend: site.baseurl }}#disqus_thread"></a>
+        <a class="post-meta" href="http://www.jmgaguilera.com{{ post.url | prepend: site.baseurl }}#disqus_thread"></a>
         </li>
         <hr/>
     {% endfor %}
