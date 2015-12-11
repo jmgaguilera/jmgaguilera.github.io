@@ -14,7 +14,10 @@ layout: default
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
-      </li>
+
+        <a class="post-meta" href="{{ post.url | prepend: site.baseurl }}#disqus_thread"></a>
+        </li>
+        <hr/>
     {% endfor %}
   </ul>
 
