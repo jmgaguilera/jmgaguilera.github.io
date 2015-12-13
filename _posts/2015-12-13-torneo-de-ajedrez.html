@@ -1,0 +1,1339 @@
+---
+layout: post
+title:  "Torneo de Ajedrez (un análisis y un relato)"
+date:   2015-12-13 12:00
+categories: [relato, análisis de datos]
+tags: [ajedrez, Lenguaje R, relato, análisis, programación]
+---
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="José Miguel González Aguilera" />
+
+
+<title>El Torneo de Ajedrez (una historia y un análisis)</title>
+
+<script src="post_open_ajedrez_files/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="post_open_ajedrez_files/bootstrap-3.3.1/css/bootstrap.min.css" rel="stylesheet" />
+<script src="post_open_ajedrez_files/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="post_open_ajedrez_files/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="post_open_ajedrez_files/bootstrap-3.3.1/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="post_open_ajedrez_files/highlight/default.css"
+      type="text/css" />
+<script src="post_open_ajedrez_files/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+
+<div id="header">
+<h1 class="title">El Torneo de Ajedrez (una historia y un análisis)</h1>
+<h4 class="author"><em>José Miguel González Aguilera</em></h4>
+<h4 class="date"><em>13 de diciembre de 2015</em></h4>
+</div>
+
+
+<p>Este artículo es, a la vez, un relato y un análisis en R sobre un Torneo de Ajedrez real. Sin embargo, aunque cada partida, cada jugada y cada resultado, sean reales, las breve historia narrada es ficticia.</p>
+<p>El análisis completo realizado en R, junto con los conjuntos de datos, está publicado en github en este <a href="https://github.com/jmgaguilera/post_open_ajedrez">enlace</a>.</p>
+<hr />
+<div id="apertura" class="section level1">
+<h1>Apertura</h1>
+<blockquote>
+<p>
+<p>Miró al techo de su habitación por última vez antes de levantarse. No había pegado ojo, al menos así se lo parecía, su cerebro no dejaba de repasar aperturas, tácticas, estructuras de peones, celadas y finales con diversas piezas.</p>
+<p>Seguramente había dormido más de lo que pensaba, al menos no se sentía cansado… O quizás, simplemente eran los nervios.</p>
+<p>Durante la última hora, cuando la luz comenzó a filtrarse entre las cortinas, había añadido a su juego mental un tablero imaginado sobre el techo en el que las piezas se movían a su voluntad.</p>
+Hoy era la primera vez que iba a competir en un torneo oficial, y las manos le sudaban.
+</p>
+</blockquote>
+<hr />
+<div id="algunos-datos" class="section level2">
+<h2>Algunos datos</h2>
+<p>Para el análisis del torneo disponía de un fichero con todas las partidas desarrolladas. De este fichero eliminé aquellas que tenían errores por diversas causas. Por ejemplo:</p>
+<ol style="list-style-type: decimal">
+<li>No se habían disputado por ausencia de alguno de los contrincantes.</li>
+<li>Error en los movimientos, bien por que el número de jugadas no cuadraba con el número indicado en el fichero, bien por faltar jugadas en el pgn.</li>
+</ol>
+<p>Después de depurar la información, eliminé los datos personales, el nombre y lugar del torneo, y los nombres de los jugadores de cada partida, manteniendo la distinción de cada uno de ellos durante la <em>anonimización</em>.</p>
+<p>El dataframe resultante contiene 562 partidas, que son las que he utilizado en el análisis.</p>
+<hr />
+<blockquote>
+<p>
+<p>El pabellón del polideportivo en el que se jugaba el torneo estaba preparado para la ocasión. Habían desplegado las mesas en cuidada formación y en cada una de ellas había un tablero de cartón y un reloj. Esto le recordó las reglas que acababa de estudiar “Se entiende por <strong>caída de bandera</strong> la finalización del tiempo asignado a un jugador”. Una de las cosas que más le preocupaban era agotar el tiempo de juego, de nada le servía jugar más o menos bien, si lo consumía completamente. Aunque ello significara acabar una partida sin recibir mate.</p>
+<p>Se podía decir que el ambiente que se respiraba en el pabellón era muy parecido al de un templo de oración. Saludó a varios conocidos, pero no quiso entablar conversación, eran los momentos previos al combate y todos requerían concentración.</p>
+Buscó en el panel cual era su mesa y su partida. Le había tocado jugar con negras contra un elo 1600. Ahora vería si estaba preparado o no. Intentaría no caer en las trampas de una apertura, intentaría cerrar la posición, esperar, que el otro tuviera que esforzarse para ganarle.
+</p>
+</blockquote>
+<hr />
+<p>Estos son algunos datos generales del torneo. Participaron 165 jugadores, con las siguientes victorias en cada caso:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">blancas</th>
+<th align="right">tablas</th>
+<th align="right">negras</th>
+<th align="right">desconocido</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">260</td>
+<td align="right">76</td>
+<td align="right">225</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Existe una partida que no tiene resultado conocido en el fichero (’*’ en notación pgn) por lo que no la tuve en cuenta para el análisis.</p>
+<hr />
+<p>La distribución del número de movimientos de las partidas fue la siguiente:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+<th align="right">NA’s</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">56</td>
+<td align="right">72</td>
+<td align="right">76.84</td>
+<td align="right">94</td>
+<td align="right">173</td>
+<td align="right">59</td>
+</tr>
+</tbody>
+</table>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
+<p>En este torneo, cada partida duró de media unos 77 movimientos, sin embargo, hay partidas que se alargan muchísimo más. Se puede observar que el sego del histograma es hacia la izquierda, el tercer quartil está en 94 movimientos. Solamente el 25% de las partidas dura más de 94 movimientos.</p>
+<p>En el histograma hay un <em>pico</em> a la izquierda. Se corresponde a 7 partidas en las que solamente se produjo un primer movimiento, aparentemente son aquellas en las que el rival de las blancas no se presentó.</p>
+<hr />
+<blockquote>
+<p>
+<p>Se sentó pronto en su sitio, su oponente aún no había llegado. Miró a su alrededor, un mar de tableros y personas a punto de comenzar una batalla incruenta. Colocó su planilla a la derecha, equidistante a ambos bordes de la mesa, y el bolígrafo, en perpendicular, a dos centímetros de separación. Los demás, los que ya estaban sentados, desplegaban, a su vez, sus respectivas manías y tics.</p>
+El primer movimiento de las blancas había sido <strong>e4</strong>, “perfecto”, pensó, y respondió rápidamente con <strong>c6</strong>. Su rival continuó, sin pensarlo, con <strong>d4</strong>, a lo que él respondió igualmente con <strong>d5</strong>. Así continuaron durante unos cuantos movimientos más, incluido un intercambio de peones, hasta que se vio forzado a pensar. Su rival, que seguía respondiendo rápido, había hecho un movimiento desconocido para él, ¿sería una trampa? ¿Un fallo? O ¿la mejor jugada posible contra la defensa Caro-Kahn? Después de un buen rato calculando, respondió tratando de que el otro no adivinase su inseguridad. Su oponente comenzó a pensar, ¿había movido bien? ¿encontraría una debilidad táctica? Al menos había salido del territorio trillado y entraba ya en la fase del juego más interesante. Esperaba conservar una sólida estructura de peones que le permitiera aguantar hasta el final.
+</p>
+</blockquote>
+<p>A pesar de que las blancas y las negras tienen 20 movimientos entre los que elegir el primero de la partida, solo se consideran buenos unos pocos de ellos. Estos son los primeros movimientos realizados en todas las partidas del torneo. La densidad refleja el número de veces que se realizó el movimiento.</p>
+<p><img src="post_open_ajedrez_files/figure-html/tablero_primer_mov_blancas-1.png" title="" alt="" width="960" style="display: block; margin: auto;" /></p>
+<p>Para apreciar lo que sucede en un torneo de ajedrez en el que hay decenas de personas jugando simultáneamente, se puede usar este tablero en el que se van <em>dibujando</em> los primeros movimientos de todas las partidas simultáneamente. Es como ver superpuestas todas las partidas en un solo tablero, el pensamiento y la tensión de muchas personas reducido a unos segundos.</p>
+<p align="center">
+<img src="board_movement.gif" alt="Evolución de los primeros 14 movimientos" />
+</p>
+<hr />
+<blockquote>
+<p>
+<p>Mientras el otro pensaba, tuvo tiempo de observarlo. Tenia unos años más que él. No era la primera vez que lo veía, pero no conseguía ubicarlo. Se mordía las uñas y se tocaba la patilla, junto a la oreja, con la mano izquierda. Al cabo de unos cuantos movimientos, consiguió recordar. Iban a la misma academia de inglés, entraba cuando él terminaba, aunque nunca se habían saludado. A pesar de ello, sentía desprecio por él a causa de un comentario que le había escuchado hacía unos meses.</p>
+<p>Los hechos habían sucedido de la forma siguiente: un día salía de su clase justo cuando entraban dos chicos mayores, chocaron con él fortuitamente al cruzarse en el pasillo, él había musitado “perdón” pero ellos no habían respondido, le habían mirado sorprendidos, como para dejarle claro que era casi invisible, y cuando se estaban yendo uno de ellos exclamó, entre risas, “¡pipiolo!”.</p>
+Realmente no sabía si el que había pronunciado la palabra había sido su rival o su amigo, pero poco importaba, ahora hasta tenía un motivo ético por el que vencerle. “¡Bien! Veamos quién es el pipiolo”, pensó mientras realizaba un movimiento. Sería estupendo ganarle y que el otro sintiera el dolor de su sofisticada venganza.
+</p>
+</blockquote>
+<hr />
+</div>
+</div>
+<div id="juego-medio" class="section level1">
+<h1>Juego medio</h1>
+<p>Los siguientes diagramas muestran la evolución media de todas las partida. La idea que deseo plasmar es la siguiente:</p>
+<ol style="list-style-type: decimal">
+<li>En cada momento, un jugador puede <em>elegir</em> entre un conjunto reducido de movimientos legales.</li>
+<li>Este número de movimientos posibles, refleja hasta cierto punto los grados de libertad que tiene un jugador cuando elige la jugada. La intuición parecería indicar que quien tenga más libertad para elegir, tendrá más posibilidares de disponer de una jugada <em>mejor</em>.</li>
+</ol>
+<p>En los diagramas siguientes la nube de puntos refleja el número de movimientos posibles que tenían los jugadores en cada jugada. El primer diagrama refleja de forma combinada las blancas y las negras. Los dos siguientes reflejan la misma información de forma separada. Hay que tener en cuenta que las blancas juegan en los movimientos impares y las blancas en los pares.</p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="1056" /></p>
+<p>Separando los movimientos de las blancas y negras en sus respetivos diagramas:</p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="1056" /></p>
+<hr />
+<p>Los diagramas anteriores muestran varias cosas.</p>
+<ol style="list-style-type: decimal">
+<li>Las blancas, de media, tienen más movimientos posibles al comienzo de la partida.</li>
+<li>Al comienzo de la partida los movimientos posibles son 20 en cada posición tanto para las blancas como para las negras (peones avanzando 1 ó 2 posiciones más los cuatro movimientos posibles de los caballos).</li>
+<li>El máximo de movimientos posibles (el máximo de la media es aprox. 40, para las blancas) se alcanza sobre los movimientos 25 a 30.</li>
+<li>Hay posiciones con más de 50 ó 60 movimientos posibles, sin embargo, son muy escasas.</li>
+<li>La nube de puntos se va haciendo más ligera conforme avanzan los movimientos. Es lógico, las partidas van terminando.</li>
+<li>A partir de la posición número 50 aprox. se comienzan a igualar los movimientos posibles, y, de media, bajan de 20 (son posiciones con pocas piezas en el tablero).</li>
+<li>Hay una nube de puntos más o menos uniforme a lo largo de todas las posiciones que está por debajo de 10 movimientos posibles. Esta nube corresponde a los jaques recibidos, que dejan pocas posibilidades para elegir a quien lo recibe.</li>
+</ol>
+<p>Esto mismo, se puede apreciar en un diagrama en 3D en el que se sustituye la densidad de los puntos por la altura. En las solapas está la información de blancas y negras, si se conmuta, se aprecia que el diagrama de las blancas está ligeramente desplazado hacia el fondo al disponer de más movimientos siguientes en cada posición.</p>
+<hr />
+<div class="container" style="max-width:920px">
+<div id="content">
+<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+<li class="active">
+<a href="#Blancas" data-toggle="tab">Blancas</a>
+</li>
+<li>
+<a href="#Negras" data-toggle="tab">Negras</a>
+</li>
+</ul>
+<div id="my-tab-content" class="tab-content">
+<div id="Blancas" class="tab-pane active">
+<p align="center">
+<img src="post_open_ajedrez_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="672" />
+</p>
+</div>
+<div id="Negras" class="tab-pane">
+<p align="center">
+<img src="post_open_ajedrez_files/figure-html/unnamed-chunk-4-2.png" title="" alt="" width="672" />
+</p>
+</div>
+</div>
+</div>
+<div id="numero-de-posiciones-en-las-que-hay-un-numero-determinado-de-movimientos-siguientes-posibles." class="section level2">
+<h2>Número de posiciones en las que hay un número determinado de movimientos siguientes posibles.</h2>
+<p>Quiero seguir profundizando en esta idea de los <em>movimientos posibles</em> para una posición dada. En las siguientes solapas he agrupado las posiciones en grupos de 10 y se muestra el <em>corte</em> de cada grupo en cuanto a movimientos posibles, mostrando, además, la información de la media, mediana, máximo, mínimo y quartiles.</p>
+<p>
+<div class="container" style="max-width:920px">
+<div id="content">
+<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+<li class="active">
+<a href="#total" data-toggle="tab">Total</a>
+</li>
+<li>
+<a href="#0-9" data-toggle="tab">0-9</a>
+</li>
+<li>
+<a href="#10-19" data-toggle="tab">10-19</a>
+</li>
+<li>
+<a href="#20-29" data-toggle="tab">20-29</a>
+</li>
+<li>
+<a href="#30-39" data-toggle="tab">30-39</a>
+</li>
+<li>
+<a href="#40-49" data-toggle="tab">40-49</a>
+</li>
+<li>
+<a href="#50-59" data-toggle="tab">50-59</a>
+</li>
+<li>
+<a href="#60-69" data-toggle="tab">60-69</a>
+</li>
+<li>
+<a href="#70-79" data-toggle="tab">70-79</a>
+</li>
+<li>
+<a href="#80-89" data-toggle="tab">80-89</a>
+</li>
+<li>
+<a href="#90-99" data-toggle="tab">90-99</a>
+</li>
+<li>
+<a href="#100-109" data-toggle="tab">100-109</a>
+</li>
+<li>
+<a href="#110-119" data-toggle="tab">110-119</a>
+</li>
+<li>
+<a href="#120-129" data-toggle="tab">120-129</a>
+</li>
+<li>
+<a href="#130-139" data-toggle="tab">130-139</a>
+</li>
+</ul>
+<div id="my-tab-content" class="tab-content">
+<div id="total" class="tab-pane active">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="1056" /> Movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">24</td>
+<td align="right">33</td>
+<td align="right">31.02</td>
+<td align="right">40</td>
+<td align="right">61</td>
+</tr>
+</tbody>
+</table>
+<p>Movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">22</td>
+<td align="right">31</td>
+<td align="right">28.92</td>
+<td align="right">36</td>
+<td align="right">65</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="0-9" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-2.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">24</td>
+<td align="right">30</td>
+<td align="right">29.11</td>
+<td align="right">33</td>
+<td align="right">45</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">22</td>
+<td align="right">28</td>
+<td align="right">26.97</td>
+<td align="right">31</td>
+<td align="right">51</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="10-19" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-3.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">34</td>
+<td align="right">38</td>
+<td align="right">37.23</td>
+<td align="right">42</td>
+<td align="right">58</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">30</td>
+<td align="right">33</td>
+<td align="right">33.45</td>
+<td align="right">37</td>
+<td align="right">56</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="20-29" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-4.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">35</td>
+<td align="right">39</td>
+<td align="right">38.35</td>
+<td align="right">43</td>
+<td align="right">61</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">31</td>
+<td align="right">35</td>
+<td align="right">34.57</td>
+<td align="right">40</td>
+<td align="right">59</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="30-39" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-5.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">34</td>
+<td align="right">39</td>
+<td align="right">37.84</td>
+<td align="right">43</td>
+<td align="right">60</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">31</td>
+<td align="right">35</td>
+<td align="right">34.62</td>
+<td align="right">41</td>
+<td align="right">63</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="40-49" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-6.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">31</td>
+<td align="right">37</td>
+<td align="right">35.81</td>
+<td align="right">43</td>
+<td align="right">60</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">28</td>
+<td align="right">34</td>
+<td align="right">32.84</td>
+<td align="right">40</td>
+<td align="right">61</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="50-59" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-7.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">26</td>
+<td align="right">33</td>
+<td align="right">31.65</td>
+<td align="right">40</td>
+<td align="right">59</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">24</td>
+<td align="right">31</td>
+<td align="right">29.77</td>
+<td align="right">38</td>
+<td align="right">65</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="60-69" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-8.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">21</td>
+<td align="right">28</td>
+<td align="right">27.45</td>
+<td align="right">36</td>
+<td align="right">58</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">19</td>
+<td align="right">26</td>
+<td align="right">25.44</td>
+<td align="right">34</td>
+<td align="right">55</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="70-79" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-9.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">15</td>
+<td align="right">23</td>
+<td align="right">22.14</td>
+<td align="right">30</td>
+<td align="right">59</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">15</td>
+<td align="right">22</td>
+<td align="right">21.83</td>
+<td align="right">30</td>
+<td align="right">52</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="80-89" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-10.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">12</td>
+<td align="right">19</td>
+<td align="right">19.3</td>
+<td align="right">26</td>
+<td align="right">51</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">12</td>
+<td align="right">19</td>
+<td align="right">19.55</td>
+<td align="right">27</td>
+<td align="right">52</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="90-99" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-11.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">8</td>
+<td align="right">16</td>
+<td align="right">16.34</td>
+<td align="right">23</td>
+<td align="right">59</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">11</td>
+<td align="right">18</td>
+<td align="right">18.15</td>
+<td align="right">24</td>
+<td align="right">50</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="100-109" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-12.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">8</td>
+<td align="right">15</td>
+<td align="right">15.4</td>
+<td align="right">21</td>
+<td align="right">42</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">11</td>
+<td align="right">16</td>
+<td align="right">17.16</td>
+<td align="right">22</td>
+<td align="right">50</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="110-119" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-13.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">14</td>
+<td align="right">13.68</td>
+<td align="right">19</td>
+<td align="right">44</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">7</td>
+<td align="right">14</td>
+<td align="right">14.16</td>
+<td align="right">20</td>
+<td align="right">48</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="120-129" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-14.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">5</td>
+<td align="right">12.5</td>
+<td align="right">12.01</td>
+<td align="right">18</td>
+<td align="right">39</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">16</td>
+<td align="right">15.77</td>
+<td align="right">21</td>
+<td align="right">40</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+<div id="130-139" class="tab-pane">
+<p>
+<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-15.png" title="" alt="" width="1056" /></p>
+<p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">7</td>
+<td align="right">14</td>
+<td align="right">12.52</td>
+<td align="right">17</td>
+<td align="right">28</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas de número de movimientos siguientes posibles para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">10</td>
+<td align="right">15</td>
+<td align="right">14.67</td>
+<td align="right">19</td>
+<td align="right">36</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</p>
+</div>
+</div>
+</div>
+</p>
+<script type="text/javascript">
+jQuery(document).ready(function ($) {
+$('#tabs').tab();
+});
+</script>
+</div>
+<p><!-- container --></p>
+<p>Se aprecian claramente:</p>
+<ol style="list-style-type: decimal">
+<li>Los grupitos de movimientos en los que hay jaque, separados a la izquierda.</li>
+<li>Las blancas tienen, en los diferentes estadísticos, una ventaja respecto de las negras de unos cinco movimientos posibles más, en los primeros compases de la partida.</li>
+<li>Estas ventajas se reducen conforme avanzan los movimientos.</li>
+</ol>
+<hr />
+<blockquote>
+<p>
+<p>Miró el tablero y se resignó ante la cruda realidad, aún no estaba perdido. Para ser su primera partida oficial, con negras, contra un rival con elo… Bastante tenía con aguantar la posición. Llegar al movimiento cincuenta no estaba al alcance de todos.</p>
+Algunas mesas ya habían terminado, y sus jugadores se paseaban, en silencio, observando otras partidas. Estaban llegando al final, aún tenían las mismas piezas, los intercambios habían sido equitativos, había conseguido ver una celada, pero la iniciativa la mantenían las blancas después de ochenta jugadas. Durante un fugaz momento pensó en ofrecer tablas, ¡qué podía perder!, pero le dominó su orgullo, que aún esperaba ganar. Cayeron los dos últimos caballos, y los peones libres que quedaban. Entonces, fue su rival quien le ofreció tablas.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="final" class="section level1">
+<h1>Final</h1>
+<p>Las estadísticas al finalizar la partida, distinguiendo las blancas y las negras, son las siguientes en este torneo. Se muestra el número de partidas que terminana ganando en cada número de jugada. Las partidas que terminan hacia la derecha son las más largas (en número de movimientos).</p>
+<p><img src="post_open_ajedrez_files/figure-html/calcular_mov_final-1.png" title="" alt="" width="672" /></p>
+<p>Estadísticas del número de posición en que ganan las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+<th align="right">NA’s</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">51</td>
+<td align="right">69</td>
+<td align="right">71.94</td>
+<td align="right">89</td>
+<td align="right">167</td>
+<td align="right">24</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas del número de posición en que ganan las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+<th align="right">NA’s</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">23</td>
+<td align="right">58</td>
+<td align="right">72.5</td>
+<td align="right">79.36</td>
+<td align="right">97.25</td>
+<td align="right">168</td>
+<td align="right">25</td>
+</tr>
+</tbody>
+</table>
+<p>Estadísticas del número de posición en que se producen tablas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+<th align="right">NA’s</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">20</td>
+<td align="right">67</td>
+<td align="right">80.5</td>
+<td align="right">86.47</td>
+<td align="right">102.8</td>
+<td align="right">173</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+<p>De los datos se observa que, proporcionalmente, las blancas ganan más en las partidas más cortas, las negras necesitan más movimientos para ganar, y para las tablas se requiere aún más. Al menos en este torneo.</p>
+<hr />
+<p>¿Está relacionado de algún modo con el número de movimientos siguientes posibles? Si vemos los datos estadísticos de las victorias de las blancas frente a las negras y viceversa:</p>
+<div id="movimientos-siguientes-posibles-en-partidas-que-ganan-las-blancas" class="section level2">
+<h2>Movimientos siguientes posibles en partidas que ganan las blancas</h2>
+<p>Para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">27</td>
+<td align="right">35</td>
+<td align="right">33.33</td>
+<td align="right">41</td>
+<td align="right">61</td>
+</tr>
+</tbody>
+</table>
+<p>Para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">21</td>
+<td align="right">30</td>
+<td align="right">27.51</td>
+<td align="right">36</td>
+<td align="right">58</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="movimientos-siguientes-posibles-en-partidas-que-ganan-las-negras" class="section level2">
+<h2>Movimientos siguientes posibles en partidas que ganan las negras</h2>
+<p>Para las blancas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">21</td>
+<td align="right">31</td>
+<td align="right">28.95</td>
+<td align="right">38</td>
+<td align="right">60</td>
+</tr>
+</tbody>
+</table>
+<p>Para las negras:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Min.</th>
+<th align="right">1st Qu.</th>
+<th align="right">Median</th>
+<th align="right">Mean</th>
+<th align="right">3rd Qu.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">25</td>
+<td align="right">32</td>
+<td align="right">30.58</td>
+<td align="right">38</td>
+<td align="right">65</td>
+</tr>
+</tbody>
+</table>
+<p>Sin entrar en un análisis estadístico formal, parece que, de media, cuando ganan las blancas, estas tienen 5 movimientos posibles más entre los que elegir.</p>
+<p>Por el contrario, en las partidas que ganan las negras, estas tienen, de media, 1,5 movimientos más entre los que elegir, y hay que tener en cuenta que, respecto de los primeros movimientos, las negras han tenido que compensar una desventaja de unos 5 movimientos posibles.</p>
+<p>Luego, los datos parecen corroborar que, hasta cierto punto, la victoria en las partidas, guarda relación con el número de movimientos posibles en cada movimiento. Podríamos estudiar la correlación y establecer un modelo para predecir la victoria de uno u otro a lo largo de la partida, pero eso tendrá que ser en otro artículo.</p>
+<hr />
+</div>
+</div>
+<div id="epilogo" class="section level1">
+<h1>Epílogo</h1>
+<p>Una última pincelada, cuando la partida acaba ¿dónde está el rey?, en los siguientes diagramas se muestran las posiciones que reflejan claramente el enroque de los reyes. Parece que, tanto en número de partidas, como en porcentajes, el enroque mejora las probabilidades de victoria.</p>
+<div id="lugar-de-finalizacion-de-los-reyes" class="section level2">
+<h2>Lugar de finalización de los reyes</h2>
+<div class="container" style="max-width:920px">
+<div id="content">
+<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+<li class="active">
+<a href="#porcentaje" data-toggle="tab">En porcentajes</a>
+</li>
+<li>
+<a href="#numero" data-toggle="tab">En número de partidas</a>
+</li>
+</ul>
+<div id="my-tab-content" class="tab-content">
+<div id="porcentaje" class="tab-pane active">
+<p align="center">
+<img src="post_open_ajedrez_files/figure-html/posici%C3%B3n_reyes_porc-1.png" title="" alt="" width="960" />
+</p>
+</div>
+<div id="numero" class="tab-pane">
+<p align="center">
+<img src="post_open_ajedrez_files/figure-html/posici%C3%B3n_reyes_numero-1.png" title="" alt="" width="960" />
+</p>
+</div>
+</div>
+</div>
+<blockquote>
+<p>
+El otro no mostraba ningún signo de recordarle de nada. Venció a su orgullo y aceptó. “¿Hace mucho que juegas?”, preguntó su oponente. “Es mi primera partida oficial”, respondió. “¡Enhorabuena! Has jugado muy bien”. Sonrió, la ofensa del pasado se le borró del pensamiento. Lo miró y respondió sinceramente “Gracias”, y añadió, “tú también”.
+</p>
+</blockquote>
+<hr />
+</div>
+</div>
+<div id="agradecimientos" class="section level1">
+<h1>Agradecimientos</h1>
+<p>Quiero expresar mi agradecimiento a <a href="http://jkunst.com/">Joshua Kunst</a> por su paquete para R <a href="https://github.com/jbkunst/rchess">rchess</a> y las ideas del código, en algunos diagramas, que he tomado prestado.</p>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
