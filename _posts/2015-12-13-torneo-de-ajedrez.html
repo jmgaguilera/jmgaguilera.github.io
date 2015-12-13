@@ -6,55 +6,11 @@ categories: [relato, análisis de datos]
 tags: [ajedrez, Lenguaje R, relato, análisis, programación]
 ---
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="pandoc" />
-
-<meta name="author" content="José Miguel González Aguilera" />
-
-
-<title>El Torneo de Ajedrez (una historia y un análisis)</title>
-
-<script src="post_open_ajedrez_files/jquery-1.11.0/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="post_open_ajedrez_files/bootstrap-3.3.1/css/bootstrap.min.css" rel="stylesheet" />
-<script src="post_open_ajedrez_files/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="post_open_ajedrez_files/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="post_open_ajedrez_files/bootstrap-3.3.1/shim/respond.min.js"></script>
-
-<style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="post_open_ajedrez_files/highlight/default.css"
-      type="text/css" />
-<script src="post_open_ajedrez_files/highlight/highlight.js"></script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
-
-
-</head>
-
-<body>
+<script src="/js/jquery-1.11.3.min.js"></script>
 
 <style type = "text/css">
 .main-container {
-  max-width: 940px;
+  max-width: 720px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -67,15 +23,8 @@ img {
   height: auto; 
 }
 </style>
+
 <div class="container-fluid main-container">
-
-
-<div id="header">
-<h1 class="title">El Torneo de Ajedrez (una historia y un análisis)</h1>
-<h4 class="author"><em>José Miguel González Aguilera</em></h4>
-<h4 class="date"><em>13 de diciembre de 2015</em></h4>
-</div>
-
 
 <p>Este artículo es, a la vez, un relato y un análisis en R sobre un Torneo de Ajedrez real. Sin embargo, aunque cada partida, cada jugada y cada resultado, sean reales, las breve historia narrada es ficticia.</p>
 <p>El análisis completo realizado en R, junto con los conjuntos de datos, está publicado en github en este <a href="https://github.com/jmgaguilera/post_open_ajedrez">enlace</a>.</p>
@@ -155,7 +104,7 @@ Buscó en el panel cual era su mesa y su partida. Le había tocado jugar con neg
 </tr>
 </tbody>
 </table>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
 <p>En este torneo, cada partida duró de media unos 77 movimientos, sin embargo, hay partidas que se alargan muchísimo más. Se puede observar que el sego del histograma es hacia la izquierda, el tercer quartil está en 94 movimientos. Solamente el 25% de las partidas dura más de 94 movimientos.</p>
 <p>En el histograma hay un <em>pico</em> a la izquierda. Se corresponde a 7 partidas en las que solamente se produjo un primer movimiento, aparentemente son aquellas en las que el rival de las blancas no se presentó.</p>
 <hr />
@@ -166,10 +115,10 @@ El primer movimiento de las blancas había sido <strong>e4</strong>, “perfecto
 </p>
 </blockquote>
 <p>A pesar de que las blancas y las negras tienen 20 movimientos entre los que elegir el primero de la partida, solo se consideran buenos unos pocos de ellos. Estos son los primeros movimientos realizados en todas las partidas del torneo. La densidad refleja el número de veces que se realizó el movimiento.</p>
-<p><img src="post_open_ajedrez_files/figure-html/tablero_primer_mov_blancas-1.png" title="" alt="" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="/images/torneo-de-ajedrez/tablero_primer_mov_blancas-1.png" title="" alt="" width="960" style="display: block; margin: auto;" /></p>
 <p>Para apreciar lo que sucede en un torneo de ajedrez en el que hay decenas de personas jugando simultáneamente, se puede usar este tablero en el que se van <em>dibujando</em> los primeros movimientos de todas las partidas simultáneamente. Es como ver superpuestas todas las partidas en un solo tablero, el pensamiento y la tensión de muchas personas reducido a unos segundos.</p>
 <p align="center">
-<img src="board_movement.gif" alt="Evolución de los primeros 14 movimientos" />
+<img src="/images/torneo-de-ajedrez/board_movement.gif" alt="Evolución de los primeros 14 movimientos" />
 </p>
 <hr />
 <blockquote>
@@ -190,9 +139,9 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 <li>Este número de movimientos posibles, refleja hasta cierto punto los grados de libertad que tiene un jugador cuando elige la jugada. La intuición parecería indicar que quien tenga más libertad para elegir, tendrá más posibilidares de disponer de una jugada <em>mejor</em>.</li>
 </ol>
 <p>En los diagramas siguientes la nube de puntos refleja el número de movimientos posibles que tenían los jugadores en cada jugada. El primer diagrama refleja de forma combinada las blancas y las negras. Los dos siguientes reflejan la misma información de forma separada. Hay que tener en cuenta que las blancas juegan en los movimientos impares y las blancas en los pares.</p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-2-1.png" title="" alt="" width="1056" /></p>
 <p>Separando los movimientos de las blancas y negras en sus respetivos diagramas:</p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-3-1.png" title="" alt="" width="1056" /></p>
 <hr />
 <p>Los diagramas anteriores muestran varias cosas.</p>
 <ol style="list-style-type: decimal">
@@ -206,7 +155,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </ol>
 <p>Esto mismo, se puede apreciar en un diagrama en 3D en el que se sustituye la densidad de los puntos por la altura. En las solapas está la información de blancas y negras, si se conmuta, se aprecia que el diagrama de las blancas está ligeramente desplazado hacia el fondo al disponer de más movimientos siguientes en cada posición.</p>
 <hr />
-<div class="container" style="max-width:920px">
+<div class="container" style="max-width:720px">
 <div id="content">
 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 <li class="active">
@@ -219,12 +168,12 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 <div id="my-tab-content" class="tab-content">
 <div id="Blancas" class="tab-pane active">
 <p align="center">
-<img src="post_open_ajedrez_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="672" />
+<img src="/images/torneo-de-ajedrez/unnamed-chunk-4-1.png" title="" alt="" width="672" />
 </p>
 </div>
 <div id="Negras" class="tab-pane">
 <p align="center">
-<img src="post_open_ajedrez_files/figure-html/unnamed-chunk-4-2.png" title="" alt="" width="672" />
+<img src="/images/torneo-de-ajedrez/unnamed-chunk-4-2.png" title="" alt="" width="672" />
 </p>
 </div>
 </div>
@@ -233,7 +182,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 <h2>Número de posiciones en las que hay un número determinado de movimientos siguientes posibles.</h2>
 <p>Quiero seguir profundizando en esta idea de los <em>movimientos posibles</em> para una posición dada. En las siguientes solapas he agrupado las posiciones en grupos de 10 y se muestra el <em>corte</em> de cada grupo en cuanto a movimientos posibles, mostrando, además, la información de la media, mediana, máximo, mínimo y quartiles.</p>
 <p>
-<div class="container" style="max-width:920px">
+<div class="container" style="max-width:720px">
 <div id="content">
 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 <li class="active">
@@ -285,7 +234,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 <div id="my-tab-content" class="tab-content">
 <div id="total" class="tab-pane active">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="1056" /> Movimientos siguientes posibles para las blancas:</p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-1.png" title="" alt="" width="1056" /> Movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
 <tr class="header">
@@ -336,7 +285,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="0-9" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-2.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-2.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -388,7 +337,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="10-19" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-3.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-3.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -440,7 +389,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="20-29" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-4.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-4.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -492,7 +441,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="30-39" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-5.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-5.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -544,7 +493,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="40-49" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-6.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-6.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -596,7 +545,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="50-59" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-7.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-7.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -648,7 +597,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="60-69" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-8.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-8.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -700,7 +649,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="70-79" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-9.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-9.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -752,7 +701,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="80-89" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-10.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-10.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -804,7 +753,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="90-99" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-11.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-11.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -856,7 +805,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="100-109" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-12.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-12.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -908,7 +857,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="110-119" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-13.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-13.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -960,7 +909,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="120-129" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-14.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-14.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -1012,7 +961,7 @@ Realmente no sabía si el que había pronunciado la palabra había sido su rival
 </div>
 <div id="130-139" class="tab-pane">
 <p>
-<p><img src="post_open_ajedrez_files/figure-html/unnamed-chunk-5-15.png" title="" alt="" width="1056" /></p>
+<p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-15.png" title="" alt="" width="1056" /></p>
 <p>Estadísticas de número de movimientos siguientes posibles para las blancas:</p>
 <table>
 <thead>
@@ -1090,7 +1039,7 @@ Algunas mesas ya habían terminado, y sus jugadores se paseaban, en silencio, ob
 <div id="final" class="section level1">
 <h1>Final</h1>
 <p>Las estadísticas al finalizar la partida, distinguiendo las blancas y las negras, son las siguientes en este torneo. Se muestra el número de partidas que terminana ganando en cada número de jugada. Las partidas que terminan hacia la derecha son las más largas (en número de movimientos).</p>
-<p><img src="post_open_ajedrez_files/figure-html/calcular_mov_final-1.png" title="" alt="" width="672" /></p>
+<p><img src="/images/torneo-de-ajedrez/calcular_mov_final-1.png" title="" alt="" width="672" /></p>
 <p>Estadísticas del número de posición en que ganan las blancas:</p>
 <table>
 <thead>
@@ -1277,7 +1226,7 @@ Algunas mesas ya habían terminado, y sus jugadores se paseaban, en silencio, ob
 <p>Una última pincelada, cuando la partida acaba ¿dónde está el rey?, en los siguientes diagramas se muestran las posiciones que reflejan claramente el enroque de los reyes. Parece que, tanto en número de partidas, como en porcentajes, el enroque mejora las probabilidades de victoria.</p>
 <div id="lugar-de-finalizacion-de-los-reyes" class="section level2">
 <h2>Lugar de finalización de los reyes</h2>
-<div class="container" style="max-width:920px">
+<div class="container" style="max-width:720px">
 <div id="content">
 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 <li class="active">
@@ -1290,12 +1239,12 @@ Algunas mesas ya habían terminado, y sus jugadores se paseaban, en silencio, ob
 <div id="my-tab-content" class="tab-content">
 <div id="porcentaje" class="tab-pane active">
 <p align="center">
-<img src="post_open_ajedrez_files/figure-html/posici%C3%B3n_reyes_porc-1.png" title="" alt="" width="960" />
+<img src="/images/torneo-de-ajedrez/posici%C3%B3n_reyes_porc-1.png" title="" alt="" width="960" />
 </p>
 </div>
 <div id="numero" class="tab-pane">
 <p align="center">
-<img src="post_open_ajedrez_files/figure-html/posici%C3%B3n_reyes_numero-1.png" title="" alt="" width="960" />
+<img src="/images/torneo-de-ajedrez/posici%C3%B3n_reyes_numero-1.png" title="" alt="" width="960" />
 </p>
 </div>
 </div>
@@ -1305,6 +1254,7 @@ Algunas mesas ya habían terminado, y sus jugadores se paseaban, en silencio, ob
 El otro no mostraba ningún signo de recordarle de nada. Venció a su orgullo y aceptó. “¿Hace mucho que juegas?”, preguntó su oponente. “Es mi primera partida oficial”, respondió. “¡Enhorabuena! Has jugado muy bien”. Sonrió, la ofensa del pasado se le borró del pensamiento. Lo miró y respondió sinceramente “Gracias”, y añadió, “tú también”.
 </p>
 </blockquote>
+<p align="center" style='font-size:36px; font-style: italic; font-family:Georgia,"Courier new",Serif'>Fin</p>
 <hr />
 </div>
 </div>
@@ -1316,6 +1266,9 @@ El otro no mostraba ningún signo de recordarle de nada. Venció a su orgullo y 
 
 </div>
 
+<script src="/js/bootstrap.min.js"></script>
+
+
 <script>
 
 // add bootstrap table styles to pandoc tables
@@ -1324,6 +1277,7 @@ $(document).ready(function () {
 });
 
 </script>
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
@@ -1335,5 +1289,3 @@ $(document).ready(function () {
   })();
 </script>
 
-</body>
-</html>
