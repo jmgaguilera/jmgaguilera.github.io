@@ -17,8 +17,7 @@ que viene seremos un poquito mejores.
 smartcity, big data, cloud, etc.
 
 
-![]({{ site.url
-}}/images/felicitacion-navidad-2015/felicitacion.gif)
+![]({{ site.url }}/images/felicitacion-navidad-2015/felicitacion.gif)
 
 ---
 
