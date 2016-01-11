@@ -70,6 +70,9 @@ tags: [tic, javascript, programación]
         board5.addCells([[3,3],[3,4], [3,5], [2,5],[1,4], [15,11], [14,12], [16,12], [14,13], [16,13], [15,14]]);
         board5.establishGen();
         board5.toHTMLCanvas(drawing5);
+        window.clearTimeout(btnStop5.timer);
+        btnStart5.style.display='inline';
+        btnStop5.style.display='none';
       }
 
       function init() {
@@ -87,7 +90,8 @@ tags: [tic, javascript, programación]
         btnNextGen4 = document.getElementById('btnNextGen4');
         btnReset4 = document.getElementById('btnReset4');
         drawing5 = document.getElementById('drawing5');
-        btnNextGen5 = document.getElementById('btnNextGen5');
+        btnStart5 = document.getElementById('btnStart5');
+        btnStop5 = document.getElementById('btnStop5');
         btnReset5 = document.getElementById('btnReset5');
         // board
         reset1();
@@ -104,7 +108,21 @@ tags: [tic, javascript, programación]
         btnReset3.addEventListener('click', reset3);
         btnNextGen4.addEventListener('click', function() {runNextGen(board4, drawing4);});
         btnReset4.addEventListener('click', reset4);
-        btnNextGen5.addEventListener('click', function() {runNextGen(board5, drawing5);});
+        btnStart5.addEventListener('click',
+                function() {
+                  btnStop5.timer = window.setInterval(
+                                        function() {runNextGen(board5, drawing5)},
+                                        500);
+                  btnStart5.style.display='none';
+                  btnStop5.style.display='inline';
+                  }
+                );
+        btnStop5.addEventListener('click',
+                function() {
+                  window.clearTimeout(btnStop5.timer);
+                  btnStart5.style.display='inline';
+                  btnStop5.style.display='none';
+                });
         btnReset5.addEventListener('click', reset5);
       }
 
@@ -212,7 +230,8 @@ Ejemplo de un glider y un still que colisionan
     </canvas>
   </div>
   <div>
-  <button id="btnNextGen5">Next Generation</button>
+  <button id="btnStart5">Start</button>
+  <button id="btnStop5">Stop</button>
   <button id="btnReset5">Reset</button>
   </div>
 </div>
