@@ -207,13 +207,70 @@ tags: [tic, javascript, programación]
 
     </script>
 
-lorem ipsum
+Comienza el año 2016 y, como todos los años, muchas personas hacen sus propósitos de año nuevo para mejorar. Según [The Guardian](http://www.theguardian.com/news/datablog/2015/dec/31/how-long-do-people-keep-their-new-year-resolutions), más del 32% de los británicos planean propósitos de año nuevo.
+
+Tanto en lo personal como en lo laboral, nunca he sido amigo de hacer
+propósitos a una fecha dada, tiendo más a tener una lista de objetivos a
+largo plazo, revisables cada cierto tiempo, y a mantener una lista de los
+siguiente que tengo que hacer para avanzar en cada uno de mis proyectos,
+personales o laborales. Muy en la línea del método [GTD](http://gettingthingsdone.com/).
+
+En cualquier caso sí que quiero aprovechar el comienzo de 2016 para renovar un compromiso permanente en estos tiempos en los que se habla tanto de **cambio**.
+
+- La consultora Gartner, en relación a las Tecnologías de la
+Información y de las Comunicaciones, prevee las [10 tendencias estratégicas en tecnología de 2016](http://www.forbes.com/sites/sap/2015/12/10/gartners-top-10-strategic-technology-trends-for-2016/).
+- El País, en relación a la sociedad, la economía y la política
+identifica un estado de [crisis que lleva a la desorientación](http://cultura.elpais.com/cultura/2016/01/06/babelia/1452083099_537296.html), en el que es difícil establecer objetivos.
+
+No voy a profundizar en la idea de que hay que aceptar los cambios en
+lugar de rechazarlos. En Internet hay infinitas fuentes a las que
+acudir. Simplemente **quiero proponer, no el cambio, sino el
+movimiento**.
+
+<blockquote><p>
+Caminante, no hay camino, se hace camino al andar.
+(Antonio Machado)
+</p></blockquote>
+
+Propongo que nuestro propósito sea movernos a la consecución de
+un objetivo que es móvil ya que las circunstancias externas lo
+son. Lo que nos obligará a mantenernos siempre en movimiento.
+
+El cambio, como tal, supone movernos de A a B, y una vez allí,
+relajarnos. En un mundo cerrado, en el que nada cambia, esta situación
+es ideal. Pero la vida no es así, en el camino de A a B, nos pasarán
+cosas, muchas llegarán del exterior, por lo que, cuando estemos en B,
+tendremos que volver a movernos a otro lugar, a C... y nos frustraremos.
+
+Por lo tanto, propongo ser flexible como un junco. Concebir nuestros
+objetivos, no como un cambio, sino como un paseo, que podremos guiar y
+modificar según las circunstancias cambien.
+
+<blockquote><p>
+Prefiero el trapecio, para verlas venir en movimiento. (Manolo García)
+</p></blockquote>
+
+El cambio, así, pasa a ser externo, lo que siempre ha sido. Y nuestro movimiento lo usaremos para
+prepararnos para él y aprovecharlo para lograr nuestros objetivos
+
 
 ## El juego de la vida de Conway
 
-****************************
+Cuando descubrí la informática, allá por los años 80, con un Sinclair ZX
+Spectrum, uno de los *juegos* de demostración era el [juego de la vida de
+Conway](https://es.wikipedia.org/wiki/Juego_de_la_vida). Un juego cuya belleza reside en su simplicidad:
 
-Ejemplo de un still life
+- Un tablero de dos dimensiones del tamaño que se desee.
+- unas células que nacen, se reproducen y mueren.
+- Nacen en las celdas del tablero que están rodeadas por otras tres
+células.
+- Mueren cuando están rodeadas
+
+Sirva esa simplicidad como metáfora del movimiento y del cambio.
+
+
+
+****************************
 
 ### Game of life: still life
 
@@ -321,4 +378,6 @@ Ejemplo de un glider y un still que colisionan
 
 ## Referencias
 
-lorem ipsum
+El código javascript del juego de la vida se puede encontrar en este
+[respositorio de github](http://github.com/jmgaguilera/game_of_life)
+
