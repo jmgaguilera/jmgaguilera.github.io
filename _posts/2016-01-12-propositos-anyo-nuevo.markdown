@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Propósitos para el año 2016"
+date:   2016-01-12
 category: estrategia
 tags: [tic, javascript, programación]
 ---
@@ -12,23 +13,28 @@ tags: [tic, javascript, programación]
 
       var board1;
       var drawing1;
-      var btnNextGen1;
+      var btnStart1;
+      var btnStop1;
       var btnReset1;
       var board2;
       var drawing2;
-      var btnNextGen2;
+      var btnStart2;
+      var btnStop2;
       var btnReset2;
       var board3;
       var drawing3;
-      var btnNextGen3;
+      var btnStart3;
+      var btnStop3;
       var btnReset3;
       var board4;
       var drawing4;
-      var btnNextGen4;
+      var btnStart4;
+      var btnStop4;
       var btnReset4;
       var board5;
       var drawing5;
-      var btnNextGen5;
+      var btnStart5;
+      var btnStop5;
       var btnReset5;
 
       function runNextGen(board, drawing) {
@@ -211,11 +217,11 @@ Comienza el año 2016 y, como todos los años, muchas personas hacen sus propós
 
 Tanto en lo personal como en lo laboral, nunca he sido amigo de hacer
 propósitos a una fecha dada, tiendo más a tener una lista de objetivos a
-largo plazo, revisables cada cierto tiempo, y a mantener una lista de los
+largo plazo, revisables cada cierto tiempo, y a mantener una lista de lo
 siguiente que tengo que hacer para avanzar en cada uno de mis proyectos,
 personales o laborales. Muy en la línea del método [GTD](http://gettingthingsdone.com/).
 
-En cualquier caso sí que quiero aprovechar el comienzo de 2016 para renovar un compromiso permanente en estos tiempos en los que se habla tanto de **cambio**.
+En cualquier caso, quiero aprovechar el comienzo de 2016 para renovar un compromiso permanente en estos tiempos en los que se habla tanto de **cambio**.
 
 - La consultora Gartner, en relación a las Tecnologías de la
 Información y de las Comunicaciones, prevee las [10 tendencias estratégicas en tecnología de 2016](http://www.forbes.com/sites/sap/2015/12/10/gartners-top-10-strategic-technology-trends-for-2016/).
@@ -224,17 +230,13 @@ identifica un estado de [crisis que lleva a la desorientación](http://cultura.e
 
 No voy a profundizar en la idea de que hay que aceptar los cambios en
 lugar de rechazarlos. En Internet hay infinitas fuentes a las que
-acudir. Simplemente **quiero proponer, no el cambio, sino el
+acudir. Simplemente **quiero proponer un compromiso, no con el cambio, sino con el
 movimiento**.
 
 <blockquote><p>
 Caminante, no hay camino, se hace camino al andar.
 (Antonio Machado)
 </p></blockquote>
-
-Propongo que nuestro propósito sea movernos a la consecución de
-un objetivo que es móvil ya que las circunstancias externas lo
-son. Lo que nos obligará a mantenernos siempre en movimiento.
 
 El cambio, como tal, supone movernos de A a B, y una vez allí,
 relajarnos. En un mundo cerrado, en el que nada cambia, esta situación
@@ -253,26 +255,33 @@ Prefiero el trapecio, para verlas venir en movimiento. (Manolo García)
 El cambio, así, pasa a ser externo, lo que siempre ha sido. Y nuestro movimiento lo usaremos para
 prepararnos para él y aprovecharlo para lograr nuestros objetivos
 
+Por lo tanto, propongo que nuestro propósito para 2016 sea movernos permanentemente y mantenernos siempre en movimiento ante los cambios e imprevistos.
 
-## El juego de la vida de Conway
+
+## Una metáfora: el juego de la vida de Conway
 
 Cuando descubrí la informática, allá por los años 80, con un Sinclair ZX
 Spectrum, uno de los *juegos* de demostración era el [juego de la vida de
 Conway](https://es.wikipedia.org/wiki/Juego_de_la_vida). Un juego cuya belleza reside en su simplicidad:
 
 - Un tablero de dos dimensiones del tamaño que se desee.
-- unas células que nacen, se reproducen y mueren.
+- Unas células que nacen, se reproducen y mueren.
 - Nacen en las celdas del tablero que están rodeadas por otras tres
 células.
-- Mueren cuando están rodeadas
+- Mueren cuando están rodeadas de 4 o más células (por sobrepoblación),
+o por una o menos células (por soledad).
 
 Sirva esa simplicidad como metáfora del movimiento y del cambio.
 
 
-
 ****************************
 
-### Game of life: still life
+## Vidas estáticas
+
+Imaginad un mundo totalmente estático, las células que habitan en él no
+se mueven. Entre sí han alcanzado una situación estable. Nada cambia.
+¿Una utopía? o ¿Una distopía?.
+
 
 <div style="margin:auto">
   <div>
@@ -288,13 +297,18 @@ Sirva esa simplicidad como metáfora del movimiento y del cambio.
 
 ****************************
 
-lorem ipsum
+¡Qué aburrido! ¿Verdad?
+
+¿Quién quiere vivir en un mundo así?
 
 ****************************
 
-Ejemplo de un oscilador
+### Vidas oscilantes
 
-### Game of life: oscilator
+A veces, las vidas parecen que se mueven, pero ¿lo hacen en realidad?
+
+Tal vez solo cambian por cambiar. El cambio por sí mismo no es nada. Lo
+importante es el objetivo a conseguir.
 
 <div style="margin:auto">
   <div>
@@ -310,14 +324,15 @@ Ejemplo de un oscilador
 
 ****************************
 
-lorem ipsum....
+En el juego de la vida, el oscilador, cambia constantemente pero se
+repite a sí mismo eternamente.
 
 ****************************
 
+### El planeador
 
-Ejemplo de un caminador
-
-### Game of life: glider
+El planeador es un caminante, se mueve hacia un objetivo. Descubre
+nuevos horizontes a lo largo del espacio que puede explorar.
 
 <div style="margin:auto">
   <div>
@@ -330,15 +345,18 @@ Ejemplo de un caminador
   <button id="btnReset3">Reset</button>
   </div>
 </div>
-****************************
 
-lorem ipsum
+***************************
 
-****************************
+Cambia para recorrer nuevos caminos sin volver atrás.
 
-Ejemplo de un glider y un still que colisionan
+***************************
 
-### Game of life: glider and still life
+###  Planeador y vidas estáticas (1 de 2)
+
+En un mundo cerrado, las vidas estáticas pueden sobrevivir. A veces,
+cuando un elemento externo las altera, son capaces de sobreponerse y
+contagiar al elemento externo de su estatismo.
 
 <div style="margin:auto">
   <div>
@@ -354,13 +372,16 @@ Ejemplo de un glider y un still que colisionan
 
 ****************************
 
-lorem ipsum
+Y al poco tiempo, las vidas vuelven a ser monótonas. Aunque, no
+exactamente de igual modo que lo eran antes de su contacto con el cambio.
 
 ****************************
 
-Ejemplo de un glider y un still que colisionan
+###  Planeador y vidas estáticas (2 de 2)
 
-### Game of life: glider and still life
+Sin embargo, otras veces, las vidas estáticas, al alterarse por un
+elemento externo, se contagian del mismo y su forma de sobrevivir es
+adaptarse al cambio y evolucionar permanentemente.
 
 <div style="margin:auto">
   <div>
@@ -375,6 +396,26 @@ Ejemplo de un glider y un still que colisionan
 </div>
 
 ****************************
+
+El nuevo mundo que surge es rico y variado.
+
+## Epílogo
+
+**¿Qué mundo del juego de la vida preferimos crear?**
+
+Durante 2016, hagamos el propósito de seguir en movimiento para
+aprovechar los cambios con el fin de lograr nuestros objetivos
+personales y profesionales.
+
+<blockquote><p>
+
+Strange fascination, fascinating me
+/ Changes are taking the pace
+/ I'm going through
+(David Bowie)
+
+</p></blockquote>
+
 
 ## Referencias
 
