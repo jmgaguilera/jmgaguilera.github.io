@@ -42,6 +42,9 @@ tags: [tic, javascript, programación]
         board1.addCells([[5,5],[5,6],[6,5], [6,6], [15,10], [14,11], [16,11], [14,12], [16,12], [15,13]]);
         board1.establishGen();
         board1.toHTMLCanvas(drawing1);
+        window.clearTimeout(btnStop1.timer);
+        btnStart1.style.display='inline';
+        btnStop1.style.display='none';
       }
 
       function reset2() {
@@ -49,6 +52,9 @@ tags: [tic, javascript, programación]
         board2.addCells([[5,5],[5,6],[5,7], [6,5], [4,5]]);
         board2.establishGen();
         board2.toHTMLCanvas(drawing2);
+        window.clearTimeout(btnStop2.timer);
+        btnStart2.style.display='inline';
+        btnStop2.style.display='none';
       }
 
       function reset3() {
@@ -56,6 +62,9 @@ tags: [tic, javascript, programación]
         board3.addCells([[3,3],[3,4], [3,5], [2,5],[1,4]]);
         board3.establishGen();
         board3.toHTMLCanvas(drawing3);
+        window.clearTimeout(btnStop3.timer);
+        btnStart3.style.display='inline';
+        btnStop3.style.display='none';
       }
 
       function reset4() {
@@ -63,6 +72,9 @@ tags: [tic, javascript, programación]
         board4.addCells([[3,3],[3,4], [3,5], [2,5],[1,4], [15,10], [14,11], [16,11], [14,12], [16,12], [15,13]]);
         board4.establishGen();
         board4.toHTMLCanvas(drawing4);
+        window.clearTimeout(btnStop4.timer);
+        btnStart4.style.display='inline';
+        btnStop4.style.display='none';
       }
 
       function reset5() {
@@ -78,16 +90,20 @@ tags: [tic, javascript, programación]
       function init() {
         // elements and events
         drawing1 = document.getElementById('drawing1');
-        btnNextGen1 = document.getElementById('btnNextGen1');
+        btnStart1 = document.getElementById('btnStart1');
+        btnStop1 = document.getElementById('btnStop1');
         btnReset1 = document.getElementById('btnReset1');
         drawing2 = document.getElementById('drawing2');
-        btnNextGen2 = document.getElementById('btnNextGen2');
+        btnStart2 = document.getElementById('btnStart2');
+        btnStop2 = document.getElementById('btnStop2');
         btnReset2 = document.getElementById('btnReset2');
         drawing3 = document.getElementById('drawing3');
-        btnNextGen3 = document.getElementById('btnNextGen3');
+        btnStart3 = document.getElementById('btnStart3');
+        btnStop3 = document.getElementById('btnStop3');
         btnReset3 = document.getElementById('btnReset3');
         drawing4 = document.getElementById('drawing4');
-        btnNextGen4 = document.getElementById('btnNextGen4');
+        btnStart4 = document.getElementById('btnStart4');
+        btnStop4 = document.getElementById('btnStop4');
         btnReset4 = document.getElementById('btnReset4');
         drawing5 = document.getElementById('drawing5');
         btnStart5 = document.getElementById('btnStart5');
@@ -99,15 +115,76 @@ tags: [tic, javascript, programación]
         reset3();
         reset4();
         reset5();
+
         // events
-        btnNextGen1.addEventListener('click', function() {runNextGen(board1, drawing1);});
+        btnStart1.addEventListener('click',
+                function() {
+                  btnStop1.timer = window.setInterval(
+                                        function() {runNextGen(board1, drawing1)},
+                                        500);
+                  btnStart1.style.display='none';
+                  btnStop1.style.display='inline';
+                  }
+                );
+        btnStop1.addEventListener('click',
+                function() {
+                  window.clearTimeout(btnStop1.timer);
+                  btnStart1.style.display='inline';
+                  btnStop1.style.display='none';
+                });
         btnReset1.addEventListener('click', reset1);
-        btnNextGen2.addEventListener('click', function() {runNextGen(board2, drawing2);});
+
+        btnStart2.addEventListener('click',
+                function() {
+                  btnStop2.timer = window.setInterval(
+                                        function() {runNextGen(board2, drawing2)},
+                                        500);
+                  btnStart2.style.display='none';
+                  btnStop2.style.display='inline';
+                  }
+                );
+        btnStop2.addEventListener('click',
+                function() {
+                  window.clearTimeout(btnStop2.timer);
+                  btnStart2.style.display='inline';
+                  btnStop2.style.display='none';
+                });
         btnReset2.addEventListener('click', reset2);
-        btnNextGen3.addEventListener('click', function() {runNextGen(board3, drawing3);});
+
+        btnStart3.addEventListener('click',
+                function() {
+                  btnStop3.timer = window.setInterval(
+                                        function() {runNextGen(board3, drawing3)},
+                                        500);
+                  btnStart3.style.display='none';
+                  btnStop3.style.display='inline';
+                  }
+                );
+        btnStop3.addEventListener('click',
+                function() {
+                  window.clearTimeout(btnStop3.timer);
+                  btnStart3.style.display='inline';
+                  btnStop3.style.display='none';
+                });
         btnReset3.addEventListener('click', reset3);
-        btnNextGen4.addEventListener('click', function() {runNextGen(board4, drawing4);});
+
+        btnStart4.addEventListener('click',
+                function() {
+                  btnStop4.timer = window.setInterval(
+                                        function() {runNextGen(board4, drawing4)},
+                                        500);
+                  btnStart4.style.display='none';
+                  btnStop4.style.display='inline';
+                  }
+                );
+        btnStop4.addEventListener('click',
+                function() {
+                  window.clearTimeout(btnStop4.timer);
+                  btnStart4.style.display='inline';
+                  btnStop4.style.display='none';
+                });
         btnReset4.addEventListener('click', reset4);
+
         btnStart5.addEventListener('click',
                 function() {
                   btnStop5.timer = window.setInterval(
@@ -146,7 +223,8 @@ Ejemplo de un still life
     </canvas>
   </div>
   <div>
-  <button id="btnNextGen1">Next Generation</button>
+  <button id="btnStart1">Start</button>
+  <button id="btnStop1">Stop</button>
   <button id="btnReset1">Reset</button>
   </div>
 </div>
@@ -167,7 +245,8 @@ Ejemplo de un oscilador
     </canvas>
   </div>
   <div>
-  <button id="btnNextGen2">Next Generation</button>
+  <button id="btnStart2">Start</button>
+  <button id="btnStop2">Stop</button>
   <button id="btnReset2">Reset</button>
   </div>
 </div>
@@ -189,7 +268,8 @@ Ejemplo de un caminador
     </canvas>
   </div>
   <div>
-  <button id="btnNextGen3">Next Generation</button>
+  <button id="btnStart3">Start</button>
+  <button id="btnStop3">Stop</button>
   <button id="btnReset3">Reset</button>
   </div>
 </div>
@@ -209,7 +289,8 @@ Ejemplo de un glider y un still que colisionan
     </canvas>
   </div>
   <div>
-  <button id="btnNextGen4">Next Generation</button>
+  <button id="btnStart4">Start</button>
+  <button id="btnStop4">Stop</button>
   <button id="btnReset4">Reset</button>
   </div>
 </div>
