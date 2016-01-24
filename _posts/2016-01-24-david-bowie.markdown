@@ -134,7 +134,7 @@ su frecuencia a lo largo de los años: god, love, time, star, live & die
 |                              *Time*
 |
 |    There's a starman waiting in the sky
-|    He's told us not to blow i
+|    He's told us not to blow it
 |    'Cause he knows it's all worthwhile
 |                                  *Starman*
 |
@@ -187,10 +187,7 @@ En los dos últimos discos *die* aparece más que en los anteriores...
 
 # Referencias
 
-El documento R (rmarkdown) reproducir este análisis puede encontrarse en [este enlace](http://github.com/jmgaguilera/david_bowie)
+El documento R (rmarkdown) para reproducir este análisis puede encontrarse en [este enlace](http://github.com/jmgaguilera/david_bowie)
 
----
-title: "david_bowie.R"
-author: "jmgaguilera"
-date: "Sun Jan 24 17:54:42 2016"
----
+
+
