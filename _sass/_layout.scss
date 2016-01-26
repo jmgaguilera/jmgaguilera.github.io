@@ -1,14 +1,22 @@
 /**
  * Site header
  */
-.site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-    min-height: 56px;
 
+$color_claro: #FEFEFE;
+$color_oscuro: #466E7A;
+$color_md_claro: #EBDE96;
+$color_md_oscuro: #D4423D;
+
+.site-header {
+    border-bottom: 2px solid $grey-color-light;
+    min-height: 56px;
     // Positioning context for the mobile navigation icon
     position: relative;
+    background-color: $color_oscuro;
+    color: $color_claro;
 }
+
+
 
 .site-title {
     font-size: 26px;
@@ -17,9 +25,11 @@
     margin-bottom: 0;
     float: left;
 
+    color: $color_claro;
+
     &,
     &:visited {
-        color: $grey-color-dark;
+        color: $grey-color-light;
     }
 }
 
@@ -39,7 +49,13 @@
         &:not(:first-child) {
             margin-left: 20px;
         }
+
     }
+
+    .page-link-claro {
+        color: $color_claro;
+    }
+
 
     @include media-query($on-palm) {
         position: absolute;
@@ -92,8 +108,9 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
+    border-top: 2px solid $grey-color-light;
     padding: $spacing-unit 0;
+    background-color: $color_md_claro;
 }
 
 .footer-heading {

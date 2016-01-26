@@ -5,6 +5,8 @@ author: José Miguel González Aguilera
 date: 2016-01-24
 category: análisis
 tags: [R, análisis, bowie]
+excerpt: Somero análisis de datos sobre el texto de sus temas.
+url-image: /images/david_bowie_files/figure-html/unnamed-chunk-4-1.png
 ---
 
 

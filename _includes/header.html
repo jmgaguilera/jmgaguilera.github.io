@@ -17,12 +17,12 @@
       <div class="trigger">
         {% for page in site.pages %}
           {% if page.title %}
-          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          <a class="page-link-claro" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
           {% endif %}
         {% endfor %}
       </div>
     </nav>
 
-  <span style="float:left; margin-bottom:0;"> {{ site.subtitle }} </span>
+  <span style="float:left; margin-bottom:0;"><em>{{ site.subtitle }}</em></span>
   </div>
 </header>

@@ -4,6 +4,8 @@ title: Sobre mi
 permalink: /about/
 ---
 
+![](/images/jmga.jpg){: .center-block .img-circle style="max-width:100px"}
+
 Soy José Miguel González Aguilera, Ingeniero Superior en Informática y
 Licenciado en Economía. En este blog publico aquellos temas
 que me interesan y que, en la medida que el trabajo me lo permite, puedo

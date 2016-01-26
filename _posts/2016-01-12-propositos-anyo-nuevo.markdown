@@ -4,6 +4,7 @@ title:  "Propósitos para el año 2016"
 date:   2016-01-12
 category: estrategia
 tags: [tic, javascript, programación]
+excerpt: Un único propósito para todos los días.
 ---
 
    <script src="/js/game_of_life/game_of_life.js"></script>
