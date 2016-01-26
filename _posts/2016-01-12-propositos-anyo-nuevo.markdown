@@ -5,6 +5,7 @@ date:   2016-01-12
 category: estrategia
 tags: [tic, javascript, programación]
 excerpt: Un único propósito para todos los días.
+url-image: /images/propositos_anyo_nuevo/game_of_life.png
 ---
 
    <script src="/js/game_of_life/game_of_life.js"></script>

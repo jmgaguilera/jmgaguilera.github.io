@@ -2,11 +2,6 @@
  * Site header
  */
 
-$color_claro: #FEFEFE;
-$color_oscuro: #466E7A;
-$color_md_claro: #EBDE96;
-$color_md_oscuro: #D4423D;
-
 .site-header {
     border-bottom: 2px solid $grey-color-light;
     min-height: 56px;
@@ -15,6 +10,7 @@ $color_md_oscuro: #D4423D;
     background-color: $color_oscuro;
     color: $color_claro;
 }
+
 
 
 

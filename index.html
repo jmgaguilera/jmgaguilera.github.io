@@ -4,23 +4,36 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Entradas</h1>
+  <h1>Entradas</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%d/%m/%Y" }}</span>
+{% for post in site.posts %}
+<div class="card col-xs-12 col-md-12">
+  <div class="card-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link"><h3 class="card-title">{{ post.title }}</h3></a>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-xs-4 col-md-2">
+    <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">
+      <img class="card-img-top img-rounded" style="min-width:100px;max-width:200px" src="{{ post.url-image }}"/>
+      </a>
+    </div>
+    <div class="col-xs-offset-2 col-xs-6 col-md-offset-1 col-md-4">
+      <p class="card-text">{{ post.excerpt }}</p>
+      <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">Ir al post</a>
+      <div class="card-block">
+      <a class="post-meta" href="http://www.jmgaguilera.com{{ post.url | prepend: site.baseurl }}#disqus_thread"></a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% endfor %}
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-        <img src="{{ post.url-image }}" style="max-width:200px"></img><p> {{ post.excerpt }}</p>
-
-        <a class="post-meta" href="http://www.jmgaguilera.com{{ post.url | prepend: site.baseurl }}#disqus_thread"></a>
-        </li>
-        <hr/>
-    {% endfor %}
-  </ul>
 
   <p class="rss-subscribe">suscripción <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
