@@ -2,13 +2,11 @@
 layout: default
 ---
 
-<div class="home">
-
   <h1>Entradas</h1>
 
-{% for post in site.posts %}
-<div class="card col-xs-12 col-md-12">
-  <div class="card-block">
+  {% for post in site.posts %}
+<div class="container">
+  <div class="card-block card col-xs-11 col-md-8">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-12">
@@ -16,12 +14,13 @@ layout: default
       </div>
     </div>
   <div class="row">
-    <div class="col-xs-4 col-md-2">
-    <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">
-      <img class="card-img-top img-rounded" style="min-width:100px;max-width:150px" src="{{ post.url-image }}"/>
+    <div class="col-xs-3 col-md-2">
+      <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">
+            <img class="card-img-top img-rounded" src="{{ post.url-image }}"/>
+        </picture>
       </a>
     </div>
-    <div class="col-xs-offset-2 col-xs-6 col-md-offset-1 col-md-4">
+    <div class="col-xs-8 col-md-offset-1 col-md-5">
       <p class="card-text">{{ post.excerpt }}</p>
       <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">Ir al post</a>
       <div class="card-block">
@@ -37,4 +36,3 @@ layout: default
 
   <p class="rss-subscribe">suscripción <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
-</div>

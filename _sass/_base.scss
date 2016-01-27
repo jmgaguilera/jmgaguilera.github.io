@@ -6,9 +6,10 @@ $color_md_oscuro: #D4423D;
 
 .card {
     margin: 10px;
+    margin-left: -40px;
     padding: 5px;
     background: $color_md_claro;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .card-title {
