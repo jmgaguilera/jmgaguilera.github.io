@@ -2,6 +2,7 @@
 layout: post
 title:  "Feliz Navidad y Feliz Año 2016"
 date:   2015-12-22
+lang: es
 category: general
 url-image: /images/felicitacion-navidad-2015/felicitacion.gif
 ---

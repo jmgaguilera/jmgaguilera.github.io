@@ -1,0 +1,38 @@
+{% capture hide %}
+
+
+{% if page.lang == 'es' %}
+
+    {% assign m = include.date | date: "%-m" %}
+    {% case m %}
+        {% when '1' %}
+            {% capture month %}enero{% endcapture %}
+        {% when '2' %}
+            {% capture month %}febrero{% endcapture %}
+        {% when '3' %}
+            {% capture month %}marzo{% endcapture %}
+        {% when '4' %}
+            {% capture month %}abril{% endcapture %}
+        {% when '5' %}
+            {% capture month %}mayo{% endcapture %}
+        {% when '6' %}
+            {% capture month %}junio{% endcapture %}
+        {% when '7' %}
+            {% capture month %}julio{% endcapture %}
+        {% when '8' %}
+            {% capture month %}agosto{% endcapture %}
+        {% when '9' %}
+            {% capture month %}septiembre{% endcapture %}
+        {% when '10' %}
+            {% capture month %}octubre{% endcapture %}
+        {% when '11' %}
+            {% capture month %}noviembre{% endcapture %}
+        {% when '12' %}
+            {% capture month %}diciembre{% endcapture %}
+    {% endcase %}
+
+{% endif %}
+
+{% capture year %}{{ include.date | date: "%Y" }}{% endcapture %}
+
+{% endcapture %}

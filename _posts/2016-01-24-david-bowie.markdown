@@ -3,6 +3,7 @@ layout: post
 title: Homenaje a David Bowie
 author: José Miguel González Aguilera
 date: 2016-01-24
+lang: es
 category: análisis
 tags: [R, análisis, bowie]
 excerpt: Somero análisis de datos sobre el texto de sus temas.

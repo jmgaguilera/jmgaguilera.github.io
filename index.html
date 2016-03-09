@@ -1,10 +1,15 @@
 ---
 layout: default
+lang: es
 ---
 
   <h1>Entradas</h1>
-
-  {% for post in site.posts %}
+{% assign posts=site.posts | where:"lang", page.lang | where:"type", posts %}
+{% for post in site.posts %}
+    {% capture currentmonth %}{{ post.date | date: "%m/%Y" }}{% endcapture %}
+    {% if currentmonth != month %}
+    <h2>{% include date.html date=post.date %}{{ month }} {{ year }}</h2>
+    {% capture month %}{{ currentmonth }}{% endcapture %}{% endif %}
 <div class="container">
   <div class="card-block card col-xs-11 col-md-9">
   <div class="container">
@@ -22,10 +27,8 @@ layout: default
     </div>
     <div class="col-xs-8 col-md-offset-1 col-md-5">
       <p class="card-text">{{ post.excerpt }}</p>
-      <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">Ir al post</a>
-      <div class="card-block">
+      <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">Ir al post</a> <span>&mdash;</span>
       <a class="post-meta" href="http://www.jmgaguilera.com{{ post.url | prepend: site.baseurl }}#disqus_thread"></a>
-      </div>
     </div>
   </div>
 </div>

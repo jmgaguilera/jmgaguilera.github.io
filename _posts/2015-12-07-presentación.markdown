@@ -2,6 +2,7 @@
 layout: post
 title:  "Presentación"
 date:   2015-12-07 06:53:26
+lang: es
 category: general
 excerpt: Bienvenida a mi nuevo blog sobre análisis de datos y tecnologías de la información y de las comunicaciones.
 ---

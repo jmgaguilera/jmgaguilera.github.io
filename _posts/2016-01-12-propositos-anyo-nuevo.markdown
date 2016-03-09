@@ -2,6 +2,7 @@
 layout: post
 title:  "Propósitos para el año 2016"
 date:   2016-01-12
+lang: es
 category: estrategia
 tags: [tic, javascript, programación]
 excerpt: Un único propósito para todos los días.
