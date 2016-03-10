@@ -35,139 +35,80 @@ img {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="David-Bowie-II-(buscando-canciones-similares)">David Bowie II (buscando canciones similares)</h1><p>La última entrada en mi blog la dediqué a <a href="http://www.jmgaguilera.com/an%C3%A1lisis/2016/01/24/david-bowie.html">David Bowie</a>.</p>
-<p>Hoy quiero ampliar aquella entrada profundizando en las relaciones que existen entre sus canciones. Para ello voy a basarme únicamente en sus letras. Y utilizaré herramientas de
- análisis de texto no estructurado para determinar la <em>cercanía</em> de una canción a otras.</p>
+<p>Hoy quiero ampliarla profundizando en las relaciones que existen entre sus canciones. Para ello voy a continuar basándome únicamente en sus letras. Y utilizaré herramientas de análisis de texto no estructurado para determinar la <em>cercanía</em> de una canción a otras.</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">nltk</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">codecs</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">feature_extraction</span>
-
-<span class="n">songs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;bowie_songs.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Antecedentes">Antecedentes<a class="anchor-link" href="#Antecedentes">&#182;</a></h2><p>Recuerdo que teníamos las letras de 254 canciones. Como en el artículo anterior, lo primero que tenemos que hacer es convertir las letras a términos, descartando, en la medida de lo posibles, las diferencias entre plurales y singulares, así como formas verbales.</p>
-<h2 id="T&#233;rminos">T&#233;rminos<a class="anchor-link" href="#T&#233;rminos">&#182;</a></h2><p>En primer lugar, vamos a crear una lista de palabras que se van a descartar de cada canción. Son palabras generales, artículos, etc.</p>
+<h2 id="Antecedentes">Antecedentes</h2>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">stopwords</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">corpus</span><span class="o">.</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">u&#39;chorus&#39;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">u&quot;&#39;m&quot;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">u&quot;&#39;s&quot;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">u&quot;&#39;ll&quot;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">u&quot;n&#39;t&quot;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">u&quot;&#39;d&quot;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">u&quot;ca&quot;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">u&quot;wo&quot;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">u&#39;oh&#39;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">u&quot;yeah&quot;</span><span class="p">)</span>
-<span class="n">stopwords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">u&quot;x2&quot;</span><span class="p">)</span>
-</pre></div>
+<p>Recuerdo que teníamos las letras de 254 canciones.</p>
+<p> Como en el artículo anterior, lo primero que tenemos que hacer es convertir las letras a términos, descartando, en la medida de lo posible, las diferencias entre plurales y singulares, así como formas verbales.</p>
 
+<h2 id="T&#233;rminos">T&#233;rminos</h2>
+
+<p>En primer lugar, vamos a crear una lista de palabras que se van a descartar de cada canción. Son palabras generales, artículos, etc. A los que ya se les han quitado todos los signos de puntuación y apóstrofes.</p>
+<blockquote>i, me, my, myself, we, our, ours, ourselves, you, your, yours, yourself, yourselves, he, him, his, himself, she, her, hers, herself, it, its, itself, they, them, their, theirs, themselves, what, which, who, whom, this, that, these, those, am, is, are, was, were, be, been, being, have, has, had, having, do, does, did, doing, a, an, the, and, but, if, or, because, as, until, while, of, at, by, for, with, about, against, between, into, through, during, before, after, above, below, to, from, up, down, in, out, on, off, over, under, again, further, then, once, here, there, when, where, why, how, all, any, both, each, few, more, most, other, some, such, no, nor, not, only, own, same, so, than, too, very, s, t, can, will, just, don, should, now, d, ll, m, o, re, ve, y, ain, aren, couldn, didn, doesn, hadn, hasn, haven, isn, ma, mightn, mustn, needn, shan, shouldn, wasn, weren, won, wouldn, chorus, 'm, 's, 'll, n't, 'd, ca, wo, oh, yeah, x2.</blockquote>
 </div>
 </div>
 </div>
 
-</div>
 <div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Cargamos la clase que se encargará de realizar el <em>stemming</em></p>
+<p>Realizamos el tokenizado de todas las canciones. Por ejemplo <b>Blackstar</b> queda, en un primer momento, así:</p>
+<blockquote>in the villa of ormen in the villa of ormen stands a solitary candle ah-ah ah-ah in the centre of it all in the centre of it all your eyes on the day of execution on the day of execution only women kneel and smile ah-ah ah-ah at the centre of it all at the centre of it all your eyes your eyes ah-ah-ah ah-ah-ah in the villa of ormen in the villa of ormen stands a solitary candle ah-ah ah-ah in the centre of it all in the centre of it all your eyes ah-ah-ah something happened on the day he died spirit rose a metre and stepped aside somebody else took his place and bravely cried i’m a blackstar i’m a blackstar how many times does an angel fall how many people lie instead of talking tall he trod on sacred ground he cried loud into the crowd i’m a blackstar i’m a blackstar i’m not a gangster i can’t answer why i’m a blackstar just go with me i’m not a filmstar i’m-a take you home i’m a blackstar take your passport and shoes i’m not a popstar and your sedatives boo i’m a blackstar you’re a flash in the pan i’m not a marvel star i’m the great i am i’m a blackstar i’m a blackstar way up oh honey i’ve got game i see right so white so open-heart it’s pain i want eagles in my daydreams diamonds in my eyes i’m a blackstar i’m a blackstar something happened on the day he died spirit rose a metre and stepped aside somebody else took his place and bravely cried i’m a blackstar i’m a star star i’m a blackstar i can’t answer why i’m not a gangster but i can tell you how i’m not a flam star we were born upside-down i’m a star star born the wrong way ‘round i’m not a white star i’m a blackstar i’m not a gangster i’m a blackstar i’m a blackstar i’m not a pornstar i’m not a wandering star i’m a blackstar i’m a blackstar in the villa of ormen stands a solitary candle ah-ah ah-ah at the centre of it all your eyes on the day of execution only women kneel and smile ah-ah ah-ah at the centre of it all your eyes your eyes ah-ah-ah</blockquote>
+</div>
+</div>
+</div>
+<p>Lo siguiente que hacemos es lematizar, suprimir variaciones de palabras similares, eliminar aquellas que están entre las descartadas, etc. Aplicado al caso de la canción <b>Blackstar</b> el resultado es:</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.stem.snowball</span> <span class="kn">import</span> <span class="n">SnowballStemmer</span>
-<span class="n">stemmer</span> <span class="o">=</span> <span class="n">SnowballStemmer</span><span class="p">(</span><span class="s2">&quot;english&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">tokenize_and_stem</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)]</span>
-    <span class="n">filtered_tokens</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;[a-zA-Z]&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
-            <span class="n">filtered_tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-    <span class="n">stems</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">filtered_tokens</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">stems</span>
+<blockquote>villa ormen villa ormen stand solitari candl ah-ah ah-ah centr centr eye day execut day execut women kneel smile ah-ah ah-ah centr centr eye eye ah-ah-ah ah-ah-ah villa ormen villa ormen stand solitari candl ah-ah ah-ah centr centr eye ah-ah-ah someth happen day die spirit rose metr step asid somebodi els took place brave cri i'm blackstar i'm blackstar mani time angel fall mani peopl lie instead talk tall trod sacr ground cri loud crowd i'm blackstar i'm blackstar i'm gangster can't answer i'm blackstar go i'm filmstar i'm-a take home i'm blackstar take passport shoe i'm popstar sedat boo i'm blackstar you'r flash pan i'm marvel star i'm great i'm blackstar i'm blackstar way honey i'v got game see right white open-heart it pain want eagl daydream diamond eye i'm blackstar i'm blackstar someth happen day die spirit rose metr step asid somebodi els took place brave cri i'm blackstar i'm star star i'm blackstar can't answer i'm gangster tell i'm flam star born upside-down i'm star star born wrong way round i'm white star i'm blackstar i'm gangster i'm blackstar i'm blackstar i'm pornstar i'm wander star i'm blackstar i'm blackstar villa ormen stand solitari candl ah-ah ah-ah centr eye day execut women kneel smile ah-ah ah-ah centr eye eye ah-ah-ah </blockquote>
 
 
-<span class="k">def</span> <span class="nf">tokenize_only</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)]</span>
-    <span class="n">filtered_tokens</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;[a-zA-Z]&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
-            <span class="n">filtered_tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">filtered_tokens</span>
-    
-</pre></div>
+<p>Aplicando esto para todas las canciones, al final, nos quedamos con las palabras más frecuentes. Queremos que queden las palabras más significativas para que permitan determinar las agrupaciones por las relaciones que hay entre ellas. En concreto por la "distancia" que hay entre cada canción en función de la frecuencia en que aparencen las palabras más frecuentes. Las 30 más frecuentes son:</p>
 
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Realizamos el tokenizado quedándonos con las palabras más frecuentes (al menos con un peso de 0.05 de frecuencia.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
-
-<span class="n">tfidf_vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">min_df</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">stop_words</span><span class="o">=</span><span class="n">stopwords</span><span class="p">,</span>
-                                 <span class="n">use_idf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenize_and_stem</span><span class="p">,</span>
-                                 <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">songs</span><span class="p">[</span><span class="s1">&#39;lyrics&#39;</span><span class="p">])</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
+<pre style="text-align: center;">
+freq        tok      word
+---------  -----  -------
+16.082115   love     love
+13.795538   like     like
+11.673021   look     look
+11.623957    got      got
+11.104668   know     know
+11.050255   time     time
+10.515605    day      day
+10.002770    say     says
+ 9.683665    eye     eyes
+ 9.519472  could    could
+ 9.511280    one      one
+ 9.362057  never    never
+ 9.320950    let  letting
+ 9.214944   come     come
+ 9.207492   want     want
+ 9.036289    get      get
+ 8.794052    man      man
+ 8.770926   life     life
+ 8.730971    boy      boy
+ 8.549849  thing   things
+ 8.469426     go       go
+ 8.214135    see      see
+ 8.118021   feel     feel
+ 8.037416   live    lives
+ 7.983238  littl   little
+ 7.935172   girl    girls
+ 7.839930   take     take
+ 7.751650   noth  nothing
+ 7.165395   make     make
+ 7.109152   well     well
+(...)
+</pre>
+<p>Esto ya lo habíamos visto de otra forma, con la nube de palabras, en el anterior artículo.</p>
 
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -176,43 +117,6 @@ img {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Ahora generamos una matriz de distancia entre las canciones a partir de la matriz de frecuencias de términos y documentos. Con esta matriz de distancias clusterizamos las canciones usando el método de <em>ward</em> que va uniendo las más cercanas entre sí. para formar un árbol que permite ver los posibles clusteres en que se agrupan.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
-<span class="n">dist</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
-<span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">ward</span><span class="p">,</span> <span class="n">dendrogram</span><span class="p">,</span> <span class="n">cut_tree</span>
-
-<span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-
-<span class="n">linkage_matrix</span> <span class="o">=</span> <span class="n">ward</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="c1">#define the linkage_matrix using ward clustering pre-computed distances</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">8.27</span><span class="p">,</span> <span class="mf">11.69</span><span class="p">))</span> <span class="c1"># A4</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">dendrogram</span><span class="p">(</span><span class="n">linkage_matrix</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">leaf_font_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">songs</span><span class="p">[</span><span class="s1">&#39;song&#39;</span><span class="p">]));</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span>\
-    <span class="n">axis</span><span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span>          <span class="c1"># changes apply to the x-axis</span>
-    <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span>      <span class="c1"># both major and minor ticks are affected</span>
-    <span class="n">bottom</span><span class="o">=</span><span class="s1">&#39;off&#39;</span><span class="p">,</span>      <span class="c1"># ticks along the bottom edge are off</span>
-    <span class="n">top</span><span class="o">=</span><span class="s1">&#39;off&#39;</span><span class="p">,</span>         <span class="c1"># ticks along the top edge are off</span>
-    <span class="n">labelbottom</span><span class="o">=</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1">#show plot with tight layout</span>
-
-<span class="c1">#uncomment below to save figure</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ward_clusters.svg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span> <span class="c1">#save figure as ward_clusters</span>
-</pre></div>
 
 </div>
 </div>
