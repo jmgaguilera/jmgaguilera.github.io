@@ -5,8 +5,8 @@ author: José Miguel González Aguilera
 date: 2016-01-24
 lang: en
 ref: bowie
-category: análisis
-tags: [R, análisis, bowie]
+category: analysis
+tags: [R, analysis, bowie]
 excerpt: Short analysis on the text of his lyrics.
 url-image: /images/david_bowie_files/figure-html/unnamed-chunk-4-1.png
 ---
@@ -14,12 +14,12 @@ url-image: /images/david_bowie_files/figure-html/unnamed-chunk-4-1.png
 
 
 Now that everyone is talking nice things about David Bowie, I have to say that 
-I did not like too much when I was young. 
+I did not like him very much when I was young.
 I rediscovered him a few years ago with album _The Next Day_
-I ended up buying vinyl, at a time when I no longer buy Compact Disc,
+I ended up buying the vinyl, at a time when I no longer buy Compact Disc,
 It is something I reserve for those albums that exceed my expectations when listening on streaming.
 
-After hearing _Lazarus_ few days before his death, the news did not surprise me and
+After listening to _Lazarus_ few days before his death, the news did not surprise me and
 verses of the song took on its full meaning.
 
 
