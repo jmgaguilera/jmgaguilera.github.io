@@ -29,6 +29,11 @@
     }
 }
 
+
+span .page-link-claro {
+        color: $color_claro;        
+}
+
 .site-nav {
     float: right;
     line-height: 56px;
@@ -48,9 +53,11 @@
 
     }
 
-    .page-link-claro {
-        color: $color_claro;
-    }
+.page-link-claro {
+        color: $color_claro;        
+}
+
+
 
 
     @include media-query($on-palm) {

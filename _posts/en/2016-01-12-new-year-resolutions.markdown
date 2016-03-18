@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Propósitos para el año 2016"
+title:  "Resolutions for 2016"
 date:   2016-01-12
-lang: es
+lang: en
 ref: propositos_2016
 category: estrategia
 tags: [tic, javascript, programación]
-excerpt: Un único propósito para todos los días.
+excerpt: (pending translation) Un único propósito para todos los días.
 url-image: /images/propositos_anyo_nuevo/game_of_life.png
 ---
 

@@ -1,26 +1,27 @@
 ---
 layout: post
-title: Homenaje a David Bowie
+title:  David Bowie Tribute
 author: José Miguel González Aguilera
 date: 2016-01-24
-lang: es
+lang: en
 ref: bowie
 category: análisis
 tags: [R, análisis, bowie]
-excerpt: Somero análisis de datos sobre el texto de sus temas.
+excerpt: Short analysis on the text of his lyrics.
 url-image: /images/david_bowie_files/figure-html/unnamed-chunk-4-1.png
 ---
 
 
 
+Now that everyone is talking nice things about David Bowie, I have to say that 
+I did not like too much when I was young. 
+I rediscovered him a few years ago with album _The Next Day_
+I ended up buying vinyl, at a time when I no longer buy Compact Disc,
+It is something I reserve for those albums that exceed my expectations when listening on streaming.
 
-Ahora que todo el mundo habla parabienes de David Bowie tengo que decir que en mis tiempos de
-juventud no me gustaba especialmente. Lo redescubrí hace pocos años en su disco _The Next Day_
-que acabé adquiriendo en vinilo, lo que, en una época en la que ya no compro Compact Disc,
-es un honor reservado a aquellos discos que superan la escucha en streaming.
+After hearing _Lazarus_ few days before his death, the news did not surprise me and
+verses of the song took on its full meaning.
 
-Después de escuchar _Lazarus_ unos días antes de su muerte, la noticia no me sorprendió y las
-estrofas de la canción adquirieron todo su sentido.
 
 |     Look up here, I’m in heaven
 |     I’ve got scars that can’t be seen
@@ -34,23 +35,21 @@ estrofas de la canción adquirieron todo su sentido.
 |     
 |
 
+This weekend, listening to the album _Blackstar_, I wanted to do my little
+tribute with this brief analysis of his lyrics.
 
-Este fin de semana, mientras escuchaba el disco _Blackstar_ he querido hacer mi pequeño 
-homenaje con este breve análisis de sus letras.
-
-# Los datos
-
+# The Data
 
 
 
 
-He desarrollado un script en Python que accede a [AZLyrics](http://azlyrics.com), y con él he recopilado 
-las letras de las 
+
+I have developed a Python script that accesses [AZLyrics](http://azlyrics.com), and, with it, I have compiled
+the lyrics of
 254
-canciones de los
+songs and
 25
-albumes:
-
+albums:
 
 
 |album                 |year |
@@ -81,21 +80,20 @@ albumes:
 |The Next Day          |2013 |
 |Blackstar             |2016 |
 
-# De qué van sus canciones
+#  What about his songs
 
-Esta es la nube de palabras de toda su carrera musical:
-
+This is the wordcloud of his entire career:
 
 <img src="/images/david_bowie_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="672" />
 
 
-A modo de ejemplo, esta sería la de su disco *Space Oddity*:
+Amd this of the album *Space Oddity*:
 
 
 <img src="/images/david_bowie_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="672" />
 
 
-¿Veis al Mayor Tom llamando al control de tierra?
+Do you see Major Tom to Ground Control calling?
 
 |    Am I sitting in a tin can
 |    Far above the world
@@ -104,7 +102,7 @@ A modo de ejemplo, esta sería la de su disco *Space Oddity*:
 |                    *Space Oddity*
 |
 
-Y esta la de su último disco *Blackstar*:
+And this of his latest album *Blackstar*:
 
 
 <img src="/images/david_bowie_files/figure-html/unnamed-chunk-6-1.png" title="" alt="" width="672" />
@@ -116,10 +114,10 @@ Y esta la de su último disco *Blackstar*:
 |                                     *Blackstar*
 |
 
-# Las palabras a través de los años
+# Words through the years
 
-Voy a mostrar ahora algunas palabras importantes en sus letras y 
-su frecuencia a lo largo de los años: god, love, time, star, live & die
+I will now show some important words in their lyrics and
+their frequency over the years: god, love, time, star, live & die
 
 ## God & Love
 
@@ -150,7 +148,7 @@ su frecuencia a lo largo de los años: god, love, time, star, live & die
 
 ## Die & Live
 
-En los dos últimos discos *die* aparece más que en los anteriores...
+In the two last albums *die* appears more than before...
 
 
 |    Here I am
@@ -168,7 +166,7 @@ En los dos últimos discos *die* aparece más que en los anteriores...
 <img src="/images/david_bowie_files/figure-html/unnamed-chunk-9-1.png" title="" alt="" width="768" />
 
 
-# Epílogo
+# Epilogue
 
 |    This chaos is killing me
 |    This chaos is killing me
@@ -189,9 +187,9 @@ En los dos últimos discos *die* aparece más que en los anteriores...
 
 
 
-# Referencias
+# References
 
-El documento R (rmarkdown) para reproducir este análisis puede encontrarse en [este enlace](http://github.com/jmgaguilera/david_bowie)
+Document in R (rmarkdown) to reproduce this analysis can be found following [this link](http://github.com/jmgaguilera/david_bowie)
 
 
 

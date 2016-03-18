@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Sobre mi
-lang: es
+title: About me
+lang: en
 ref: about
-permalink: /about/
+permalink: /about_en/
 ---
 
 ![](/images/jmga.jpg){: .center-block .img-circle style="max-width:100px"}

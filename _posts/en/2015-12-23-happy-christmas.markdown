@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  "Feliz Navidad y Feliz Año 2016"
+title:  "Happy Christmas and a Happy New 2016"
 date:   2015-12-22
-lang: es
+lang: en
 ref: feliz_navidad_2016
 category: general
+excerpt: (pending translation)
 url-image: /images/felicitacion-navidad-2015/felicitacion.gif
 ---
 

@@ -33,6 +33,39 @@
 
 {% endif %}
 
+
+{% if page.lang == 'en' %}
+
+    {% assign m = include.date | date: "%-m" %}
+    {% case m %}
+        {% when '1' %}
+            {% capture month %}january{% endcapture %}
+        {% when '2' %}
+            {% capture month %}february{% endcapture %}
+        {% when '3' %}
+            {% capture month %}march{% endcapture %}
+        {% when '4' %}
+            {% capture month %}april{% endcapture %}
+        {% when '5' %}
+            {% capture month %}may{% endcapture %}
+        {% when '6' %}
+            {% capture month %}june{% endcapture %}
+        {% when '7' %}
+            {% capture month %}july{% endcapture %}
+        {% when '8' %}
+            {% capture month %}august{% endcapture %}
+        {% when '9' %}
+            {% capture month %}september{% endcapture %}
+        {% when '10' %}
+            {% capture month %}october{% endcapture %}
+        {% when '11' %}
+            {% capture month %}november{% endcapture %}
+        {% when '12' %}
+            {% capture month %}december{% endcapture %}
+    {% endcase %}
+
+{% endif %}
+
 {% capture year %}{{ include.date | date: "%Y" }}{% endcapture %}
 
 {% endcapture %}
