@@ -24,6 +24,7 @@ t:
             subscript: Suscription
             url: index_en.html
         description: Welcome to my blog.
+        recommends: "Recommends:"
     es:
         title: Blog de José Miguel González Aguilera
         subtitle: Buscando soluciones a los problemas sin poner problemas a la solución
@@ -32,5 +33,6 @@ t:
             subscript: Suscripción
             url: index.html
         description: Bienvenid@s a mi blog.
+        recommends: "Recomiendo:"
 
             
