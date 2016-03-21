@@ -8,19 +8,19 @@ permalink: /about_en/
 
 ![](/images/jmga.jpg){: .center-block .img-circle style="max-width:100px"}
 
-Soy José Miguel González Aguilera, Ingeniero Superior en Informática y
-Licenciado en Economía. En este blog publico aquellos temas
-que me interesan y que, en la medida que el trabajo me lo permite, puedo
-desarrollar. Intento contar cosas sobre Tecnologías de la Información.
+I am José Miguel González Aguilera, Senior Engineer and
+Degree in Economics. In this blog I publish those topics
+that interest me and, to the extent that the work allows me, I can
+develop. I try to tell things about Information Technology.
 
-Me gusta encontrar soluciones simples y elegantes a los problemas,
-aunque lo simple, nunca es lo más sencillo.
+I like finding simple and elegant solutions to problems,
+although simple, it is never easy.
 
-Mi titulación y experiencia completa la podéis consultar en mi [perfil de
-linkedin](http://es.linkedin.com/in/jose-miguel-gonzalez-aguilera-a727b010).
 
-Estoy a vuestra disposición en el correo y redes sociales que aparecen
-al final de la página.
+My qualifications and experience can be checked in my [linkedin profile](http://es.linkedin.com/in/jose-miguel-gonzalez-aguilera-a727b010).
 
-Saludos y bienvenid@s
+I am at your disposal in the e-mail and social networks listed
+at the end of the page.
+
+Greetings and welcome to my web.
 
