@@ -23,15 +23,17 @@ t:
             entry: Articles
             subscript: Suscription
             url: index_en.html
+            go_to: Go to article
         description: Welcome to my blog.
         recommends: "Recommends:"
     es:
-        title: Blog de José Miguel González Aguilera
+        title: José Miguel González Aguilera
         subtitle: Buscando soluciones a los problemas sin poner problemas a la solución
         home:
             entry: Artículos
             subscript: Suscripción
             url: index.html
+            go_to: Ir al artículo
         description: Bienvenid@s a mi blog.
         recommends: "Recomiendo:"
 

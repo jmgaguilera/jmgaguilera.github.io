@@ -28,7 +28,7 @@ ref: index
     </div>
     <div class="col-xs-8 col-md-offset-1 col-md-5">
       <p class="card-text">{{ post.excerpt }}</p>
-      <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">Ir al post</a> <span>&mdash;</span>
+      <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">{{ site.t[page.lang].home.go_to }}</a> <span>&mdash;</span>
       <a class="post-meta" href="http://www.jmgaguilera.com{{ post.url | prepend: site.baseurl }}#disqus_thread"></a>
     </div>
   </div>
