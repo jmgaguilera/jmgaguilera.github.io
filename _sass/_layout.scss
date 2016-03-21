@@ -6,9 +6,12 @@
     border-bottom: 2px solid $grey-color-light;
     min-height: 56px;
     // Positioning context for the mobile navigation icon
-    position: relative;
+    position: fixed;
+    width:100%;
+    margin:auto;
     background-color: $color_oscuro;
     color: $color_claro;
+    z-index:1;
 }
 
 
@@ -183,6 +186,7 @@ span .page-link-claro {
  */
 .page-content {
     padding: $spacing-unit 0;
+    display: block;
 }
 
 .page-heading {
