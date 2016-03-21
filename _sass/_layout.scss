@@ -217,6 +217,11 @@ span .page-link-claro {
 /**
  * Posts
  */
+ 
+.post {
+    margin-top: $spacing-unit*4;
+    position: relative;
+}
 .post-header {
     margin-bottom: $spacing-unit;
 }
