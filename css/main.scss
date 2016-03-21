@@ -39,7 +39,35 @@ $on-laptop:        900px;
     }
 }
 
+@media screen and (min-width: 1000px) {
+  .as:after {
+    content: "*";
+    color: #ccc; }
 
+  .br {
+    display: none; }
+
+  .mar {
+    font-size: 0.77778em;
+    line-height: 1.14286em;
+    font-style: italic;
+    position: absolute;
+    left: 68%;
+    right: 100%;
+    margin-left: 15em;
+    min-width: 6cm;
+    max-width: 6cm;
+    text-align: left;
+    color: #a4a4a4; }
+    .mar:before {
+      content: "* "; }
+    .mar:after {
+      content: "."; }
+    .mar code, .mar a {
+      color: #ccc;
+      font-style: normal; }
+    .mar a:hover {
+      color: #aaa; } }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
