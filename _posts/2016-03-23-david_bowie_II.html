@@ -1,0 +1,257 @@
+---
+layout: post
+title: "Homenaje a David Bowie (y II)"
+author: José Miguel González Aguilera
+date: 2016-03-23
+lang: es
+ref: bowie_II
+category: análisis
+tags: [Python, análisis, bowie]
+excerpt: Clusterización sobre el texto de sus temas.
+url-image: /images/david_bowie_II/ward_clusters_5.svg
+---
+<script src="/js/jquery-1.11.3.min.js"></script>
+
+<style type = "text/css">
+.main-container {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+
+<div class="container-fluid main-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="David-Bowie-II-(buscando-canciones-similares)">David Bowie II (buscando canciones similares)</h1><p>La última entrada en mi blog la dediqué a <a href="http://www.jmgaguilera.com/an%C3%A1lisis/2016/01/24/david-bowie.html">David Bowie</a>.</p>
+<p>Hoy quiero ampliarla profundizando en las relaciones que existen entre sus canciones. Para ello voy a continuar basándome únicamente en sus letras. Y utilizaré herramientas de análisis de texto no estructurado para determinar la <em>cercanía</em> de una canción <span class="as"></span><span class="br">(</span><span class="mar">Se utiliza la distancia Euclídea</span><span class="br">)</span> a otras.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Antecedentes">Antecedentes</h2>
+
+<p>Recuerdo que teníamos las letras de 254 canciones.</p>
+<p> Como en el artículo anterior, lo primero que tenemos que hacer es convertir las letras a términos, descartando, en la medida de lo posible, las diferencias entre plurales y singulares, así como formas verbales.</p>
+
+<h2 id="T&#233;rminos">T&#233;rminos</h2>
+
+<p>En primer lugar, vamos a crear una lista de palabras que se van a descartar de cada canción. Son palabras generales, artículos, etc. A los que ya se les han quitado todos los signos de puntuación y apóstrofes.</p>
+<blockquote>i, me, my, myself, we, our, ours, ourselves, you, your, yours, yourself, yourselves, he, him, his, himself, she, her, hers, herself, it, its, itself, they, them, their, theirs, themselves, what, which, who, whom, this, that, these, those, am, is, are, was, were, be, been, being, have, has, had, having, do, does, did, doing, a, an, the, and, but, if, or, because, as, until, while, of, at, by, for, with, about, against, between, into, through, during, before, after, above, below, to, from, up, down, in, out, on, off, over, under, again, further, then, once, here, there, when, where, why, how, all, any, both, each, few, more, most, other, some, such, no, nor, not, only, own, same, so, than, too, very, s, t, can, will, just, don, should, now, d, ll, m, o, re, ve, y, ain, aren, couldn, didn, doesn, hadn, hasn, haven, isn, ma, mightn, mustn, needn, shan, shouldn, wasn, weren, won, wouldn, chorus, 'm, 's, 'll, n't, 'd, ca, wo, oh, yeah, x2.</blockquote>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Realizamos el tokenizado de todas las canciones. Por ejemplo <b>Blackstar</b> queda, en un primer momento, así:</p>
+<blockquote>in the villa of ormen in the villa of ormen stands a solitary candle ah-ah ah-ah in the centre of it all in the centre of it all your eyes on the day of execution on the day of execution only women kneel and smile ah-ah ah-ah at the centre of it all at the centre of it all your eyes your eyes ah-ah-ah ah-ah-ah in the villa of ormen in the villa of ormen stands a solitary candle ah-ah ah-ah in the centre of it all in the centre of it all your eyes ah-ah-ah something happened on the day he died spirit rose a metre and stepped aside somebody else took his place and bravely cried i’m a blackstar i’m a blackstar how many times does an angel fall how many people lie instead of talking tall he trod on sacred ground he cried loud into the crowd i’m a blackstar i’m a blackstar i’m not a gangster i can’t answer why i’m a blackstar just go with me i’m not a filmstar i’m-a take you home i’m a blackstar take your passport and shoes i’m not a popstar and your sedatives boo i’m a blackstar you’re a flash in the pan i’m not a marvel star i’m the great i am i’m a blackstar i’m a blackstar way up oh honey i’ve got game i see right so white so open-heart it’s pain i want eagles in my daydreams diamonds in my eyes i’m a blackstar i’m a blackstar something happened on the day he died spirit rose a metre and stepped aside somebody else took his place and bravely cried i’m a blackstar i’m a star star i’m a blackstar i can’t answer why i’m not a gangster but i can tell you how i’m not a flam star we were born upside-down i’m a star star born the wrong way ‘round i’m not a white star i’m a blackstar i’m not a gangster i’m a blackstar i’m a blackstar i’m not a pornstar i’m not a wandering star i’m a blackstar i’m a blackstar in the villa of ormen stands a solitary candle ah-ah ah-ah at the centre of it all your eyes on the day of execution only women kneel and smile ah-ah ah-ah at the centre of it all your eyes your eyes ah-ah-ah</blockquote>
+</div>
+</div>
+</div>
+<p>Lo siguiente que hacemos es lematizar, suprimir variaciones de palabras similares, eliminar aquellas que están entre las descartadas, etc. Aplicado al caso de la canción <b>Blackstar</b> el resultado es:</p>
+
+<blockquote>villa ormen villa ormen stand solitari candl ah-ah ah-ah centr centr eye day execut day execut women kneel smile ah-ah ah-ah centr centr eye eye ah-ah-ah ah-ah-ah villa ormen villa ormen stand solitari candl ah-ah ah-ah centr centr eye ah-ah-ah someth happen day die spirit rose metr step asid somebodi els took place brave cri i'm blackstar i'm blackstar mani time angel fall mani peopl lie instead talk tall trod sacr ground cri loud crowd i'm blackstar i'm blackstar i'm gangster can't answer i'm blackstar go i'm filmstar i'm-a take home i'm blackstar take passport shoe i'm popstar sedat boo i'm blackstar you'r flash pan i'm marvel star i'm great i'm blackstar i'm blackstar way honey i'v got game see right white open-heart it pain want eagl daydream diamond eye i'm blackstar i'm blackstar someth happen day die spirit rose metr step asid somebodi els took place brave cri i'm blackstar i'm star star i'm blackstar can't answer i'm gangster tell i'm flam star born upside-down i'm star star born wrong way round i'm white star i'm blackstar i'm gangster i'm blackstar i'm blackstar i'm pornstar i'm wander star i'm blackstar i'm blackstar villa ormen stand solitari candl ah-ah ah-ah centr eye day execut women kneel smile ah-ah ah-ah centr eye eye ah-ah-ah </blockquote>
+
+
+<p>Lo hacemos para todas las canciones, al final, nos quedamos con las palabras más frecuentes. Queremos que queden las palabras más significativas para que permitan determinar las agrupaciones por las relaciones que hay entre ellas. En concreto por la "distancia" que hay entre cada canción en función de la frecuencia en que aparencen las palabras más frecuentes. Las 30 más frecuentes son:</p>
+
+<pre style="text-align: center;">
+freq        tok      word
+---------  -----  -------
+16.082115   love     love
+13.795538   like     like
+11.673021   look     look
+11.623957    got      got
+11.104668   know     know
+11.050255   time     time
+10.515605    day      day
+10.002770    say     says
+ 9.683665    eye     eyes
+ 9.519472  could    could
+ 9.511280    one      one
+ 9.362057  never    never
+ 9.320950    let  letting
+ 9.214944   come     come
+ 9.207492   want     want
+ 9.036289    get      get
+ 8.794052    man      man
+ 8.770926   life     life
+ 8.730971    boy      boy
+ 8.549849  thing   things
+ 8.469426     go       go
+ 8.214135    see      see
+ 8.118021   feel     feel
+ 8.037416   live    lives
+ 7.983238  littl   little
+ 7.935172   girl    girls
+ 7.839930   take     take
+ 7.751650   noth  nothing
+ 7.165395   make     make
+ 7.109152   well     well
+(...)
+</pre>
+<p>Esto ya lo habíamos visto de otra forma, con la nube de palabras, en el anterior artículo.</p>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ahora generamos una matriz de distancia entre las canciones a partir de la matriz de frecuencias de términos y documentos. Con esta matriz de distancias clusterizamos las canciones usando el método de <em>ward</em> que va uniendo las más cercanas entre sí. para formar un árbol que permite ver los posibles clusteres en que se agrupan.</p>
+
+</div>
+</div>
+</div>
+
+<p><img src="/images/david_bowie_II/ward_clusters.svg" title="" alt="" width="1056" /></p>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Como hay demasiadas canciones, cuesta distinguirlas en un árbol tan denso. Si vemos el <emph>tronco del árbol</emph>:</p>
+
+<div style="text-align:center">
+	<img src="/images/david_bowie_II/ward_clusters_trunk.svg" title="" alt="" style="max-width:65%;max-height:auto"/>
+</div>
+
+<p>Podemos asumir que existen ocho grandes grupos, son los que vamos a formar y vamos a ver de uno en uno para ver si encontramos alguna relación entre las canciones contenidas en ellos..</p>
+
+<p><img src="/images/david_bowie_II/ward_clusters_0.svg" title="" alt="" width="1056" /></p>
+<pre>
+Palabras más repetidas en el grupo 0:
+         freq   term    word
+170  5.365048    say    says
+224  4.782514   want    want
+76   3.478711    got     got
+18   2.581732    boy     boy
+200  2.482339  thing  things
+</pre>
+<p>El grupo anterior está formado por canciones que destacan las palabras say, want, got, things y boys, entre otras.</p>
+<br/>
+<p><img src="/images/david_bowie_II/ward_clusters_1.svg" title="" alt="" width="1056" /></p>
+<pre>Palabras más repetidas en el Grupo 1:
+         freq  term  word
+122  4.380216   man   man
+196  4.167142  take  take
+18   4.055294   boy   boy
+116  4.042343  long  long
+67   4.020220   get   get
+</pre>
+<p>Este grupo contiene 112 canciones, se prestaría a una separación mayor para poder analizar las canciones próximas. Sin embargo, es posible detectar que el algoritmo considera las dos canciones más próximas a <emph>It's no game</emph>, partes 1 y 2, lo que se identifica por la corta longitud de las ramas que se unen.</p>
+<br/>
+<p><img src="/images/david_bowie_II/ward_clusters_2.svg" title="" alt="" width="1056" /></p>
+<pre>Palabras más repetidas en el Grupo 2:
+         freq  term  word
+119  7.463742  love  love
+111  6.080673  like  like
+32   5.357936  come  come
+204  4.716788  time  time
+8    4.685532  babi  baby
+</pre>
+<p>Las canciones de este grupo hablan de amor, del tiempo, etc.</p>
+<br/>
+<p><img src="/images/david_bowie_II/ward_clusters_3.svg" title="" alt="" width="1056" /></p>
+<pre>Palabras más repetidas en el Grupo 3:
+         freq    term    word
+113  3.624713   littl  little
+68   1.478087    girl   girls
+56   0.751800    feel    feel
+7    0.749316    away    away
+233  0.705218  wonder  wonder
+</pre>
+<p>Las canciones de este grupo hablan de chicas.</p>
+<br/>
+
+</pre>
+<p><img src="/images/david_bowie_II/ward_clusters_4.svg" title="" alt="" width="1056" /></p>
+<pre>Palabras más repetidas en el Grupo 4:
+         freq  term     word
+38   3.690027   day      day
+144  3.295195   one      one
+141  2.358883  noth  nothing
+41   1.519879   die    dying
+109  1.143182  life     life
+</pre>
+<p>Las canciones de este grupo hablan del día, de la vida y de la muerte.</p>
+<br/>
+
+
+<p><img src="/images/david_bowie_II/ward_clusters_5.svg" title="" alt="" width="1056" /></p>
+<pre>Palabras más repetidas en el Grupo 5:
+         freq  term   word
+119  3.861197  love   love
+68   0.995499  girl  girls
+138  0.991495   new    new
+70   0.553128    go     go
+121  0.524290  make   make
+</pre>
+<p>Las canciones de este grupo tratan sobre chicas y amor.</p>
+<br/>
+
+
+<p><img src="/images/david_bowie_II/ward_clusters_6.svg" title="" alt="" width="1056" /></p>
+<pre>Palabras más repetidas en el 
+Grupo 6:
+         freq  term     word
+36   3.604493  danc    dance
+107  1.408223   let  letting
+100  0.982583  know     know
+52   0.647080  face     face
+197  0.479504  talk  talking
+</pre>
+<p>Las canciones de este grupo hablan de bailar.</p>
+<br/>
+
+
+<p><img src="/images/david_bowie_II/ward_clusters_7.svg" title="" alt="" width="1056" /></p>
+<pre>Palabras más repetidas en el Grupo 7:
+         freq   term   word
+117  3.509484   look   look
+187  0.770862  sound  sound
+70   0.555531     go     go
+7    0.545412   away   away
+105  0.494563   leav  leave
+ </pre>
+<p>Y las del último grupo hablan fundamentalmente de búsqueda.</p>
+<br/>
+
+<h2>Epílogo</h2>
+
+Esta agrupación de canciones es mejorable, se pueden agrupar palabras similares, se pueden utilizar bigramas, mejorar la tokenización y aplicar otros algoritmos de clusterización.
+
+También cabe seleccionar las palabras más características de cada canción, es decir, palabras más raras en general pero que son muy frecuentes en determinadas canciones, y así seleccionar las canciones más parecidas a otras en cuanto a temática.
+
+Solo espero, haber aportado un granito de arena en homenaje a uno de los grandes músicos <emph>pop</emph> de nuestra época.
+
+<h2>Referencias</h2>
+
+<p>En este caso he utilizado Python para realizar este breve análisis. Se puede reproducir con el siguiente <a href="https://github.com/jmgaguilera/david_bowie/tree/master/david_bowie_II">código</a> que está desarrollado para su uso en un block de notas de <a href="http://jupyter.org">Jupyter.</a></p>
+
+</div>
+</div>
+</div>
+
+<div></div>
