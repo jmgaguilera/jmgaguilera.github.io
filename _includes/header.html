@@ -9,13 +9,17 @@
       <nav class="site-nav">
 
       <div class="trigger">
-        {%  assign pages = site.pages | where:"lang", page.lang %}
+        {%  assign pages = site.pages | where:"lang", page.lang | sort: "order" %}
+        &mdash;
         {% for page in pages %}
           {% if page.title %}
           <a class="page-link-claro" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+			&mdash;
           {% endif %}
+
         {% endfor %}
 
+        
 
       </div>
       

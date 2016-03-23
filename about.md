@@ -3,6 +3,7 @@ layout: page
 title: Sobre mi
 lang: es
 ref: about
+order: 2
 permalink: /about/
 ---
 
