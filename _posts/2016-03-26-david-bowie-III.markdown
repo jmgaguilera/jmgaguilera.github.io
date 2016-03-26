@@ -8,7 +8,7 @@ tags: [R, análisis, bowie]
 lang: es
 ref: david_bowie_3
 excerpt: Búsqueda de "canciones vecinas" y red de canciones.
-url-image: /images/david_bowie_3_files/figure-html/red_de_canciones.svg
+url-image: /images/david_bowie_3_files/figure-html/red_de_canciones_small.png
 ---
 
 

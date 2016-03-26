@@ -8,7 +8,7 @@ tags: [R, analysis, bowie]
 lang: en
 ref: david_bowie_3
 excerpt: Searching nearest neighbour and network of songs.
-url-image: /images/david_bowie_3_files/figure-html/red_de_canciones.svg
+url-image: /images/david_bowie_3_files/figure-html/red_de_canciones_small.png
 ---
 
 In the previous article I clusterized the songs and did a tree anlysis. Now, I will try a
