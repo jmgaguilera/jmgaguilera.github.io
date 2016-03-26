@@ -7,56 +7,38 @@ category: analysis
 tags: [R, analysis, bowie]
 lang: en
 ref: david_bowie_3
-excerpt: (Pending translation) Searching nearest neighbour and network of songs.
+excerpt: Searching nearest neighbour and network of songs.
 url-image: /images/david_bowie_3_files/figure-html/red_de_canciones.svg
 ---
 
-
-
-
-En este artículo voy a concluir el breve análisis sobre las canciones de David Bowie 
-disponiendo un modelo sobre el que se puedan buscar las canciones más cercanas a otra.
-
-En el artículo anterior hice una exploración de las canciones a través de la generación
-de clusteres y la visualización del árbol asociado. Ahora, se tratar de disponer de un
-modelo práctico que permita consultar dinámicamente por las canciones más próximas a una
-determinada.
+In the previous article I clusterized the songs and did a tree anlysis. Now, I will try a
+practical model to dynamically look for the nearest songs to a given one.
 
 ## Los datos
 
 
+Again, There are 254 songs in 25 albums.
 
+In this case, to calculate the distance between songs, I will use the
+*Term frequency - inverse document frequency* (tf-idf) for each word in songs, instead
+of the absolute frequency of occurrence of each word.
 
-
-Son las mismas 254 canciones de los 25
-albumes que he utilizado en el primer análisis:
-
-
-
-
-
-En este caso, para calcular la distancia entre canciones, voy a utilizar la 
-*frecuencia de término – frecuencia inversa de documento* (tf-idf) de cada palabra, en lugar
-de la frecuencia absoluta de aparición de cada palabra.
-
-La ventaja de este algoritmo es que da más peso a las palabras que son muy frecuentes en algunos
-documentos, pero en un número pequeño relativo de documentos del corpus. Es decir, hace que unas
-palabras sean más significativas que otras. Con este sistema, la nube de palabras cambia algo: 
-
+The advantage of this algorithm is that it gives more weight to words that are very common in some
+documents, but doesn't appears in a many documents in the corpus. That is, it makes some words more significant than others.
+With this system, the word cloud change a bit:
 
 <img src="/images/david_bowie_3_files/figure-html/unnamed-chunk-4-1.svg" title="" alt="" width="672" />
 
 
-# Canciones cercanas a una determinada
+## Nearest song to a given one
 
-Utilizando la matriz de términos y frecuencias basada en tf-idf se puede determinar de forma sencilla qué canciones 
-son las más cercanas a una dada, basándonos, como en el artículo anterior, en la distancia euclídea entre canciones, 
-utilizando los valores del vector de palabras de cada canción. 
+With the matrix of terms and using  tf-idf frequencies we can easily determine which songs
+are the closest to a given one, based, as in the previous article, in the Euclidean distance between songs.
 
-Este método, al utilizar tf-idf, da mejores resultados que la clasificación en árbol del artículo anterior, que se
-basaba en las frecuencias absolutas. Basta utilizar td-idf en el artículo anterior para conseguir resultados similares.
+This method gives better results than the previous classification tree, in last article, which
+It was based on the absolute frequencies.
 
-
+Let's search the nearest songs to _Lazarus_:
 
 |song                             |  distance|
 |:--------------------------------|---------:|
@@ -72,8 +54,7 @@ basaba en las frecuencias absolutas. Basta utilizar td-idf en el artículo anter
 |Five Years                       | 0.7644335|
 
 
-Veamos qué canciones son encuentra nuestro método que son las más parecidas a _Space Oddity_: 
-
+Now, let's see the nearest songs to _Space Oditty_:
 
 
 |song                             |  distance|
@@ -90,13 +71,12 @@ Veamos qué canciones son encuentra nuestro método que son las más parecidas a
 |Five Years                       | 1.0024585|
 
 
-El algoritmo encuentra que la canción más parecida es _Ashes to Ashes_. Es decir, la canción en la que aparece
-también el Major Tom. Esto es una mejora significativa con respecto al sistema basado en las frecuencias absolutas
-del artículo anterior (Se puede buscar allí y se observará la diferencia).
+The algorithm finds that the nearest song is Ashes to Ashes_. That is, the song in which appears
+also _Major Tom_. This is a significant improvement over the system based on the absolute frequencies
+in the previous article (You can look for this song there and observe the difference).
 
-Probemos una más, la canción _"Heroes"_
+Let's try one more song _ "Heroes" _:
   
-
 
 |song                             |  distance|
 |:--------------------------------|---------:|
@@ -114,28 +94,27 @@ Probemos una más, la canción _"Heroes"_
 <br/>
 <br/>
 
-## Nube de canciones
+## Network of songs
 
-Al tener las distancias entre las canciones, podemos visualizar estas relaciones entre ellas
-mediante una red.
+With the distances between songs, we can visualize the relationships between them
+through a network.
 
-Si visualizásemos las distancias entre todas ellas, la red sería inmanejable, basta con incluir las relaciones
-más significativas, Para tener una idea de lo que supone (en cualquier caso 254 canciones, crean una red muy compleja de visualizar).
-
+With the distances between all of them, the network would be unmanageable. We include just the most important relationships 
+to have an idea of what is the result (in any case 254 songs, create a very complex network).
 
 <img src="/images/david_bowie_3_files/figure-html/red_de_canciones.svg" title="" alt="" width="768" />
 
-Para poder hacer zoom _infinito_ en esta red, lo mejor es abrila directamente en su propia solapa del navegador siguiendo
-este enlace: [red de canciones](/images/david_bowie_3_files/figure-html/red_de_canciones.svg). También cabe descargar la imagen y  mostrarla con un visor de documentos _svg_.
+You can do _infinite_ zoom in this network if you open this image in its own tab following this 
+link: [network of songs](/images/david_bowie_3_files/figure-html/red_de_canciones.svg). 
+Also you can download the image and open it with a _svg_ viewer.
 
 ![zoom en la red de canciones](/images/david_bowie_3_files/figure-html/zoom_red_canciones.png)
 
-En el centro del mismo se encuentran las canciones que tienen más relaciones. Las restantes, se disponen alrededor.
+In the center of the image we find the songs who have more relationships. The other songs can be found around these.
 
 <br/>
 
-# Referencias
+# References
 
-El documento R (rmarkdown) para reproducir este análisis puede encontrarse en
- [este enlace](http://github.com/jmgaguilera/david_bowie)
+The R document (rmarkdown) to reproduce this analysis can be found following [this link](http://github.com/jmgaguilera/david_bowie)
 

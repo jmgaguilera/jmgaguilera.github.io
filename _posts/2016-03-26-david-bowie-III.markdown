@@ -29,7 +29,7 @@ determinada.
 
 
 Son las mismas 254 canciones de los 25
-albumes que he utilizado en el primer análisis:
+albumes que he utilizado en el primer análisis.
 
 
 
@@ -47,7 +47,7 @@ palabras sean más significativas que otras. Con este sistema, la nube de palabr
 <img src="/images/david_bowie_3_files/figure-html/unnamed-chunk-4-1.svg" title="" alt="" width="672" />
 
 
-# Canciones cercanas a una determinada
+## Canciones cercanas a una determinada
 
 Utilizando la matriz de términos y frecuencias basada en tf-idf se puede determinar de forma sencilla qué canciones 
 son las más cercanas a una dada, basándonos, como en el artículo anterior, en la distancia euclídea entre canciones, 
@@ -56,6 +56,7 @@ utilizando los valores del vector de palabras de cada canción.
 Este método, al utilizar tf-idf, da mejores resultados que la clasificación en árbol del artículo anterior, que se
 basaba en las frecuencias absolutas. Basta utilizar td-idf en el artículo anterior para conseguir resultados similares.
 
+Veamos, por ejemplo, las canciones más próximas a _Lazarus_:
 
 
 |song                             |  distance|
