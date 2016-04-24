@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "El valor de la información"
-date:   2016-04-24
+title:  El valor de la información
+author: José Miguel González Aguilera
+date: 2016-04-24
 lang: es
 ref: valor_informacion
 categories: [estrategia]
