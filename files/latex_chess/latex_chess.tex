@@ -1,0 +1,427 @@
+\documentclass[a4paper,10pt, twocolumn]{article}
+\usepackage[spanish, english]{babel}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{minted}
+\usepackage[pdfborder=0,colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{chessfss}
+\usepackage{skak}
+\usepackage{chessboard}
+\usepackage{changepage}
+\usepackage{texmate}
+
+\title{Composición tipográfica del juego del Ajedrez usando \LaTeX}
+\author{José Miguel González Aguilera \\ jmgaguilera@gmail.com}
+\date{3 de mayo de 2016}
+
+\newcommand{\mi}[1]{\mintinline{latex}{#1}} % mi = mintinline
+
+\newenvironment{marcod}{\begin{adjustwidth}{0.5cm}{}}{\end{adjustwidth}}
+
+\begin{document}
+
+\twocolumn[
+\begin{@twocolumnfalse}
+	\maketitle
+	\begin{abstract}
+	En este artículo se muestra un breve resumen de las diferentes librerías, con sus usos habituales, que sirven para editar, con comodidad, documentos \LaTeX\ que incluyan partidas u otros aspectos del juego del Ajedrez.
+	
+	%TODO pendiente de ampliar en función del orden y contenido de la explicación
+	
+	\end{abstract}
+\end{@twocolumnfalse}
+]
+
+\bigskip
+
+	\section{El paquete \ttfamily{skak}}
+	
+	Este paquete facilita la composición tipográfica de partidas de ajedrez que utilicen la notación \href{https://es.wikipedia.org/wiki/Notaci%C3%B3n_portable_de_juego}{PGN}(Portable Game Notation). Además, permite mostrar diagramas con la posición en curso.
+
+	Para utilizarlo basta con insertar \mi{\usepackage{skak}} en el preámbulo del documento.
+	
+	Cuando, se desee iniciar una partida, basta con utilizar \mi{\newgame}. Para comprobar cuál es la posición del tablero después de iniciar la partida, basta con escribir \mi{\showboard}, que mostrará un diagrama como el que sigue:
+	
+	\bigskip
+    
+    \newgame \showboard
+
+	\bigskip
+
+	Los movimientos de la partida se introducen mediante el comando \mi{\mainline{PGN}} en donde el texto \emph{PGN} representa la serie de movimientos a realizar. Además de avanzar en la partida, este comando muestra en pantalla los movimientos formateados como sigue:
+
+    \begin{marcod}	
+        \begin{minted}[linenos,autogobble]{Latex}
+        \newgame
+        \mainline{1.e4 e5 2. Nf3 Nc6 3.Bb5}\\
+        \showboard
+        \end{minted}
+    \end{marcod}
+    
+	\storegame{punto_retorno}
+
+	\mainline{1.e4 e5 2. Nf3 Nc6 3.Bb5}
+	
+	\showboard
+	
+	Para ocultar algunos movimientos, basta con utilizar \mi{\hidemoves}; por ejemplo, si en el ejemplo anterior, se ocultan los tres primeros movimientos, \mi{\hidemoves{1.e4 e5 2. Nf3}}, seguido de, \mi{\mainline{2...Nc6 3.Bb5}}, el resultado sería este:
+
+	\restoregame{punto_retorno}
+    \hidemoves{1.e4 e5 2. Nf3}
+    \mainline{2...Nc6 3.Bb5}
+
+    \showboard
+
+	Además, existen otros comandos para facilitar la edición y la composición de los textos.
+	
+	Para componer una variación de una posición, basta con utilizar el comando \mi{\variation}; por ejemplo, \mi{\variation{3.Nf6}}, que se muestra en la composición, pero no tiene consecuencias sobre la posición actual.
+	
+    Por ejemplo, en el tablero siguiente, la variación \variation{3.Nf6} no se ve reflejada.
+    
+	\showboard
+	
+    
+	Si, por el contrario, se desea avanzar por una línea de movimientos, mostrando diagramas, para luego regresar a un punto anterior desde el que mostrar otra línea, es necesario utilizar \mi{\mainline} en ambos casos. Esto supondría tener que ejecutar dos veces todos los movimientos, hasta “llegar” al punto de bifurcación. Para evitarlo, {\ttfamily skak} pone a disposición del editor dos comandos, \mi{\storegame{etiqueta}} y \mi{\restoregame{etiqueta}}, que permiten marcar un punto de la partida con una \emph{etiqueta} y regresar posteriormente a él, respectivamente.
+	
+	Junto con los anteriores comandos, conviene destacar la existencia de otros dos comandos \mi{\savegame{nombre_de_fichero}} y \mi{\loadgame{nombre_de_fichero}}, que permiten, respectivamente: almacenar la partida, hasta la posición actual y en notación PGN,  en el fichero que se indique; y cargarla posteriomente a partir de él.
+
+
+	Para terminar, comentar algunas otras opciones y comandos:
+	
+	\begin{enumerate}
+		\item El comando \mi{\mover} muestra en el diagrama un pequeño icono indicando al jugador que le toca mover.
+		\item El comando \mi{\showinverseboard} muestra el tablero con las fichas negras abajo.
+		\item Existen comandos, \mi{\showonlywhite} y \mi{\showonlyblack}, para mostrar solo las piezas de un color.
+		\item El comando \mi{\showonly{P,p}}, permite mostrar solamente los peones blancos y negros. Con variaciones en los parámetros (mayúsculas y minúsculas, representando las piezas de blancas y negras, respectivamente) se pueden mostrar solamente aquellas piezas que se desee.
+		\item Existe un comando complementario, denominado \mi{\showallbut{...}}.
+		\item Es posible inicializar el tablero en cualquier posición mediante el comando \mi{\fenboard}, al que se le debe pasar, como parámetro entre llaves, una cadena de caracteres que represente una posición en el tablero mediante la notación de \href{https://es.wikipedia.org/wiki/Notaci%C3%B3n_de_Forsyth-Edwards}{Forsyth-Edwards}.
+		\item Existen algunos estilos de notación por defecto \mi{\styleA}, \mi{\styleB} y \mi{\styleC}; en el manual del paquete se pueden consultar como configurar de forma personalizada el formato en que se muestran los movimientos.
+	\end{enumerate}
+	
+
+
+    
+
+	\section{El paquete \ttfamily{chessboard}}
+	
+    Este paquete permite componer tableros de ajedrez que van más allá del caso estándar. Entre las opciones que permite, se encuentran:
+    
+    \begin{enumerate}
+        \item Tableros de tamaño mayor y menor a 8x8 escaques.
+        \item Colorear el tablero y las piezas a voluntad.
+        \item Poner marcas, cajas, flechas\ldots\ en el tablero.
+        \item Utilizar diversos tipos de piezas.
+    \end{enumerate}
+	
+    En principio, debe funcionar correctamente en conjunción con el paquete {\tt skak}, sustituyendo \mi{\showboard} por el comando \mi{\chessboard}, que permite más opciones y es más flexible.
+    
+    \subsection{Tableros de tamaño diferente al estándar}
+    
+    Para crear un tablero nuevo el comando a utilizar es \mi{\setchessboard}. Por ejemplo:
+    
+    
+    \begin{marcod}
+        \begin{minted}[linenos, autogobble]{Latex}
+    \newgame % del paquete skak
+    \setchessboard{maxfield=j12,
+        clearboard,
+        startfen=b11,
+        showmover=false,
+        restorefen=current}
+    \chessboard
+    \end{minted}
+    
+    \end{marcod}
+    Muestra el siguiente resultado:
+    
+    \newgame
+    \setchessboard{maxfield=j12,
+        smallboard,
+        clearboard,
+        startfen=b11,
+        showmover=false,
+        restorefen=current}
+    \noindent\chessboard
+    
+    El significado de cada línea es el que sigue:
+
+    \begin{itemize}
+        \item \mi{\newgame} es un comando del paquete {\tt skak} que inicializa la partida. {\tt chessboard} no mantiene la partida por sí mismo, sino que puede utilizar {\tt skak}, {\tt xskak} o {\tt texmate}. Además, es posible inicializar el tablero a una posición determinada con diversas opciones granulares que posicionan piezas sueltas, por ejemplo, \mi{\setchessboard{setpieces={Ke1}}}, posicionaría un rey blanco en el escaque {\tt e1} eliminando todas las piezas previas. Para añadir piezas sin eliminar ninguna otra, se puede utilizar la opción {\tt addpieces}, en el lugar de {\tt setpieces}.
+        
+        \item {\tt maxfield=j12}, establece el tamaño del tablero.
+        
+        \setchessboard{maxfield=h8,setpieces={Ke1}, smallboard}
+        
+        \item {\tt clearboard}, vacía el tablero.
+        
+        \item {\tt startfen}, establece la esquina superior izquierda a partir de la que se colocan las piezas de modo estándar.
+        
+        \item {\tt restorefen}, recoloca las piezas en su escaque actual tomando como base la posición relativa indicada por {\tt startfen}.
+        
+        \item \mi{\chessboard}, imprime el tablero. Sustituye al comando \mi{\showboard} del paquete {\tt skak}.
+        
+    \end{itemize}
+    
+    \subsection{Colorear el tablero y las piezas}
+    
+    Es posible colorear tablero y piezas de diversa forma. Por ejemplo:
+    
+    \begin{marcod}
+        \begin{minted}[linenos,autogobble]{latex}
+        
+    \newgame
+    \setchessboard{maxfield=h8,
+        startfen=a8,
+        clearboard,
+        restorefen=current,
+        whitepiececolor=blue, 
+        blackpiececolor=green,
+        color=green!50,
+        setfontcolors}
+    \noindent\chessboard
+        \end{minted}
+    \end{marcod}
+    
+        \newgame
+        \setchessboard{maxfield=h8,
+            startfen=a8,
+            clearboard,
+            restorefen=current,
+            whitepiececolor=blue, 
+            blackpiececolor=green,
+            color=green!50,
+            setfontcolors}
+        \noindent\chessboard
+    
+    
+    \subsection{Poner marcas, etc.}
+
+    También se pueden establecer marcas complejas en el documento:
+    
+        \begin{marcod}
+            \begin{minted}[linenos,autogobble,breaklines,breakanywhere]{latex}
+            \newgame
+        \def\marcacentro{c3-f6}
+        
+        \setchessboard{normalboard,
+            whitepiececolor=black, 
+            blackpiececolor=black,
+            setfontcolors}
+        
+        \chessboard[pgfstyle=border, % marcar un borde
+        padding=0.2ex,
+        color=red,
+        linewidth=0.2ex,
+        backregions={\marcacentro},
+        pgfstyle={[rotate=45]text}, % marcar texto en diagonal
+        text=\color{green!70!black} $\leftarrow$ \marcacentro $\rightarrow$,
+        backregion=\marcacentro,
+        pgfstyle=knightmove, % marca el movimiento del caballo
+        color=green!70!black,
+        markmove=g1-f3]
+            \end{minted}
+        \end{marcod}
+
+
+    \newgame
+    \def\marcacentro{c3-f6}
+ 
+    \setchessboard{normalboard,
+        whitepiececolor=black, 
+        blackpiececolor=black,
+        setfontcolors}
+    
+    \chessboard[pgfstyle=border, % marcar un borde
+         padding=0.2ex,
+         color=red,
+         linewidth=0.2ex,
+         backregions={\marcacentro},
+         pgfstyle={[rotate=45]text}, % marcar texto en diagonal
+         text=\color{green!70!black} $\leftarrow$ \marcacentro $\rightarrow$,
+         backregion=\marcacentro,
+         pgfstyle=knightmove, % marca el movimiento del caballo
+         color=green!70!black,
+         markmove=g1-f3]
+    
+    
+    \subsection{Utilizar piezas diferentes a las estándares}
+
+    Es bastante complejo instalar figuras (que están basadas en tipos de letra) diferentes de las estándares que incorpora el paquete {\tt skak}. A continuación se intenta dar una explicación somera de los pasos a seguir:
+    
+    \begin{enumerate}
+        \item En la página \href{http://www.enpassant.dk/}{http://www.enpassant.dk/}, se pueden encontrar los ficheros de fuentes abiertas de varios tipos de figuras de ajedrez. Descargar y configurar a mano estos ficheros para que se usen en \LaTeX\ es una tarea compleja. Parte de este trabajo, se ha realizado ya, y se encuentra en el paquete {\tt enpassant} que se encuentra en CTAN.
+        \item Lo primero que hay que hacer es descargar e instalar el paquete {\tt enpassant}. Se deben seguir las instrucciones del fichero README, copiando a mano cada conjunto de ficheros (según la extensión) en las carpetas correspondientes de la instalación de LaTeX.
+        \item Después de copiar todos los ficheros, se debe actualizar la base de datos de LaTeX: en linux, en una consola de terminal, se debe ejecutar el comando: \mi{sudo texhash}
+        \item Después de copiar el fichero “.map”, es necesario añadirlo a la configuración de TeXlive. Para ello, basta con ejecutar el siguiente comando: {\scriptsize \mi{sudo updmap-sys --enable Map=chess-enpassant.map}}
+        \item Además, también en línea de comando, se debe ejecutar: en linux: \mi{sudo updmap} (Si se tienen ficheros de configuración local basta con ejecutar: \mi{updmap}). Esto es para que la instalación de LaTeX reconozca los mapeos de las nuevas fuentes que se han incluido en el fichero (.map añadido previamente).
+    \end{enumerate} 
+       
+    Una vez realizado lo anterior, será posible utilizar los tipos de letra que vienen en el paquete {\tt enpassant} que incorporen por sí mismos los ficheros con extensión {\tt .pfb}\footnote{Por razón de no haber podido contactar con los autores de los tipos de letra, el autor del paquete {\tt enpassant} no ha podido incorporar las versiones pfb de la mayoría de estos tipos.}, como por ejemplo: {\tt berlin} y {\tt pirat}. Para el resto de casos, es necesario convertirlos directamente a partir de las versiones TTF de dichos ficheros. Para ello:
+    
+    \begin{enumerate}
+        \item Descargar el fichero TTF correspondiente de la página web \href{http://www.enpassant.dk/chess/fonteng.htm}{http://www.enpassant.dk/chess/fonteng.htm}.
+        \item Utilizar la aplicación {\tt fontforge}\footnote{Actualmente, es la manera más simple de generar un fichero pfb a partir de uno ttf. En linux se puede instalar normalmente a través de la herramienta de distribución de paquetes correspondiente: {\tt apt-get, synaptic, yum, etc.}.} para generar un fichero pfb mediante la opción File $>$ Generate font.
+        \item La “font” se debe exportar en formato binario y debe denominarse con el estandar de denominación que indica el paquete “enpassant”. Normalmente, será algo así: {\tt \small chess-<nombre\_de\_font>-board-fig-raw-pfb}.
+        \item Este fichero deberá llevarse al directorio correspondiente de la instalación LaTeX. Por ejemplo, si se han seguido las instrucciones de instalación del fichero README del paquete {\tt enpassant}, el directorio, en linux, sería: {\tt\scriptsize /usr/share/texlive/texmf-dist/fonts/type1/chess/enpassant}
+        \item Después, es necesario volver a ejecutar el comando {\tt sudo texhash} en un terminal para que la base de datos de LaTeX se actualice y reconozca el nuevo fichero pfb.
+              \end{enumerate}     
+        
+        
+        Conviene alertar de que, si bien este paquete facilita mucho el uso de los tipos de letra de ajedrez que se encuentran en la página web enpassant.dk, no necesariamente tiene que funcionar bien para todos ellos ya que puede haber codificaciones que sean diferentes entre fuente y fuente. En ese caso será necesario ver qué código es el que tiene una figura en la fuente original y modificar el fichero “.enc” en consecuencia.
+        
+        Si se ha completado con éxito la instalación, se puede utilizar el comando {\scriptsize \mi{\setchessboard{boardfontfamily=<nombre-de-font>}}}. Con el nombre del tipo de letra que contiene las figuras deseadas.
+        
+        Así mismo, se puede cambiar también la fuente de las figuras que aparecen en el texto en PGN que se imprime cuando se utilizan comandos como \mi{\mainline} o \mi{\variation}. Para ello, se utiliza el comando \mi{\setfigfontfamily}, perteneciente al paquete {\tt chessfss} que debe incluirse previamente con {\tt usepackage}.
+        
+        Por ejemplo, lo siguiente (con el tipo de letra “alfonso” instalado):
+
+    \begin{marcod}
+        \begin{minted}[linenos,autogobble]{Latex}        
+        \setfigfontfamily{alfonso}
+        \setchessboard{
+            boardfontfamily=alfonso}
+        \mainline{1.e4 e5 2.Nf3, Ke7??} \\
+        \chessboard
+     \end{minted}
+    \end{marcod}
+     
+     Muestran los siguientes movimientos y su tablero:
+     
+	    
+%	\pawn \rook \knight \bishop \queen \king\\
+		
+		\setfigfontfamily{alfonso}
+		\newgame
+        \setchessboard{
+            boardfontfamily=alfonso}
+        \mainline{1.e4 e5 2.Nf3, Ke7??} \\
+        \chessboard
+      
+     Con el tipo de letra “condal” instalado, se puede hacer:
+      
+    \begin{marcod}
+         \noindent\begin{minted}[linenos,autogobble]{Latex}       
+        \setfigfontfamily{condal}
+        \setchessboard{
+            boardfontfamily=condal}
+        \mainline{1.e4 e5 2.Nf3, Ke7??} \\
+        \chessboard
+     \end{minted}
+       \end{marcod} 
+     Y se muestran los siguientes movimientos y tablero:
+     
+     \setfigfontfamily{condal}
+     
+%     \pawn \rook \knight \bishop \queen \king\\
+     
+     \newgame
+     \setchessboard{
+     	boardfontfamily=condal}
+     \mainline{1.e4 e5 2.Nf3, Ke7??} \\
+     \chessboard
+     
+    Para concluir esta breve exposición, destacar que, además de todo lo visto en esta sección, el paquete {\tt chessboard} tiene un amplio conjunto de opciones adicionales de configuración que requieren un estudio en profundidad de su manual.
+    
+    \section{Otros paquetes}
+		
+    	\subsection{El paquete \ttfamily{xskak}}
+        
+        Este paquete amplía la funcionalidad del paquete \texttt{skak} permitiendo:
+        
+        \begin{enumerate}
+            \item Volver y mostrar cualquier posición de una partida de Ajedrez, no solamente la actual.
+            \item Mantener en memoria diversas partidas de ajedrez de forma simultánea.
+            \item Manejar más opciones de la notación PGN que \texttt{skak}. Aunque ninguno de los dos la soporta completa.
+        \end{enumerate}    
+
+        \subsection{El paquete \ttfamily{chessfss}}
+        
+        Se trata de un paquete específico para facilitar un conjunto de comandos relacionados con la gestión de las fuentes de caracteres de Ajedrez. Permite conmutar entre ellas (como se ha visto en el apartado anterior) y facilita nombres sencillos para cada una de las piezas. Por ejemplo, el siguiente código:
+        
+        \begin{marcod}
+            \begin{minted}[linenos,autogobble]{latex}
+                \setfigfontfamily{berlin}
+                Un peón: \pawn \\
+                Un caballo: \knight \\
+                Un rey: \king
+            \end{minted}
+        \end{marcod}
+        
+        Da como resultado:
+        
+        \setfigfontfamily{berlin}
+        Un peón: \pawn \\
+        \indent Un caballo: \knight \\
+        \indent Un rey: \king
+        
+        Formateado con las figuras de la fuente “berlin”.
+        
+        
+        \subsection{El paquete \ttfamily{texmate}}
+        
+        En cierta medida, permite realizar el mismo trabajo que {\tt skak}, pero permite que el formato de entrada de la partida sea más “relajado” que el estricto PGN. Además, dispone de un conjunto de comandos para facilitar el formateo de una partida completa.
+        
+        Por ejemplo:
+        \makebarother % para evitar un error en minted
+        \begin{marcod}
+            \begin{minted}[linenos,autogobble,breaklines,breakanywhere]{latex}
+            \setfigfontfamily{pirat} %probamos otra fuente
+            \newgame
+            \whitename{Juan SinNombre}
+            \blackname{John Doe}
+            \chessevent{Tierra Media año 2222}
+            \chessopening{Phillidor}
+            \makegametitle
+            |1 e4\ e5 Nf3 d6 Bc4 Bg4 
+            Nc3 g6 Nxe5 Bxd1 Bxf7+ 
+            Ke7 Nd5 \resigns|
+            
+            \end{minted}
+        \end{marcod}
+        \makebarchess
+        
+        Cuyo resultado es el que sigue:
+        
+        \setfigfontfamily{pirat} %probamos otra fuente
+        \newgame
+        \whitename{Juan SinNombre}
+        \blackname{John Doe}
+        \chessevent{Tierra Media año 2222}
+        \chessopening{Phillidor}
+        
+        \makegametitle
+        
+        |1 e4 e5 Nf3 d6 Bc4 Bg4 Nc3 g6 Nxe5 Bxd1 Bxf7+ Ke7 Nd5 \resigns|
+        
+        \bigskip
+        
+        En general, este paquete dispone de utilidades parecidas a las de {\tt skak}. Sus comandos son de más alto nivel y toman mayores decisiones de diseño, como el formateo de los títulos, indentado de las variaciones mediante \mi{\item}, etc.
+        
+        \subsection{Resumen}
+        
+        Si en el documento que se esté creando únicamente se requiere mostrar las figuras de las piezas del Ajedrez, bastará con usar el paquete {\tt chessfss}.
+        
+        Si se necesitan los tableros para mostrar una partida, {\tt skak, xskak o texmate}, son la solución.
+        
+        Si se requiere “pintar” sobre el tablero para destacar cualquier elemento o desarrollar problemas no estándar, con cualquier número y tipo de piezas, etc. La solución es el paquete {\tt chessboard}.
+        
+     \section{Referencias}
+     
+     \begin{enumerate}
+         
+         \item Página del proyecto \href{https://www.ctan.org/pkg/skak}{skak} en CTAN.
+         
+         \item Página del proyecto \href{https://www.ctan.org/tex-archive/macros/latex/contrib/xskak?lang=en}{xskak} en CTAN.
+         
+         \item Página del proyecto \href{https://www.ctan.org/tex-archive/macros/latex/contrib/chessboard?lang=en}{chessboard} en CTAN.
+         
+         \item Página del proyecto \href{https://www.ctan.org/pkg/enpassant?lang=en}{enpassant} en CTAN. El directorio de fuentes incluido (y que se requieren para configurarlas) es \href{http://www.enpassant.dk/}{el sitio del club de ajedrez de Dinamarca Nørresundby}.
+         
+         \item Página del proyecto \href{https://www.ctan.org/pkg/chessfss?lang=en}{chessfss} en CTAN.
+         
+         \item Página del proyecto \href{https://www.ctan.org/pkg/texmate}{texmate} en CTAN.
+         
+        \end{enumerate}
+\end{document}

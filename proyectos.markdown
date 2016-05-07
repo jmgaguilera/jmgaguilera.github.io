@@ -29,4 +29,32 @@ Traducido originalmente en 2009 con el permiso de su autor, en 2015 he pasado el
 
 ¡Feliz lectura!
 
+# 2) Escritura de artículos sobre LaTeX en wikibooks en español.
+
+Desde hace años, periódicamente, utilizo LaTeX para la edición de
+documentos que requieren una especial calidad. En los últimos meses he
+profundizado bastante en el lenguaje, hasta el punto de editar algunas
+entradas en el wikibook en español dedicado a [LaTeX](http://es.wikibooks.org/wiki/Manual_de_LaTeX):
+
+* Sobre los paquetes *listings* y *minted*
+* Sobre los diferentes paquetes y herramientas existentes para la exportación de documentos a otros formatos.
+
+La última que he creado es sobre ajedrez. Dado lo complejo de la edición
+de partidas de ajedrez en cualquier editor de texto y lo fácil que lo
+hace LaTeX, he utilizado directamente LaTeX y posteriormente lo he
+pasado al formato de la mediawiki.
+
+<img src="/images/latex-chess/latex-chess-full.png" style="display:block;margin-left:auto; margin-right:auto;" width="300px"/>
+
+Dejo aquí el enlace a la versión en
+PDF y al código fuente:
+
+* [Composición de documentos sobre Ajedrez usando
+LaTeX (Versión PDF)](/files/latex_chess/latex_chess.pdf)
+* [Composición de documentos sobre Ajedrez usando
+LaTeX (Código fuente)](/files/latex_chess/latex_chess.tex)
+* [Composición de documentos sobre Ajedrez usando LaTeX (Versión en
+wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Paquetes_para_componer_documentos_sobre_el_juego_del_Ajedrez)
+
+
 # Continuará...
