@@ -11,7 +11,7 @@ excerpt: Artículo-tutorial para la edición de documentos sobre el juego del Aj
 url-image: /images/latex-chess/latex-chess.png
 ---
 
-Dado lo complejo que es la edición de partidas de ajedrez en cualquier editor de texto y lo fácil que lo hace LaTeX, he decidido escribir un artículo sobre ello para facilitar el aprendizaje de quien lo desee.
+Dado lo compleja que es la edición de partidas de ajedrez en cualquier editor de texto y lo fácil que lo hace LaTeX, he decidido escribir un artículo sobre ello para facilitar el aprendizaje de quien lo desee.
 
 
 <img src="/images/latex-chess/latex-chess-full.png" style="display:block;margin-left:auto; margin-right:auto;" width="300px"/>
