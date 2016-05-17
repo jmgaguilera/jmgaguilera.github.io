@@ -39,22 +39,27 @@ wikibooks about [LaTeX](http://es.wikibooks.org/wiki/Manual_de_LaTeX):
 
 * about packages *listings* and *minted*
 * about exporting tools and packages.
-* ...
+* about chess. In general, it's complex editing this kind of document in a word processor, but LaTeX makes it easy.
 
-In my last article I wrote about chess. In general, it's complex
-editing this kind of document in a word processor, but LaTeX makes it
-easy.
+  <img src="/images/latex-chess/latex-chess-full.png" style="display:block;margin-left:auto; margin-right:auto;" width="300px"/>
 
-<img src="/images/latex-chess/latex-chess-full.png" style="display:block;margin-left:auto; margin-right:auto;" width="300px"/>
+  I wrote the article in LaTeX and then edited it in wiki format. These are the links to versions in PDF, source LaTeX and wikibooks:
 
-I wrote the article in LaTeX and then edited it in wiki format. These are the links to versions in PDF, source LaTeX and wikibooks:
-
-* [Composición de documentos sobre Ajedrez usando
+  * [Composición de documentos sobre Ajedrez usando
 LaTeX (Versión PDF)](/files/latex_chess/latex_chess.pdf)
-* [Composición de documentos sobre Ajedrez usando
+  * [Composición de documentos sobre Ajedrez usando
 LaTeX (Código fuente)](/files/latex_chess/latex_chess.tex)
-* [Composición de documentos sobre Ajedrez usando LaTeX (Versión en
+  * [Composición de documentos sobre Ajedrez usando LaTeX (Versión en
 wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Paquetes_para_componer_documentos_sobre_el_juego_del_Ajedrez)
 
+* about graphichs with TikZ.
+
+  <img src="/images/latex-tikz/latex-tikz-full.png" style="display:block;margin-left:auto; margin-right:auto;" width="400px"/>
+
+  These are the links to versions in PDF, source LaTeX and wikibooks:
+
+  * [Gráficos con el paquete TikZ en LaTeX (Versión PDF)](/files/latex_tikz/latex_tikz.pdf)
+  * [Gráficos con el paquete TikZ en LaTeX (Código fuente)](/files/latex_tikz/latex_tikz.tex)
+  * [Gráficos con el paquete TikZ en LaTeX (Versión en wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Inclusi%C3%B3n_de_gr%C3%A1ficos/Gr%C3%A1ficos_con_tikz)
 
 # To be continued...
