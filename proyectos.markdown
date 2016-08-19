@@ -9,7 +9,19 @@ permalink: /projects/
 
 Mi familia y mi trabajo son mis grandes _proyectos_ personales y a ellos dedico la mayor parte de mi tiempo. Aún así, he desarrollado algunas cositas que pueden ser de utilidad para otros.
 
-# 1) Doma de Serpientes para Niños
+# 1) Inmersión en python 3
+
+Esta es mi traducción al español, con el permiso de su autor, del libro [Dive Into Python 3](http://www.diveintopython3.net/) escrito por Mark Pilgrim.
+
+La he editado con LaTeX y está disponible en:
+
+* **PDF**: [http://github.com/jmgaguilera/inmersionenpython3/releases](http://github.com/jmgaguilera/inmersionenpython3/releases)
+* **HTML**: [http://www.jmgaguilera.com/inmersionenpython3html](http://www.jmgaguilera.com/inmersionenpython3html)
+* Código **LaTeX**: [http://github.com/jmgaguilera/inmersionenpython3](https://github.com/jmgaguilera/inmersionenpython3)
+
+Espero que sea de utilidad para facilitar el aprendizaje de este elegante lenguaje dinámico y orientado a objetos.
+
+# 2) Doma de Serpientes para Niños
 
 Mi traducción del libro de programación en Python para niños, que se puede obtener en [https://github.com/jmgaguilera/swfk-es/releases](https://github.com/jmgaguilera/swfk-es/releases).
 
@@ -29,7 +41,7 @@ Traducido originalmente en 2009 con el permiso de su autor, en 2015 he pasado el
 
 ¡Feliz lectura!
 
-# 2) Escritura de artículos sobre LaTeX en wikibooks en español.
+# 3) Escritura de artículos sobre LaTeX en wikibooks en español.
 
 Desde hace años, periódicamente, utilizo LaTeX para la edición de
 documentos que requieren una especial calidad. En los últimos meses he

@@ -9,9 +9,21 @@ permalink: /projects_en/
 
 My family and my work are my greatest personal projects and I devote most of my time to them. Still, I have developed some things that can be helpful to others.
 
-# 1) Snake Wrangling for Kids (translation to spanish)
+# 1) Dive Into Python 3 (translation to spanish)
 
-Mi translation to spanish of this programming book in Python, which can be read in: [https://github.com/jmgaguilera/swfk-es/releases](https://github.com/jmgaguilera/swfk-es/releases).
+My translation to spanish, with the permission of the author, of the book [Dive Into Python 3](http://www.diveintopython3.net/) written by Mark Pilgrim.
+
+I edited this version using LaTeX language, you can find it here:
+
+* **PDF**: [http://github.com/jmgaguilera/inmersionenpython3/releases](http://github.com/jmgaguilera/inmersionenpython3/releases)
+* **HTML**: [http://www.jmgaguilera.com/inmersionenpython3html](http://www.jmgaguilera.com/inmersionenpython3html)
+* **LaTeX** code: [http://github.com/jmgaguilera/inmersionenpython3](https://github.com/jmgaguilera/inmersionenpython3)
+
+I hope this translantion will facilitate the learning of this elegant, dinamic, object oriented language to Spanish-speaking people.
+
+# 2) Snake Wrangling for Kids (translation to spanish)
+
+My translation to spanish of this programming book in Python, which can be read in: [https://github.com/jmgaguilera/swfk-es/releases](https://github.com/jmgaguilera/swfk-es/releases).
 
 ![](/images/doma_serpientes/portada.png){: .center-block style="max-width:300px"}
 
