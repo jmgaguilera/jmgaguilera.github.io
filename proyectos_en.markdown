@@ -43,7 +43,7 @@ Originally translated in 2009 with the permission of the author, in 2015 I migra
 
 Happy reading!
 
-# 2) Articles in spanish about LaTeX, published in wikibooks
+# 3) Articles in spanish about LaTeX, published in wikibooks
 
 Since years ago, I use LaTeX to compose documents that require special quality. Last months, I learned learned a lot more about this language, and now,
 I feel prepared to write articles in spanish
