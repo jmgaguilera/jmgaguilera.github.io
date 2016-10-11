@@ -4,12 +4,8 @@ lang: es
 ref: index
 ---
 
-HOLA
 <h1>{{ site.t[page.lang].home.entry }}</h1>
-{% for post in site.posts %}
-<h2>{{ post.title }}</h2>
-{% endfor %}
-{% assign posts=site.posts | where:"lang", page.lang | where:"type", posts %}
+{% assign posts=site.posts | where:"lang", page.lang %}
 {% for post in posts %}
     {% capture currentmonth %}{{ post.date | date: "%m/%Y" }}{% endcapture %}
     {% if currentmonth != month %}
