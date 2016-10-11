@@ -4,8 +4,8 @@ lang: es
 ref: index
 ---
 
-
-  <h1>{{ site.t[page.lang].home.entry }}</h1>
+HOLA
+<h1>{{ site.t[page.lang].home.entry }}</h1>
 {% assign posts=site.posts | where:"lang", page.lang | where:"type", posts %}
 {% for post in posts %}
     {% capture currentmonth %}{{ post.date | date: "%m/%Y" }}{% endcapture %}
