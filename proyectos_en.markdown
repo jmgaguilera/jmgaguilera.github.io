@@ -64,7 +64,7 @@ LaTeX (Código fuente)](/files/latex_chess/latex_chess.tex)
   * [Composición de documentos sobre Ajedrez usando LaTeX (Versión en
 wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Paquetes_para_componer_documentos_sobre_el_juego_del_Ajedrez)
 
-* about graphichs with TikZ.
+* about graphics with TikZ.
 
   <img src="/images/latex-tikz/latex-tikz-full.png" style="display:block;margin-left:auto; margin-right:auto;" width="400px"/>
 
@@ -73,5 +73,16 @@ wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Paquetes_para_com
   * [Gráficos con el paquete TikZ en LaTeX (Versión PDF)](/files/latex_tikz/latex_tikz.pdf)
   * [Gráficos con el paquete TikZ en LaTeX (Código fuente)](/files/latex_tikz/latex_tikz.tex)
   * [Gráficos con el paquete TikZ en LaTeX (Versión en wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Inclusi%C3%B3n_de_gr%C3%A1ficos/Gr%C3%A1ficos_con_tikz)
+
+* About Tengwar (Elvish, Tolkien) with LaTeX
+
+  <img src="/images/latex-tengwar/latex-tengwar.png" style="display:block;margin-left:auto; margin-right:auto;" width="400px"/>
+
+  These are the links to versions in PDF, source LaTeX and wikibooks:
+
+  * [Edición de textos en Tengwar con LaTeX (Versión PDF)](/files/latex_tengwar/latex_tengwar.pdf)
+  * [Edición de textos en Tengwar con LaTeX (Código fuente)](/files/latex_tengwar/latex_tengwar_tex.zip)
+  * [Edición de textos en Tengwar con LaTeX (Versión en wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Edici%C3%B3n_de_textos_en_tengwar)
+
 
 # To be continued...

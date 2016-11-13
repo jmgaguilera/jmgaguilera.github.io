@@ -76,4 +76,14 @@ wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Paquetes_para_com
   * [Gráficos con el paquete TikZ en LaTeX (Código fuente)](/files/latex_tikz/latex_tikz.tex)
   * [Gráficos con el paquete TikZ en LaTeX (Versión en wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Inclusi%C3%B3n_de_gr%C3%A1ficos/Gr%C3%A1ficos_con_tikz)
 
+* Sobre Tengwar (Élfico, Tolkien) con LaTeX
+
+  <img src="/images/latex-tengwar/latex-tengwar.png" style="display:block;margin-left:auto; margin-right:auto;" width="400px"/>
+
+  Enlace a la versión PDF, código fuente y wikibook:
+
+  * [Edición de textos en Tengwar con LaTeX (Versión PDF)](/files/latex_tengwar/latex_tengwar.pdf)
+  * [Edición de textos en Tengwar con LaTeX (Código fuente)](/files/latex_tengwar/latex_tengwar_tex.zip)
+  * [Edición de textos en Tengwar con LaTeX (Versión en wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Edici%C3%B3n_de_textos_en_tengwar)
+
 # Continuará...
