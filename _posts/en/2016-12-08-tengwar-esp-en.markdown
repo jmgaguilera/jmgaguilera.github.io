@@ -23,10 +23,10 @@ url-image: /images/tengwar-esp/un_anillo.png
 
 Translator to the writing system, invented by J.R.R. Tolkien, Tengwar. I have developed a grammar in javascript to implement "[spanish mode of 2006](http://lambenor.free.fr/tengwar/espanol_2006.html)" to translate texts. This mode, as I know, didn't have a complete implementation in Internet. Mine has these functions:
 
-* Select tehtar or tengwar (full) vowels.
-* Select optional rules of spanish mode.
-* Show the results using two diferents fonts (one of them is based in the famous one of the One Ring).
-* Show the results with commands of the LaTeX package [tengwarscript](https://www.ctan.org/pkg/tengwarscript?lang=en), to facilitate it's inclusion in LaTeX documents without learning the meaning of those commands.
+* Selects tehtar or tengwar (full) vowels.
+* Selects optional rules of spanish mode.
+* Shows the results using two diferents fonts (one of them is based in the famous one of the One Ring).
+* Shows the results with commands of the LaTeX package [tengwarscript](https://www.ctan.org/pkg/tengwarscript?lang=en), to facilitate it's inclusion in LaTeX documents without learning the meaning of those commands.
 
   
   
