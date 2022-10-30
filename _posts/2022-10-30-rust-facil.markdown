@@ -7,7 +7,7 @@ lang: es
 ref: rust-facil
 categories: [Libro, Rust, Traducción]
 tags: [Libro, Rust, Traducción]
-excerpt: Translation to spanish of Rust in easy english, de David MacLeod
+excerpt: Traducción al español de Rust in easy english, de David MacLeod
 url-image: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/800px-Rust_programming_language_black_logo.svg.png
 ---
 
