@@ -9,7 +9,7 @@ permalink: /projects/
 
 Mi familia y mi trabajo son mis grandes _proyectos_ personales y a ellos dedico la mayor parte de mi tiempo. Aún así, he desarrollado algunas cositas que pueden ser de utilidad para otros.
 
-# 1) Rust en español fácil (en progreso)
+# 1) Rust en español fácil
 
 Mi traducción al español del libro online *Rust in easy english* escrito por David MacLeod [https://github.com/Dhghomon/easy_rust](https://github.com/Dhghomon/easy_rust).
 

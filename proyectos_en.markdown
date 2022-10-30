@@ -9,7 +9,7 @@ permalink: /projects_en/
 
 My family and my work are my greatest personal projects and I devote most of my time to them. Still, I have developed some things that can be helpful to others.
 
-# 1) Rust in easy spanish (work in progress)
+# 1) Rust in easy spanish (translation to spanish)
 
 My translation to spanish of the online book *Rust in easy english* written by David MacLeod that you can find here [https://github.com/Dhghomon/easy_rust](https://github.com/Dhghomon/easy_rust).
 
