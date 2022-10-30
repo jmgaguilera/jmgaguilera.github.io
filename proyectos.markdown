@@ -11,9 +11,9 @@ Mi familia y mi trabajo son mis grandes _proyectos_ personales y a ellos dedico 
 
 # 1) Rust en español fácil (en progreso)
 
-Estoy traduciendo al español del libro online *Rust in easy english* escrito por David MacLeod y que puede encontrarse aquí [https://github.com/Dhghomon/easy_rust](https://github.com/Dhghomon/easy_rust).
+Mi traducción al español del libro online *Rust in easy english* escrito por David MacLeod [https://github.com/Dhghomon/easy_rust](https://github.com/Dhghomon/easy_rust).
 
-La versión en progreso de esta traducción *Rust en español fácil* la puedes encontrar en [https://www.jmgaguilera.com/rust_facil/](https://www.jmgaguilera.com/rust_facil/).
+La versión final de esta traducción *Rust en español fácil* la puedes encontrar en [https://www.jmgaguilera.com/rust_facil/](https://www.jmgaguilera.com/rust_facil/).
 
 # 2) Inmersión en python 3
 

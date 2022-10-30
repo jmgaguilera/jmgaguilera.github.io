@@ -11,9 +11,9 @@ My family and my work are my greatest personal projects and I devote most of my 
 
 # 1) Rust in easy spanish (work in progress)
 
-Currently, I'm translating to spanish the online book *Rust in easy english* written by David MacLeod that you can find here [https://github.com/Dhghomon/easy_rust](https://github.com/Dhghomon/easy_rust).
+My translation to spanish of the online book *Rust in easy english* written by David MacLeod that you can find here [https://github.com/Dhghomon/easy_rust](https://github.com/Dhghomon/easy_rust).
 
-The work in progress of this translation will be *Rust en español fácil*. You can read it in [https://www.jmgaguilera.com/rust_facil/](https://www.jmgaguilera.com/rust_facil/).
+You can read this translation as *Rust en español fácil* here [https://www.jmgaguilera.com/rust_facil/](https://www.jmgaguilera.com/rust_facil/).
 
 # 2) Dive Into Python 3 (translation to spanish)
 
