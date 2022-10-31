@@ -9,13 +9,20 @@ permalink: /projects_en/
 
 My family and my work are my greatest personal projects and I devote most of my time to them. Still, I have developed some things that can be helpful to others.
 
-# 1) Rust in easy spanish (translation to spanish)
+
+# 1) Rust Design Patterns (translation to spanish, working progress)
+
+Currently I am working in the translation to spanish of *Rust Design Patterns* that you can find here [https://github.com/rust-unofficial/patterns](https://github.com/rust-unofficial/patterns).
+
+You can read this translation (working progress) as *Rust: patrones de diseño* here [https://www.jmgaguilera.com/rust_patrones/](https://www.jmgaguilera.com/rust_patrones/).
+
+# 2) Rust in easy spanish (translation to spanish)
 
 My translation to spanish of the online book *Rust in easy english* written by David MacLeod that you can find here [https://github.com/Dhghomon/easy_rust](https://github.com/Dhghomon/easy_rust).
 
 You can read this translation as *Rust en español fácil* here [https://www.jmgaguilera.com/rust_facil/](https://www.jmgaguilera.com/rust_facil/).
 
-# 2) Dive Into Python 3 (translation to spanish)
+# 3) Dive Into Python 3 (translation to spanish)
 
 My translation to spanish, with the permission of the author, of the book [Dive Into Python 3](http://www.diveintopython3.net/) written by Mark Pilgrim.
 
@@ -27,7 +34,7 @@ I edited this version using LaTeX language, you can find it here:
 
 I hope this translantion will facilitate the learning of this elegant, dinamic, object oriented language to Spanish-speaking people.
 
-# 3) Snake Wrangling for Kids (translation to spanish)
+# 4) Snake Wrangling for Kids (translation to spanish)
 
 My translation to spanish of this programming book in Python, which can be read in: [https://github.com/jmgaguilera/swfk-es/releases](https://github.com/jmgaguilera/swfk-es/releases).
 
@@ -49,7 +56,7 @@ Originally translated in 2009 with the permission of the author, in 2015 I migra
 
 Happy reading!
 
-# 4) Articles in spanish about LaTeX, published in wikibooks
+# 5) Articles in spanish about LaTeX, published in wikibooks
 
 Since years ago, I use LaTeX to compose documents that require special quality. Last months, I learned learned a lot more about this language, and now,
 I feel prepared to write articles in spanish
@@ -90,7 +97,7 @@ wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Paquetes_para_com
   * [Edición de textos en Tengwar con LaTeX (Código fuente)](/files/latex_tengwar/latex_tengwar_tex.zip)
   * [Edición de textos en Tengwar con LaTeX (Versión en wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Edici%C3%B3n_de_textos_en_tengwar)
 
-# 5) Utility to translate texts to tengwar
+# 6) Utility to translate texts to tengwar
 
   <img src="/images/tengwar-esp/un_anillo.png" style="display:block;margin-left:auto; margin-right:auto;" width="600px"/>
 
