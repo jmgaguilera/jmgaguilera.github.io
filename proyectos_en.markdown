@@ -12,7 +12,7 @@ My family and my work are my greatest personal projects and I devote most of my 
 
 # 1) Rust Design Patterns (translation to spanish, working progress)
 
-Currently I am working in the translation to spanish of *Rust Design Patterns* that you can find here [https://github.com/rust-unofficial/patterns](https://github.com/rust-unofficial/patterns).
+Currently, I am working in the translation to spanish of *Rust Design Patterns* that you can find here [https://github.com/rust-unofficial/patterns](https://github.com/rust-unofficial/patterns).
 
 You can read this translation (working progress) as *Rust: patrones de diseño* here [https://www.jmgaguilera.com/rust_patrones/](https://www.jmgaguilera.com/rust_patrones/).
 
