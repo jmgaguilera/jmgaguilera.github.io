@@ -138,3 +138,20 @@
         min-height: 44px;
     }
 }
+
+.post-comments-button {
+    min-height: 44px;
+    padding: 6px 14px;
+    border: 1px solid $color_oscuro;
+    border-radius: 4px;
+    background: transparent;
+    color: $color_oscuro;
+}
+
+.post-comments-status:empty {
+    margin: 0;
+}
+
+#disqus_thread {
+    scroll-margin-top: 12rem;
+}

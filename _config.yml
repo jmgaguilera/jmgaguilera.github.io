@@ -39,6 +39,12 @@ t:
         languages: Languages
         language_name: English
         skip: Skip to content
+        comments:
+            title: Comments
+            button: Show comments (Disqus)
+            loading: Loading comments…
+            error: Could not load comments. You can try again.
+            no_script: Enable JavaScript to load comments.
         description: Welcome to my blog.
         recommends: "Recommends:"
     es:
@@ -55,6 +61,12 @@ t:
         languages: Idiomas
         language_name: Español
         skip: Saltar al contenido
+        comments:
+            title: Comentarios
+            button: Ver comentarios (Disqus)
+            loading: Cargando comentarios…
+            error: No se han podido cargar los comentarios. Puedes volver a intentarlo.
+            no_script: Activa JavaScript para cargar los comentarios.
         description: Bienvenid@s a mi blog.
         recommends: "Recomiendo:"
 
