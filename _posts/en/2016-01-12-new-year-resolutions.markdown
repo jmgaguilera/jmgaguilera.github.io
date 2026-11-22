@@ -6,7 +6,7 @@ lang: en
 ref: propositos_2016
 category: estrategia
 tags: [tic, javascript, programación]
-excerpt: (pending translation) Un único propósito para todos los días.
+excerpt: One resolution for every day.
 url-image: /images/propositos_anyo_nuevo/game_of_life.png
 ---
 
@@ -217,75 +217,51 @@ url-image: /images/propositos_anyo_nuevo/game_of_life.png
 
     </script>
 
-Comienza el año 2016 y, como todos los años, muchas personas hacen sus propósitos de año nuevo para mejorar. Según [The Guardian](http://www.theguardian.com/news/datablog/2015/dec/31/how-long-do-people-keep-their-new-year-resolutions), más del 32% de los británicos planean propósitos de año nuevo.
+The year 2016 is beginning, and as every year, many people are making New Year's resolutions to improve themselves. According to [The Guardian](https://www.theguardian.com/news/datablog/2015/dec/31/how-long-do-people-keep-their-new-year-resolutions), more than 32% of Britons plan to make a New Year's resolution.
 
-Tanto en lo personal como en lo laboral, nunca he sido amigo de hacer
-propósitos a una fecha dada, tiendo más a tener una lista de objetivos a
-largo plazo, revisables cada cierto tiempo, y a mantener una lista de lo
-siguiente que tengo que hacer para avanzar en cada uno de mis proyectos,
-personales o laborales. Muy en la línea del método [GTD](http://gettingthingsdone.com/).
+In my personal life and at work, I have never been one for making resolutions on a particular date. I prefer to make a list of long-term goals I can revisit from time to time and keep track of the next action that will move each of my projects forward. It is much in the spirit of [Getting Things Done](https://gettingthingsdone.com/).
 
-En cualquier caso, quiero aprovechar el comienzo de 2016 para renovar un compromiso permanente en estos tiempos en los que se habla tanto de **cambio**.
+Still, I want to use the beginning of 2016 to renew a lasting commitment at a time when so many people are talking about **change**.
 
-- La consultora Gartner, en relación a las Tecnologías de la
-Información y de las Comunicaciones, prevee las [10 tendencias estratégicas en tecnología de 2016](http://www.forbes.com/sites/sap/2015/12/10/gartners-top-10-strategic-technology-trends-for-2016/).
-- El País, en relación a la sociedad, la economía y la política
-identifica un estado de [crisis que lleva a la desorientación](http://cultura.elpais.com/cultura/2016/01/06/babelia/1452083099_537296.html), en el que es difícil establecer objetivos.
+- In information and communications technology, Gartner forecasts [ten strategic technology trends for 2016](http://www.forbes.com/sites/sap/2015/12/10/gartners-top-10-strategic-technology-trends-for-2016/).
+- Looking at society, the economy and politics, El País describes [a crisis that leaves us disoriented](http://cultura.elpais.com/cultura/2016/01/06/babelia/1452083099_537296.html) and makes it hard to set goals.
 
-No voy a profundizar en la idea de que hay que aceptar los cambios en
-lugar de rechazarlos. En Internet hay infinitas fuentes a las que
-acudir. Simplemente **quiero proponer un compromiso, no con el cambio, sino con el
-movimiento**.
+There is plenty online about why we should embrace change. I want to propose **a commitment to keep moving**.
 
-<blockquote><p>
-Caminante, no hay camino, se hace camino al andar.
-(Antonio Machado)
-</p></blockquote>
+> Traveller, there is no path. You make the path by walking.
+>
+> — Antonio Machado
 
-El cambio, como tal, supone movernos de A a B, y una vez allí,
-relajarnos. En un mundo cerrado, en el que nada cambia, esta situación
-es ideal. Pero la vida no es así, en el camino de A a B, nos pasarán
-cosas, muchas llegarán del exterior, por lo que, cuando estemos en B,
-tendremos que volver a movernos a otro lugar, a C... y nos frustraremos.
+Change takes us from A to B, where we can rest once we arrive. That would be ideal in a closed world where nothing changes. But life is never like that. Things happen on the way from A to B, many of them beyond our control. Once we get there, we will have to move again, to C, and we will feel frustrated.
 
-Por lo tanto, propongo ser flexible como un junco. Concebir nuestros
-objetivos, no como un cambio, sino como un paseo, que podremos guiar y
-modificar según las circunstancias cambien.
+So I suggest being as flexible as a reed. Think of pursuing a goal as taking a walk whose course you can adjust as circumstances change.
 
-<blockquote><p>
-Prefiero el trapecio, para verlas venir en movimiento. (Manolo García)
-</p></blockquote>
+> I prefer the trapeze. I can see things coming while I'm in motion.
+>
+> — Manolo García
 
-El cambio, así, pasa a ser externo, lo que siempre ha sido. Y nuestro movimiento lo usaremos para
-prepararnos para él y aprovecharlo para lograr nuestros objetivos
+Change happens around us, as it always has. By keeping ourselves in motion, we can prepare for it and use it to reach our goals.
 
-Por lo tanto, propongo que nuestro propósito para 2016 sea movernos permanentemente y mantenernos siempre en movimiento ante los cambios e imprevistos.
+So here is my resolution for 2016: keep moving, whatever changes and surprises come our way.
 
+## A metaphor: Conway's Game of Life
+{: #una-metáfora-el-juego-de-la-vida-de-conway}
 
-## Una metáfora: el juego de la vida de Conway
+When I discovered computing in the 1980s on a Sinclair ZX Spectrum, one of the demonstration *games* was [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). Its beauty lies in its simplicity:
 
-Cuando descubrí la informática, allá por los años 80, con un Sinclair ZX
-Spectrum, uno de los *juegos* de demostración era el [juego de la vida de
-Conway](https://es.wikipedia.org/wiki/Juego_de_la_vida). Un juego cuya belleza reside en su simplicidad:
+- A two-dimensional board of any size.
+- Cells that are born, reproduce and die.
+- A cell is born in an empty square with exactly three living neighbours.
+- A cell dies with four or more neighbours (overcrowding) or with one or none (loneliness).
 
-- Un tablero de dos dimensiones del tamaño que se desee.
-- Unas células que nacen, se reproducen y mueren.
-- Nacen en las celdas del tablero que están rodeadas por otras tres
-células.
-- Mueren cuando están rodeadas de 4 o más células (por sobrepoblación),
-o por una o menos células (por soledad).
+That simplicity makes the game a useful metaphor for motion and change.
 
-Sirva esa simplicidad como metáfora del movimiento y del cambio.
+---
 
+## Still lifes
+{: #vidas-estáticas}
 
-****************************
-
-## Vidas estáticas
-
-Imaginad un mundo totalmente estático, las células que habitan en él no
-se mueven. Entre sí han alcanzado una situación estable. Nada cambia.
-¿Una utopía? o ¿Una distopía?.
-
+Imagine a completely static world. Its inhabitants do not move. They have reached a stable arrangement together, and nothing changes. Is it a utopia or a dystopia?
 
 <div class="life-demo">
   <div>
@@ -299,20 +275,18 @@ se mueven. Entre sí han alcanzado una situación estable. Nada cambia.
   </div>
 </div>
 
-****************************
+---
 
-¡Qué aburrido! ¿Verdad?
+How boring. Who would want to live in a world like that?
 
-¿Quién quiere vivir en un mundo así?
+---
 
-****************************
+### Oscillators
+{: #vidas-oscilantes}
 
-### Vidas oscilantes
+Sometimes life seems to be moving, but is it really?
 
-A veces, las vidas parecen que se mueven, pero ¿lo hacen en realidad?
-
-Tal vez solo cambian por cambiar. El cambio por sí mismo no es nada. Lo
-importante es el objetivo a conseguir.
+Perhaps the changes are just for the sake of changing. What matters is what we are trying to achieve.
 
 <div class="life-demo">
   <div>
@@ -326,17 +300,16 @@ importante es el objetivo a conseguir.
   </div>
 </div>
 
-****************************
+---
 
-En el juego de la vida, el oscilador, cambia constantemente pero se
-repite a sí mismo eternamente.
+In the Game of Life, an oscillator is always changing, but it repeats itself forever.
 
-****************************
+---
 
-### El planeador
+### The glider
+{: #el-planeador}
 
-El planeador es un caminante, se mueve hacia un objetivo. Descubre
-nuevos horizontes a lo largo del espacio que puede explorar.
+The glider is a traveller heading towards a goal. It discovers new horizons in the space it can explore.
 
 <div class="life-demo">
   <div>
@@ -350,17 +323,16 @@ nuevos horizontes a lo largo del espacio que puede explorar.
   </div>
 </div>
 
-***************************
+---
 
-Cambia para recorrer nuevos caminos sin volver atrás.
+It changes so it can take new paths without turning back.
 
-***************************
+---
 
-###  Planeador y vidas estáticas (1 de 2)
+### A glider and still lifes (1 of 2)
+{: #planeador-y-vidas-estáticas-1-de-2}
 
-En un mundo cerrado, las vidas estáticas pueden sobrevivir. A veces,
-cuando un elemento externo las altera, son capaces de sobreponerse y
-contagiar al elemento externo de su estatismo.
+Still lifes can survive in a closed world. Sometimes, when something from outside disturbs them, they recover and bring the newcomer to a standstill too.
 
 <div class="life-demo">
   <div>
@@ -374,18 +346,16 @@ contagiar al elemento externo de su estatismo.
   </div>
 </div>
 
-****************************
+---
 
-Y al poco tiempo, las vidas vuelven a ser monótonas. Aunque, no
-exactamente de igual modo que lo eran antes de su contacto con el cambio.
+Before long, life becomes monotonous again. But it is a little different from how it was before the encounter.
 
-****************************
+---
 
-###  Planeador y vidas estáticas (2 de 2)
+### A glider and still lifes (2 of 2)
+{: #planeador-y-vidas-estáticas-2-de-2}
 
-Sin embargo, otras veces, las vidas estáticas, al alterarse por un
-elemento externo, se contagian del mismo y su forma de sobrevivir es
-adaptarse al cambio y evolucionar permanentemente.
+At other times, the disturbance sets the still lifes in motion. They survive by adapting to their surroundings and evolving continually.
 
 <div class="life-demo">
   <div>
@@ -399,17 +369,16 @@ adaptarse al cambio y evolucionar permanentemente.
   </div>
 </div>
 
-****************************
+---
 
-El nuevo mundo que surge es rico y variado.
+A rich and varied new world emerges.
 
-## Epílogo
+## Epilogue
+{: #epílogo}
 
-**¿Qué mundo del juego de la vida preferimos crear?**
+**What kind of Game of Life world do we want to create?**
 
-Durante 2016, hagamos el propósito de seguir en movimiento para
-aprovechar los cambios con el fin de lograr nuestros objetivos
-personales y profesionales.
+In 2016, let us resolve to keep moving so we can use the changes we encounter to pursue our personal and professional goals.
 
 <blockquote><p>
 
@@ -420,9 +389,7 @@ Strange fascination, fascinating me
 
 </p></blockquote>
 
+## References
+{: #referencias}
 
-## Referencias
-
-El código javascript del juego de la vida se puede encontrar en este
-[respositorio de github](http://github.com/jmgaguilera/game_of_life)
-
+The JavaScript code for the Game of Life is available in [this GitHub repository](https://github.com/jmgaguilera/game_of_life).
