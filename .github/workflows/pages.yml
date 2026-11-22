@@ -1,0 +1,52 @@
+name: Sitio Jekyll
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Compilar y comprobar el sitio
+    runs-on: ubuntu-24.04
+    env:
+      JEKYLL_ENV: production
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@v1.343.0
+        with:
+          bundler-cache: true
+      - run: bundle exec jekyll build
+      - run: python3 scripts/check_site.py _site
+      - name: Guardar el sitio compilado
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master' && vars.PAGES_DEPLOY == 'true'
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: _site
+
+  deploy:
+    name: Publicar en GitHub Pages
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master' && vars.PAGES_DEPLOY == 'true'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar sitio
+        id: deployment
+        uses: actions/deploy-pages@v5.0.1
