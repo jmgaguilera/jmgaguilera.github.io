@@ -245,7 +245,7 @@ Change happens around us, as it always has. By keeping ourselves in motion, we c
 So here is my resolution for 2016: keep moving, whatever changes and surprises come our way.
 
 ## A metaphor: Conway's Game of Life
-{: #una-metáfora-el-juego-de-la-vida-de-conway}
+{: id="una-metáfora-el-juego-de-la-vida-de-conway"}
 
 When I discovered computing in the 1980s on a Sinclair ZX Spectrum, one of the demonstration *games* was [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). Its beauty lies in its simplicity:
 
@@ -259,7 +259,7 @@ That simplicity makes the game a useful metaphor for motion and change.
 ---
 
 ## Still lifes
-{: #vidas-estáticas}
+{: id="vidas-estáticas"}
 
 Imagine a completely static world. Its inhabitants do not move. They have reached a stable arrangement together, and nothing changes. Is it a utopia or a dystopia?
 
@@ -282,7 +282,7 @@ How boring. Who would want to live in a world like that?
 ---
 
 ### Oscillators
-{: #vidas-oscilantes}
+{: id="vidas-oscilantes"}
 
 Sometimes life seems to be moving, but is it really?
 
@@ -307,7 +307,7 @@ In the Game of Life, an oscillator is always changing, but it repeats itself for
 ---
 
 ### The glider
-{: #el-planeador}
+{: id="el-planeador"}
 
 The glider is a traveller heading towards a goal. It discovers new horizons in the space it can explore.
 
@@ -330,7 +330,7 @@ It changes so it can take new paths without turning back.
 ---
 
 ### A glider and still lifes (1 of 2)
-{: #planeador-y-vidas-estáticas-1-de-2}
+{: id="planeador-y-vidas-estáticas-1-de-2"}
 
 Still lifes can survive in a closed world. Sometimes, when something from outside disturbs them, they recover and bring the newcomer to a standstill too.
 
@@ -353,7 +353,7 @@ Before long, life becomes monotonous again. But it is a little different from ho
 ---
 
 ### A glider and still lifes (2 of 2)
-{: #planeador-y-vidas-estáticas-2-de-2}
+{: id="planeador-y-vidas-estáticas-2-de-2"}
 
 At other times, the disturbance sets the still lifes in motion. They survive by adapting to their surroundings and evolving continually.
 
@@ -374,7 +374,7 @@ At other times, the disturbance sets the still lifes in motion. They survive by 
 A rich and varied new world emerges.
 
 ## Epilogue
-{: #epílogo}
+{: id="epílogo"}
 
 **What kind of Game of Life world do we want to create?**
 
@@ -390,6 +390,6 @@ Strange fascination, fascinating me
 </p></blockquote>
 
 ## References
-{: #referencias}
+{: id="referencias"}
 
 The JavaScript code for the Game of Life is available in [this GitHub repository](https://github.com/jmgaguilera/game_of_life).
