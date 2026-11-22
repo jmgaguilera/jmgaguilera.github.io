@@ -4,7 +4,6 @@
   <title>{{ page.title | default: site.title | escape }}</title>
   <meta name="description" content="{{ site.t[page.lang].description | default: site.description | strip | escape }}">
 
-  <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | relative_url }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap">
   <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
   <link rel="canonical" href="{% include canonical-url.html path=page.url %}">

@@ -1,0 +1,140 @@
+@use "variables" as *;
+
+.post-card {
+    margin: 0 0 18px;
+    padding: 14px 16px;
+    border: 1px solid $grey-color-light;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba($color_oscuro, 0.22);
+}
+
+.post-card-title {
+    margin-bottom: 10px;
+    text-align: start;
+
+    a {
+        color: $color_oscuro;
+    }
+}
+
+.post-card-with-image {
+    display: grid;
+    grid-template-columns: clamp(60px, 20vw, 112px) minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.post-card-image {
+    display: block;
+    max-height: 112px;
+    border-radius: 4px;
+}
+
+.post-card-excerpt {
+    margin-bottom: 6px;
+    text-align: start;
+
+    p {
+        margin-bottom: 0;
+        text-align: inherit;
+    }
+}
+
+.profile-photo,
+.project-cover {
+    display: block;
+    margin-inline: auto;
+}
+
+.profile-photo {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.article-report {
+    max-width: 720px;
+    margin-inline: auto;
+
+    code {
+        color: inherit;
+        background-color: rgba(0, 0, 0, 0.04);
+    }
+}
+
+.chess-tabs {
+    margin: 18px 0;
+}
+
+.chess-tab-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-left: 0;
+    padding: 0 0 8px;
+    border-bottom: 1px solid $grey-color-light;
+    list-style: none;
+
+    a {
+        display: block;
+        padding: 8px 12px;
+        border: 1px solid $grey-color-light;
+        border-radius: 4px;
+        color: $color_oscuro;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &[aria-selected="true"] {
+            border-color: $color_oscuro;
+            background: $color_oscuro;
+            color: $color_claro;
+        }
+    }
+}
+
+.chess-tab-panel {
+    scroll-margin-top: 7rem;
+}
+
+.chess-tabs[data-enhanced] .chess-tab-heading {
+    display: none;
+}
+
+.chess-table-scroll {
+    max-width: 100%;
+    margin: 12px 0 18px;
+    overflow-x: auto;
+
+    table {
+        border-collapse: collapse;
+        font-size: 0.875em;
+    }
+
+    th,
+    td {
+        padding: 5px 8px;
+        border-bottom: 1px solid $grey-color-light;
+    }
+
+    th {
+        text-align: right;
+        white-space: nowrap;
+    }
+}
+
+.life-demo {
+    margin-bottom: 16px;
+
+    canvas {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 8px;
+        border: 2px solid #000;
+    }
+
+    button {
+        min-height: 44px;
+    }
+}

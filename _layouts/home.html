@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{% assign home = site.t[page.lang].home %}
+{% assign posts = site.posts | where: 'lang', page.lang %}
+<h1>{{ home.entry }}</h1>
+
+{% for post in posts %}
+  {% assign period = post.date | date: '%m/%Y' %}
+  {% if period != previous_period %}
+    <h2>{% include date.html date=post.date %}{{ month }} {{ year }}</h2>
+    {% assign previous_period = period %}
+  {% endif %}
+
+  <article class="post-card">
+    <h3 class="post-card-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+    <div class="post-card-body{% if post.url-image %} post-card-with-image{% endif %}">
+      {% if post.url-image %}
+        <img class="post-card-image" src="{{ post.url-image | relative_url }}" alt=""{% unless forloop.first %} loading="lazy"{% endunless %}>
+      {% endif %}
+      <div>
+        <div class="post-card-excerpt">{{ post.excerpt }}</div>
+        <a href="{{ post.url | relative_url }}">{{ home.goto }}</a>
+        <a class="post-meta" href="{{ post.url | relative_url }}#disqus_thread" data-disqus-identifier="{{ post.id | escape }}"></a>
+      </div>
+    </div>
+  </article>
+{% endfor %}
+
+<p class="rss-subscribe">{{ home.subscript }} <a href="{{ home.feed | relative_url }}">via RSS</a></p>

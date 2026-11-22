@@ -10,25 +10,7 @@ excerpt: Story and analysis of more than five hundred games of a real Tournament
 url-image: /images/torneo-de-ajedrez/unnamed-chunk-2-1.png
 ---
 
-<script src="/js/jquery-1.11.3.min.js"></script>
-
-<style type = "text/css">
-.main-container {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img { 
-  max-width:100%; 
-  height: auto; 
-}
-</style>
-
-<div class="container-fluid main-container">
+<div class="article-report">
 
 <p>This article is, at the same time, a story and an analysis of a real chess tournament. However, although every game, every play and every result, are real, the short story told is fictitious.</p>
 <p>The full analysis in R, along with data sets, is published on github following this <a href="https://github.com/jmgaguilera/post_open_ajedrez">link</a>.</p>
@@ -63,6 +45,7 @@ He looked at the panel where was his table: with black pieces against an elo 160
 </blockquote>
 <hr />
 <p>This is some general information about the tournament. 165 players, with the following victories in each case:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -81,9 +64,11 @@ He looked at the panel where was his table: with black pieces against an elo 160
 </tr>
 </tbody>
 </table>
+</div>
 <p>There is a game that has no known result in the file ( '*' in pgn notation) so I had not considered it for the analysis.</p>
 <hr />
 <p>The distribution of the number of movements of games was as follows:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -108,6 +93,7 @@ He looked at the panel where was his table: with black pieces against an elo 160
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
 <p>In this tournament, every game lasted on average about 77 movements, however, there are games that tooked much more. It can be seen that the histogram has a left bias, third quartile is 94 movements. Only 25% of the games tooked over 94 moves.</p>
 <p>The histogram has a peak to the left. It corresponds to 7 games with just the first move, apparently they are those in which the opponent did not show up.</p>
@@ -159,23 +145,25 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </ol>
 <p>The same thing, we can see in a 3D diagram in which the density of the points is replaced by the height. Each color is in his own tab. If it is switched, the diagram shows that the white is slightly shifted to the background, to have more possible moves in each position.</p>
 <hr />
-<div class="container" style="max-width:720px">
-<div id="content">
-<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-<li class="active">
-<a href="#Blancas" data-toggle="tab">White</a>
+<div>
+<div id="content" class="chess-tabs" data-chess-tabs>
+<ul id="tabs" class="chess-tab-list" aria-label="Possible moves by colour">
+<li>
+<a href="#Blancas">White</a>
 </li>
 <li>
-<a href="#Negras" data-toggle="tab">Black</a>
+<a href="#Negras">Black</a>
 </li>
 </ul>
-<div id="my-tab-content" class="tab-content">
-<div id="Blancas" class="tab-pane active">
+<div id="my-tab-content" class="chess-tab-panels">
+<div id="Blancas" class="chess-tab-panel">
+<h3 class="chess-tab-heading">White</h3>
 <p align="center">
 <img src="/images/torneo-de-ajedrez/unnamed-chunk-4-1.png" title="" alt="" width="672" />
 </p>
 </div>
-<div id="Negras" class="tab-pane">
+<div id="Negras" class="chess-tab-panel">
+<h3 class="chess-tab-heading">Black</h3>
 <p align="center">
 <img src="/images/torneo-de-ajedrez/unnamed-chunk-4-2.png" title="" alt="" width="672" />
 </p>
@@ -186,59 +174,61 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 <h2>Number of positions in which there are a number of possible next moves.</h2>
 <p>I want to further deepen this idea of the <em>possible moves</em> for a given position. In the following tabs, I have grouped positions in groups of 10 and shown <em>cuts</em> of each group in terms of possible moves, also displaying the information of the mean, median, maximum, minimum and quartiles.</p>
 <p>
-<div class="container" style="max-width:720px">
-<div id="content">
-<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-<li class="active">
-<a href="#total" data-toggle="tab">Total</a>
+<div>
+<div class="chess-tabs" data-chess-tabs>
+<ul class="chess-tab-list" aria-label="Possible moves by move range">
+<li>
+<a href="#total">Total</a>
 </li>
 <li>
-<a href="#0-9" data-toggle="tab">0-9</a>
+<a href="#0-9">0-9</a>
 </li>
 <li>
-<a href="#10-19" data-toggle="tab">10-19</a>
+<a href="#10-19">10-19</a>
 </li>
 <li>
-<a href="#20-29" data-toggle="tab">20-29</a>
+<a href="#20-29">20-29</a>
 </li>
 <li>
-<a href="#30-39" data-toggle="tab">30-39</a>
+<a href="#30-39">30-39</a>
 </li>
 <li>
-<a href="#40-49" data-toggle="tab">40-49</a>
+<a href="#40-49">40-49</a>
 </li>
 <li>
-<a href="#50-59" data-toggle="tab">50-59</a>
+<a href="#50-59">50-59</a>
 </li>
 <li>
-<a href="#60-69" data-toggle="tab">60-69</a>
+<a href="#60-69">60-69</a>
 </li>
 <li>
-<a href="#70-79" data-toggle="tab">70-79</a>
+<a href="#70-79">70-79</a>
 </li>
 <li>
-<a href="#80-89" data-toggle="tab">80-89</a>
+<a href="#80-89">80-89</a>
 </li>
 <li>
-<a href="#90-99" data-toggle="tab">90-99</a>
+<a href="#90-99">90-99</a>
 </li>
 <li>
-<a href="#100-109" data-toggle="tab">100-109</a>
+<a href="#100-109">100-109</a>
 </li>
 <li>
-<a href="#110-119" data-toggle="tab">110-119</a>
+<a href="#110-119">110-119</a>
 </li>
 <li>
-<a href="#120-129" data-toggle="tab">120-129</a>
+<a href="#120-129">120-129</a>
 </li>
 <li>
-<a href="#130-139" data-toggle="tab">130-139</a>
+<a href="#130-139">130-139</a>
 </li>
 </ul>
-<div id="my-tab-content" class="tab-content">
-<div id="total" class="tab-pane active">
+<div class="chess-tab-panels">
+<div id="total" class="chess-tab-panel">
+<h3 class="chess-tab-heading">Total</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-1.png" title="" alt="" width="1056" /> Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -261,7 +251,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -284,13 +276,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="0-9" class="tab-pane">
+<div id="0-9" class="chess-tab-panel">
+<h3 class="chess-tab-heading">0-9</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-2.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -313,7 +308,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -336,13 +333,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="10-19" class="tab-pane">
+<div id="10-19" class="chess-tab-panel">
+<h3 class="chess-tab-heading">10-19</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-3.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -365,7 +365,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -388,13 +390,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="20-29" class="tab-pane">
+<div id="20-29" class="chess-tab-panel">
+<h3 class="chess-tab-heading">20-29</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-4.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -417,7 +422,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -440,13 +447,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="30-39" class="tab-pane">
+<div id="30-39" class="chess-tab-panel">
+<h3 class="chess-tab-heading">30-39</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-5.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -469,7 +479,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -492,13 +504,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="40-49" class="tab-pane">
+<div id="40-49" class="chess-tab-panel">
+<h3 class="chess-tab-heading">40-49</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-6.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -521,7 +536,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -544,13 +561,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="50-59" class="tab-pane">
+<div id="50-59" class="chess-tab-panel">
+<h3 class="chess-tab-heading">50-59</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-7.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -573,7 +593,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -596,13 +618,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="60-69" class="tab-pane">
+<div id="60-69" class="chess-tab-panel">
+<h3 class="chess-tab-heading">60-69</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-8.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -625,7 +650,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -648,13 +675,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="70-79" class="tab-pane">
+<div id="70-79" class="chess-tab-panel">
+<h3 class="chess-tab-heading">70-79</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-9.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -677,7 +707,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -700,13 +732,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="80-89" class="tab-pane">
+<div id="80-89" class="chess-tab-panel">
+<h3 class="chess-tab-heading">80-89</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-10.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -729,7 +764,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -752,13 +789,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="90-99" class="tab-pane">
+<div id="90-99" class="chess-tab-panel">
+<h3 class="chess-tab-heading">90-99</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-11.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -781,7 +821,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -804,13 +846,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="100-109" class="tab-pane">
+<div id="100-109" class="chess-tab-panel">
+<h3 class="chess-tab-heading">100-109</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-12.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -833,7 +878,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -856,13 +903,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="110-119" class="tab-pane">
+<div id="110-119" class="chess-tab-panel">
+<h3 class="chess-tab-heading">110-119</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-13.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -885,7 +935,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -908,13 +960,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="120-129" class="tab-pane">
+<div id="120-129" class="chess-tab-panel">
+<h3 class="chess-tab-heading">120-129</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-14.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -937,7 +992,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -960,13 +1017,16 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
-<div id="130-139" class="tab-pane">
+<div id="130-139" class="chess-tab-panel">
+<h3 class="chess-tab-heading">130-139</h3>
 <p>
 <p><img src="/images/torneo-de-ajedrez/unnamed-chunk-5-15.png" title="" alt="" width="1056" /></p>
 <p>Statistics of number of possible next moves for White:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -989,7 +1049,9 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of number of possible next moves for Black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -1012,17 +1074,13 @@ Really, he did not know who had uttered the word, his opponent or his friend, bu
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 </p>
 </div>
 </div>
 </div>
 </p>
-<script type="text/javascript">
-jQuery(document).ready(function ($) {
-$('#tabs').tab();
-});
-</script>
 </div>
 <p><!-- container --></p>
 <p>It can be seen than:</p>
@@ -1045,6 +1103,7 @@ Some tables had finished, and the players walked in silence, watching other game
 <p>The statistics at the end of the game, distinguishing white and black, are as follows in this tournament. The number of games that terminated winning at each ply is displayed. Matches that are to the right are the longest (in number of plys).</p>
 <p><img src="/images/torneo-de-ajedrez/calcular_mov_final-1.png" title="" alt="" width="672" /></p>
 <p>Statistics of games won by white:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -1069,7 +1128,9 @@ Some tables had finished, and the players walked in silence, watching other game
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of games won by black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -1094,7 +1155,9 @@ Some tables had finished, and the players walked in silence, watching other game
 </tr>
 </tbody>
 </table>
+</div>
 <p>Statistics of games ended with draw:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -1119,12 +1182,14 @@ Some tables had finished, and the players walked in silence, watching other game
 </tr>
 </tbody>
 </table>
+</div>
 <p>Data shows that proportionally, white wins in shorter games. Black needs more moves to win, and even more is required for a draw. At least in this tournament.</p>
 <hr />
 <p>Is it related in any way to the number of possible next moves? If we look at the statistics of the victories of white against black and vice versa:</p>
 <div id="movimientos-siguientes-posibles-en-partidas-que-ganan-las-blancas" class="section level2">
 <h2>Next possible movements in games won by white</h2>
 <p>for white:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -1147,7 +1212,9 @@ Some tables had finished, and the players walked in silence, watching other game
 </tr>
 </tbody>
 </table>
+</div>
 <p>for black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -1171,9 +1238,11 @@ Some tables had finished, and the players walked in silence, watching other game
 </tbody>
 </table>
 </div>
+</div>
 <div id="movimientos-siguientes-posibles-en-partidas-que-ganan-las-negras" class="section level2">
 <h2>Next possible movements in games won by black</h2>
 <p>for white:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -1196,7 +1265,9 @@ Some tables had finished, and the players walked in silence, watching other game
 </tr>
 </tbody>
 </table>
+</div>
 <p>for black:</p>
+<div class="chess-table-scroll">
 <table>
 <thead>
 <tr class="header">
@@ -1219,6 +1290,7 @@ Some tables had finished, and the players walked in silence, watching other game
 </tr>
 </tbody>
 </table>
+</div>
 <p>Without going into a formal statistical analysis, it appears that, on average, when white wins, they have 5 more movements to choose from in each ply.</p>
 <p>By contrast, in the games that black wins, they have, on average, 1.5 more moves to choose from, and we must take into account that, for the first movements, Black has to compensate for a disadvantage of about 5 possible moves.</p>
 <p>Then, the data seem to confirm that, to some extent, the victory in the games, is related to the number of possible moves in each movement. We could study the correlation and establish a model to predict the victory of one or the other throughout the game, but that will have to be in another article.</p>
@@ -1230,23 +1302,25 @@ Some tables had finished, and the players walked in silence, watching other game
 <p>One last thing, when the game ends where the king? The following diagrams, reflect the positions of the kings castling. It seems that both, in number of games, and in percentages, castling improves the chances of victory.</p>
 <div id="lugar-de-finalizacion-de-los-reyes" class="section level2">
 <h2>Lugar de finalización de los reyes</h2>
-<div class="container" style="max-width:720px">
-<div id="content">
-<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-<li class="active">
-<a href="#porcentaje" data-toggle="tab">Percentages</a>
+<div>
+<div class="chess-tabs" data-chess-tabs>
+<ul class="chess-tab-list" aria-label="Final king positions">
+<li>
+<a href="#porcentaje">Percentages</a>
 </li>
 <li>
-<a href="#numero" data-toggle="tab">Number of games</a>
+<a href="#numero">Number of games</a>
 </li>
 </ul>
-<div id="my-tab-content" class="tab-content">
-<div id="porcentaje" class="tab-pane active">
+<div class="chess-tab-panels">
+<div id="porcentaje" class="chess-tab-panel">
+<h3 class="chess-tab-heading">Percentages</h3>
 <p align="center">
 <img src="/images/torneo-de-ajedrez/posici%C3%B3n_reyes_porc-1.png" title="" alt="" width="960" />
 </p>
 </div>
-<div id="numero" class="tab-pane">
+<div id="numero" class="chess-tab-panel">
+<h3 class="chess-tab-heading">Number of games</h3>
 <p align="center">
 <img src="/images/torneo-de-ajedrez/posici%C3%B3n_reyes_numero-1.png" title="" alt="" width="960" />
 </p>
@@ -1274,26 +1348,4 @@ The other showed no sign of remind him. He beat his pride and accepted. "Do you 
 
 </div>
 
-<script src="/js/bootstrap.min.js"></script>
-
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-$(document).ready(function () {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
-});
-
-</script>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+<script type="module" src="{{ '/js/chess-tabs.js' | relative_url }}"></script>

@@ -7,7 +7,7 @@ order: 2
 permalink: /about_en/
 ---
 
-![](/images/jmga.jpg){: .center-block .img-circle style="max-width:100px"}
+![](/images/jmga.jpg){: .profile-photo}
 
 I am José Miguel González Aguilera, Senior Engineer and
 Degree in Economics. In this blog I publish those topics

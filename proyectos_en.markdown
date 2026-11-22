@@ -38,7 +38,7 @@ I hope this translantion will facilitate the learning of this elegant, dinamic, 
 
 My translation to spanish of this programming book in Python, which can be read in: [https://github.com/jmgaguilera/swfk-es/releases](https://github.com/jmgaguilera/swfk-es/releases).
 
-![](/images/doma_serpientes/portada.png){: .center-block style="max-width:300px"}
+![](/images/doma_serpientes/portada.png){: .project-cover width="300"}
 
 The source code of the spanish translation is done in LaTeX and is published in:  [https://github.com/jmgaguilera/swfk-es](https://github.com/jmgaguilera/swfk-es).
 

@@ -37,7 +37,7 @@ Espero que sea de utilidad para facilitar el aprendizaje de este elegante lengua
 
 Mi traducción del libro de programación en Python para niños, que se puede obtener en [https://github.com/jmgaguilera/swfk-es/releases](https://github.com/jmgaguilera/swfk-es/releases).
 
-![](/images/doma_serpientes/portada.png){: .center-block style="max-width:300px"}
+![](/images/doma_serpientes/portada.png){: .project-cover width="300"}
 
 El código fuente del libro está realizado en LaTeX y está publicado en [https://github.com/jmgaguilera/swfk-es](https://github.com/jmgaguilera/swfk-es).
 
