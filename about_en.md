@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About me
+description: José Miguel González Aguilera, a computer engineer and economics graduate. I write about technology and share my projects and translations.
 lang: en
 ref: about
 order: 2

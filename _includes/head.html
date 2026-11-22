@@ -1,12 +1,30 @@
 <head>
+  {% assign locale = site.t[page.lang] %}
+  {% assign description = page.description | default: page.excerpt | default: locale.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 %}
+  {% assign social_image = site.data.thumbnails[page.url-image].social | default: site.social_image | absolute_url %}
+  {% assign social_type = 'website' %}
+  {% if page.layout == 'post' %}{% assign social_type = 'article' %}{% endif %}
+  {% capture document_title %}{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} · {{ locale.home.page_title }}{% endif %}{% endcapture %}
+  {% capture canonical %}{% include canonical-url.html path=page.url %}{% endcapture %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: site.title | escape }}</title>
-  <meta name="description" content="{{ site.t[page.lang].description | default: site.description | strip | escape }}">
+  <title>{{ document_title | escape }}</title>
+  <meta name="description" content="{{ description | escape }}">
+  <meta property="og:title" content="{{ page.title | default: document_title | escape }}">
+  <meta property="og:description" content="{{ description | escape }}">
+  <meta property="og:site_name" content="{{ site.title | escape }}">
+  <meta property="og:type" content="{{ social_type }}">
+  <meta property="og:locale" content="{{ locale.social_locale }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ social_image | escape }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ page.title | default: site.title | escape }}">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap">
   <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
-  <link rel="canonical" href="{% include canonical-url.html path=page.url %}">
+  <link rel="canonical" href="{{ canonical }}">
   {% if translations.size > 1 %}
     {% for translation in translations %}
       <link rel="alternate" hreflang="{{ translation.lang }}" href="{% include canonical-url.html path=translation.url %}">

@@ -1,9 +1,9 @@
 # Site settings
 
-title: jmgaguilera.github.io
+title: José Miguel González Aguilera
 email: jmgaguilera@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Bienvenid@s al blog de José Miguel González Aguilera.
+description: Artículos, proyectos y traducciones sobre Rust, Python, LaTeX y análisis de datos.
+social_image: /images/compartir/sitio.jpg
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://www.jmgaguilera.com"
 # Preserve the IDs of entries that RSS readers have already seen.
@@ -30,6 +30,10 @@ t:
         subtitle: Looking for solutions to problems instead of problems to the solution
         home:
             entry: Articles
+            page_title: Projects and articles
+            featured: Featured projects
+            all_projects: All projects
+            projects_url: /projects_en/
             subscript: Subscribe
             url: /index_en.html
             feed: /feed_en.xml
@@ -45,13 +49,18 @@ t:
             loading: Loading comments…
             error: Could not load comments. You can try again.
             no_script: Enable JavaScript to load comments.
-        description: Welcome to my blog.
+        description: Articles, projects and Spanish translations about Rust, Python, LaTeX and data analysis.
+        social_locale: en_US
         recommends: "Recommends:"
     es:
         title: José Miguel González Aguilera
         subtitle: Buscando soluciones a los problemas sin poner problemas a la solución
         home:
             entry: Artículos
+            page_title: Proyectos y artículos
+            featured: Proyectos destacados
+            all_projects: Todos los proyectos
+            projects_url: /projects/
             subscript: Suscripción
             url: /
             feed: /feed.xml
@@ -67,7 +76,8 @@ t:
             loading: Cargando comentarios…
             error: No se han podido cargar los comentarios. Puedes volver a intentarlo.
             no_script: Activa JavaScript para cargar los comentarios.
-        description: Bienvenid@s a mi blog.
+        description: Artículos, proyectos y traducciones sobre Rust, Python, LaTeX y análisis de datos.
+        social_locale: es_ES
         recommends: "Recomiendo:"
 
             

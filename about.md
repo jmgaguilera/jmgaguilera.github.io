@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Sobre mí
+description: José Miguel González Aguilera, ingeniero en informática y licenciado en economía. Escribo sobre tecnología y comparto mis proyectos y traducciones.
 lang: es
 ref: about
 order: 2

@@ -3,20 +3,37 @@ layout: default
 ---
 {% assign home = site.t[page.lang].home %}
 {% assign posts = site.posts | where: 'lang', page.lang %}
-<h1>{{ home.entry }}</h1>
+<h1>{{ home.page_title }}</h1>
 
+<section class="featured-projects" aria-labelledby="featured-projects-title">
+  <h2 class="home-section-title" id="featured-projects-title">{{ home.featured }}</h2>
+  <ul class="featured-projects-list">
+    {% for project in site.data.featured_projects %}
+      {% assign detail = project[page.lang] %}
+      <li>
+        <h3><a href="{{ project.url | relative_url }}">{{ detail.title }}</a></h3>
+        <p>{{ detail.description }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  <p><a href="{{ home.projects_url | relative_url }}">{{ home.all_projects }}</a></p>
+</section>
+
+<section aria-labelledby="article-list-title">
+<h2 class="home-section-title" id="article-list-title">{{ home.entry }}</h2>
 {% for post in posts %}
   {% assign period = post.date | date: '%m/%Y' %}
   {% if period != previous_period %}
-    <h2>{% include date.html date=post.date %}{{ month }} {{ year }}</h2>
+    <h3 class="month-heading">{% include date.html date=post.date %}{{ month }} {{ year }}</h3>
     {% assign previous_period = period %}
   {% endif %}
 
   <article class="post-card">
-    <h3 class="post-card-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+    <h4 class="post-card-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h4>
     <div class="post-card-body{% if post.url-image %} post-card-with-image{% endif %}">
       {% if post.url-image %}
-        <img class="post-card-image" src="{{ post.url-image | relative_url }}" alt=""{% unless forloop.first %} loading="lazy"{% endunless %}>
+        {% assign thumb = site.data.thumbnails[post.url-image] %}
+        <img class="post-card-image" src="{{ thumb.src | default: post.url-image | relative_url }}" alt=""{% if thumb %} width="{{ thumb.width }}" height="{{ thumb.height }}"{% endif %} loading="lazy" decoding="async">
       {% endif %}
       <div>
         <div class="post-card-excerpt">{{ post.excerpt }}</div>
@@ -27,3 +44,4 @@ layout: default
 {% endfor %}
 
 <p class="rss-subscribe">{{ home.subscript }} <a href="{{ home.feed | relative_url }}">via RSS</a></p>
+</section>
