@@ -1,8 +1,5 @@
-
-$color_claro: #FEFEFE;
-$color_oscuro: #466E7A;
-$color_md_claro: #FDFED4;
-$color_md_oscuro: #D4423D;
+@use "sass:color";
+@use "variables" as *;
 
 .card {
     margin: 10px;
@@ -61,7 +58,7 @@ h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
 %vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
+    margin-bottom: $half-spacing;
 }
 
 
@@ -130,7 +127,7 @@ h2 {
     background-origin: initial;
     background-clip: initial;
     background-color: initial;
-    text-shadow: -0.3em 0 $background-color, -0.25em 0 $background-color, -0.2em 0 $background-color, --0.15em 0 $background-color, 0.1em 0 $background-color,  -0.05em 0 $background-color,0em 0 $background-color,0.05em 0 $background-color, 0.1em 0 $background-color, 0.15em 0 $background-color, 0.2em 0 $background-color, 0.25em 0 $background-color, 0.3em 0 $background-color ;
+    text-shadow: -0.3em 0 $background-color, -0.25em 0 $background-color, -0.2em 0 $background-color, 0.15em 0 $background-color, 0.1em 0 $background-color,  -0.05em 0 $background-color,0em 0 $background-color,0.05em 0 $background-color, 0.1em 0 $background-color, 0.15em 0 $background-color, 0.2em 0 $background-color, 0.25em 0 $background-color, 0.3em 0 $background-color ;
 }
 
 /**
@@ -149,7 +146,7 @@ a {
     text-decoration: none;
 
     &:visited {
-        color: darken($brand-color, 15%);
+        color: color.adjust($brand-color, $lightness: -15%);
     }
 
     &:hover {
@@ -165,7 +162,7 @@ a {
  */
 blockquote {
     color: $grey-color;
-    padding-left: $spacing-unit / 2;
+    padding-left: $half-spacing;
     font-size: 16px;
     letter-spacing: -0.2px;
     font-style: italic;
@@ -241,8 +238,8 @@ pre {
     @include media-query($on-laptop) {
         max-width: -webkit-calc(800px - (#{$spacing-unit}));
         max-width:         calc(800px - (#{$spacing-unit}));
-        padding-right: $spacing-unit / 2;
-        padding-left: $spacing-unit / 2;
+        padding-right: $half-spacing;
+        padding-left: $half-spacing;
     }
 }
 

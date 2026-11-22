@@ -1,0 +1,30 @@
+@use "sass:color";
+@use "sass:math";
+
+$base-font-family: Lato, Helvetica, Arial, sans-serif;
+$base-font-size:   18px;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+$half-spacing:     math.div($spacing-unit, 2);
+
+$text-color:       #111;
+$background-color: #fdfdfd;
+$brand-color:      #2a7ae2;
+
+$color_claro: #FEFEFE;
+$color_oscuro: #466E7A;
+
+$grey-color:       #828282;
+$grey-color-light: color.adjust($grey-color, $lightness: 40%);
+$grey-color-dark:  color.adjust($grey-color, $lightness: -25%);
+
+$on-palm:          600px;
+$on-laptop:        900px;
+
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}

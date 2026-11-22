@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "base";
+
 /**
  * Site header
  */
@@ -121,7 +124,7 @@ span .page-link-claro {
 
 .footer-heading {
     font-size: 18px;
-    margin-bottom: $spacing-unit / 2;
+    margin-bottom: $half-spacing;
 }
 
 .contact-list,
@@ -133,49 +136,49 @@ span .page-link-claro {
 .footer-col-wrapper {
     font-size: 15px;
     color: $grey-color;
-    margin-left: -$spacing-unit / 2;
+    margin-left: -$half-spacing;
     @extend %clearfix;
 }
 
 .footer-col {
     float: left;
-    margin-bottom: $spacing-unit / 2;
-    padding-left: $spacing-unit / 2;
+    margin-bottom: $half-spacing;
+    padding-left: $half-spacing;
 }
 
 .footer-col-1 {
-    width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-    width:         calc(35% - (#{$spacing-unit} / 2));
+    width: -webkit-calc(35% - $half-spacing);
+    width:         calc(35% - $half-spacing);
 }
 
 .footer-col-2 {
-    width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-    width:         calc(20% - (#{$spacing-unit} / 2));
+    width: -webkit-calc(20% - $half-spacing);
+    width:         calc(20% - $half-spacing);
 }
 
 .footer-col-3 {
-    width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-    width:         calc(45% - (#{$spacing-unit} / 2));
+    width: -webkit-calc(45% - $half-spacing);
+    width:         calc(45% - $half-spacing);
 }
 
 @include media-query($on-laptop) {
     .footer-col-1,
     .footer-col-2 {
-        width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-        width:         calc(50% - (#{$spacing-unit} / 2));
+        width: -webkit-calc(50% - $half-spacing);
+        width:         calc(50% - $half-spacing);
     }
 
     .footer-col-3 {
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
+        width: -webkit-calc(100% - $half-spacing);
+        width:         calc(100% - $half-spacing);
     }
 }
 
 @include media-query($on-palm) {
     .footer-col {
         float: none;
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
+        width: -webkit-calc(100% - $half-spacing);
+        width:         calc(100% - $half-spacing);
     }
 }
 

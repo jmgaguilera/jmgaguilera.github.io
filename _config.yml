@@ -1,5 +1,6 @@
 # Site settings
 
+title: jmgaguilera.github.io
 email: jmgaguilera@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Bienvenid@s al blog de José Miguel González Aguilera.
@@ -12,6 +13,12 @@ linkedin_username: jmgaguilera
 
 # Build settings
 markdown: kramdown
+sass:
+  style: compressed
+  sourcemap: development
+exclude:
+  - README.md
+  - scripts/
 
 # traducciones
 
