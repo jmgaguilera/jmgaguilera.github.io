@@ -1,0 +1,28 @@
+- url: /rust_facil/
+  es:
+    title: Rust en español fácil
+    description: Traducción del libro de David MacLeod para aprender Rust desde cero.
+  en:
+    title: Rust en español fácil
+    description: A Spanish translation of David MacLeod’s introductory Rust book.
+- url: /rust_patrones/
+  es:
+    title: Rust, patrones de diseño
+    description: Traducción en curso de patrones de diseño y prácticas habituales en Rust.
+  en:
+    title: Rust Design Patterns
+    description: An ongoing Spanish translation of Rust design patterns and idioms.
+- url: /inmersionenpython3html/
+  es:
+    title: Inmersión en Python 3
+    description: Traducción al español del libro de Mark Pilgrim.
+  en:
+    title: Dive Into Python 3
+    description: A Spanish translation of Mark Pilgrim’s book.
+- url: /tengwar-esp/procesador/index.html
+  es:
+    title: Transcriptor a tengwar
+    description: Escribe texto en el modo español del alfabeto de Tolkien.
+  en:
+    title: Tengwar transcriber
+    description: Write text in Tolkien’s alphabet using the Spanish mode.

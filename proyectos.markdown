@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Proyectos
+description: Mis traducciones al español sobre Rust y Python, artículos sobre LaTeX y un transcriptor a tengwar.
 lang: es
 ref: projects
 order: 1
