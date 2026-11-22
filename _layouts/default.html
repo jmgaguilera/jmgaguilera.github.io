@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html>
-
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<html lang="{{ page.lang | default: 'es' }}">
+  {% assign translations = empty %}
+  {% if page.ref %}
+    {% assign translations = site.posts | concat: site.pages | where: 'ref', page.ref | sort: 'lang' %}
+  {% endif %}
   {% include head.html %}
 
-
   <body class="fadein">
-
+    <a class="site-skip-link" href="#contenido">{{ site.t[page.lang].skip }}</a>
     {% include header.html %}
 
-    <div class="page-content">
-      <div class="wrapper"     style="margin-top:3cm;">
+    <main class="page-content" id="contenido" tabindex="-1">
+      <div class="wrapper">
         {{ content }}
       </div>
-    </div>
+    </main>
 
     {% include footer.html %}
 
+    <script type="module" src="{{ '/js/site-navigation.js' | relative_url }}"></script>
+    <script id="dsq-count-scr" src="https://jmgaguilera.disqus.com/count.js" async></script>
   </body>
-
-    <script id="dsq-count-scr" src="//jmgaguilera.disqus.com/count.js" async></script>
-
 </html>

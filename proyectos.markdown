@@ -28,7 +28,7 @@ Esta es mi traducción al español, con el permiso de su autor, del libro [Dive 
 La he editado con LaTeX y está disponible en:
 
 * **PDF**: [http://github.com/jmgaguilera/inmersionenpython3/releases](http://github.com/jmgaguilera/inmersionenpython3/releases)
-* **HTML**: [http://www.jmgaguilera.com/inmersionenpython3html](http://www.jmgaguilera.com/inmersionenpython3html)
+* **HTML**: [https://www.jmgaguilera.com/inmersionenpython3html](https://www.jmgaguilera.com/inmersionenpython3html)
 * Código **LaTeX**: [http://github.com/jmgaguilera/inmersionenpython3](https://github.com/jmgaguilera/inmersionenpython3)
 
 Espero que sea de utilidad para facilitar el aprendizaje de este elegante lenguaje dinámico y orientado a objetos.
@@ -104,7 +104,7 @@ wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Paquetes_para_com
 
 
   <center>
-  <a href="http://www.jmgaguilera.com/tengwar-esp/procesador/index.html">Enlace a la utilidad</a>
+  <a href="https://www.jmgaguilera.com/tengwar-esp/procesador/index.html">Enlace a la utilidad</a>
   <br/>
   <a href="http://github.com/jmgaguilera/tengwar-esp">Código fuente</a>
   <br/>

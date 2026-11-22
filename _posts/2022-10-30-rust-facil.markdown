@@ -11,6 +11,6 @@ excerpt: Traducción al español de Rust in easy english, de David MacLeod
 url-image: /images/rust-logo.svg
 ---
 
-En 2021 empecé a estudiar este lenguaje de programación que me ha demostrado que hay novedades realmente interesantes en los nuevos lenguajes. Conceptos como propiedad, préstamo, rasgos (que recuerdan a la programación orientada a aspectos). Como suelo hacer, he buscado un libro que pudiera traducir como parte de mi aprendizaje. La traducción me ha llevado algo más de un año aprovechando fines de semana y vacaciones. [Está a vuestra disposición aquí](http://www.jmgaguilera.com/rust_facil/).
+En 2021 empecé a estudiar este lenguaje de programación que me ha demostrado que hay novedades realmente interesantes en los nuevos lenguajes. Conceptos como propiedad, préstamo, rasgos (que recuerdan a la programación orientada a aspectos). Como suelo hacer, he buscado un libro que pudiera traducir como parte de mi aprendizaje. La traducción me ha llevado algo más de un año aprovechando fines de semana y vacaciones. [Está a vuestra disposición aquí](https://www.jmgaguilera.com/rust_facil/).
 
 Espero que sea de utilidad para facilitar el aprendizaje de este novedoso lenguaje compilado que cada vez está más en boga y que aspira a que se use en lugar de C o C++. Agradezco que me remitáis las erratas que encontréis.

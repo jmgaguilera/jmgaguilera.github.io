@@ -29,7 +29,7 @@ My translation to spanish, with the permission of the author, of the book [Dive 
 I edited this version using LaTeX language, you can find it here:
 
 * **PDF**: [http://github.com/jmgaguilera/inmersionenpython3/releases](http://github.com/jmgaguilera/inmersionenpython3/releases)
-* **HTML**: [http://www.jmgaguilera.com/inmersionenpython3html](http://www.jmgaguilera.com/inmersionenpython3html)
+* **HTML**: [https://www.jmgaguilera.com/inmersionenpython3html](https://www.jmgaguilera.com/inmersionenpython3html)
 * **LaTeX** code: [http://github.com/jmgaguilera/inmersionenpython3](https://github.com/jmgaguilera/inmersionenpython3)
 
 I hope this translantion will facilitate the learning of this elegant, dinamic, object oriented language to Spanish-speaking people.
@@ -103,7 +103,7 @@ wikibooks)](http://es.wikibooks.org/wiki/Manual_de_LaTeX/Otros/Paquetes_para_com
 
 
   <center>
-  <a href="http://www.jmgaguilera.com/tengwar-esp/procesador/index.html">Link to the utility</a>
+  <a href="https://www.jmgaguilera.com/tengwar-esp/procesador/index.html">Link to the utility</a>
   <br/>
   <a href="http://github.com/jmgaguilera/tengwar-esp">Source code</a>
   <br/>

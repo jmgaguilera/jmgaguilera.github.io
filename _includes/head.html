@@ -1,11 +1,17 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title | escape }}</title>
+  <meta name="description" content="{{ site.t[page.lang].description | default: site.description | strip | escape }}">
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{{ site.description }}">
-
-    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | relative_url }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap">
+  <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
+  <link rel="canonical" href="{% include canonical-url.html path=page.url %}">
+  {% if translations.size > 1 %}
+    {% for translation in translations %}
+      <link rel="alternate" hreflang="{{ translation.lang }}" href="{% include canonical-url.html path=translation.url %}">
+    {% endfor %}
+  {% endif %}
+  <link rel="alternate" type="application/rss+xml" title="{{ site.t[page.lang].title | escape }}" href="{{ site.t[page.lang].home.feed | absolute_url }}">
 </head>

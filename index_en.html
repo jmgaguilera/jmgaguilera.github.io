@@ -16,20 +16,20 @@ ref: index
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-12">
-        <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link"><h3 class="card-title">{{ post.title }}</h3></a>
+        <a href="{{ post.url | relative_url }}" class="card-link"><h3 class="card-title">{{ post.title }}</h3></a>
       </div>
     </div>
   <div class="row">
     <div class="col-xs-3 col-md-2">
-      <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">
+      <a href="{{ post.url | relative_url }}" class="card-link">
             <img class="card-img-top img-rounded" src="{{ post.url-image }}"/>
         </picture>
       </a>
     </div>
     <div class="col-xs-8 col-md-offset-1 col-md-5">
       <p class="card-text">{{ post.excerpt }}</p>
-      <a href="{{ post.url | prepend: site.baseurAl }}" class="card-link">{{ site.t[page.lang].home.goto }}</a> <span>&mdash;</span>
-      <a class="post-meta" href="http://www.jmgaguilera.com{{ post.url | prepend: site.baseurl }}#disqus_thread"></a>
+      <a href="{{ post.url | relative_url }}" class="card-link">{{ site.t[page.lang].home.goto }}</a> <span>&mdash;</span>
+      <a class="post-meta" href="{{ post.url | relative_url }}#disqus_thread" data-disqus-identifier="{{ post.id | escape }}"></a>
     </div>
   </div>
 </div>
@@ -38,5 +38,5 @@ ref: index
 {% endfor %}
 
 
-  <p class="rss-subscribe">{{ site.t[page.lang].home.subscript }} <a href="{{ "/feed_en.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <p class="rss-subscribe">{{ site.t[page.lang].home.subscript }} <a href="{{ site.t[page.lang].home.feed | relative_url }}">via RSS</a></p>
 

@@ -1,0 +1,5 @@
+---
+layout: null
+---
+User-agent: *
+Sitemap: {{ '/sitemaps.xml' | absolute_url }}

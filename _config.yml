@@ -5,7 +5,9 @@ email: jmgaguilera@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Bienvenid@s al blog de José Miguel González Aguilera.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://jmgaguilera.github.io" # the base hostname & protocol for your site
+url: "https://www.jmgaguilera.com"
+# Preserve the IDs of entries that RSS readers have already seen.
+legacy_rss_guid_base: "http://jmgaguilera.github.io"
 twitter_username: jmgaguilera
 github_username:  jmgaguilera
 linkedin_href: jose-miguel-gonzalez-aguilera-a727b010
@@ -28,9 +30,15 @@ t:
         subtitle: Looking for solutions to problems instead of problems to the solution
         home:
             entry: Articles
-            subscript: Suscription
-            url: index_en.html
+            subscript: Subscribe
+            url: /index_en.html
+            feed: /feed_en.xml
             goto: Go to article
+        navigation: Main navigation
+        menu: Menu
+        languages: Languages
+        language_name: English
+        skip: Skip to content
         description: Welcome to my blog.
         recommends: "Recommends:"
     es:
@@ -39,8 +47,14 @@ t:
         home:
             entry: Artículos
             subscript: Suscripción
-            url: index.html
+            url: /
+            feed: /feed.xml
             goto: Ir al artículo
+        navigation: Navegación principal
+        menu: Menú
+        languages: Idiomas
+        language_name: Español
+        skip: Saltar al contenido
         description: Bienvenid@s a mi blog.
         recommends: "Recomiendo:"
 

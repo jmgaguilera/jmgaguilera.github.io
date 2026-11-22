@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    {% assign locale = site.t[page.lang] %}
+    <title>{{ locale.title | xml_escape }}</title>
+    <description>{{ locale.subtitle | xml_escape }}</description>
+    <language>{{ page.lang }}</language>
+    <link>{{ locale.home.url | absolute_url | xml_escape }}</link>
+    <atom:link href="{{ page.url | absolute_url | xml_escape }}" rel="self" type="application/rss+xml" />
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <generator>Jekyll v{{ jekyll.version }}</generator>
+    {% if page.tag %}
+      {% assign source_posts = site.tags[page.tag] %}
+    {% else %}
+      {% assign source_posts = site.posts %}
+    {% endif %}
+    {% assign posts = source_posts | where: 'lang', page.lang %}
+    {% for post in posts limit:10 %}
+      <item>
+        <title>{{ post.title | xml_escape }}</title>
+        <description>{{ post.content | xml_escape }}</description>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <link>{{ post.url | absolute_url | xml_escape }}</link>
+        {% comment %}These identifiers must stay stable when links change.{% endcomment %}
+        <guid isPermaLink="false">{{ post.url | prepend: site.baseurl | prepend: site.legacy_rss_guid_base | xml_escape }}</guid>
+        {% for tag in post.tags %}
+          <category>{{ tag | xml_escape }}</category>
+        {% endfor %}
+        {% for category in post.categories %}
+          <category>{{ category | xml_escape }}</category>
+        {% endfor %}
+      </item>
+    {% endfor %}
+  </channel>
+</rss>
