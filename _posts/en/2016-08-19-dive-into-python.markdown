@@ -26,7 +26,7 @@ Last may, I took *LaTeX* code of the translation, changed it from mercurial to g
 And now! At the end of holiday, I completed translation and edition. And, as a complement, I generated a HTML version. 
 
 * **PDF**: [http://github.com/jmgaguilera/inmersionenpython3/releases](http://github.com/jmgaguilera/inmersionenpython3/releases)
-* **HTML**: [http://www.jmgaguilera.com/inmersionenpython3html](http://www.jmgaguilera.com/inmersionenpython3html)
+* **HTML**: [https://www.jmgaguilera.com/inmersionenpython3html](https://www.jmgaguilera.com/inmersionenpython3html)
 * Código **LaTeX**: [http://github.com/jmgaguilera/inmersionenpython3](https://github.com/jmgaguilera/inmersionenpython3)
 
 

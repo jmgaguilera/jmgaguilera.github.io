@@ -6,112 +6,134 @@
  */
 
 .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     border-bottom: 2px solid $grey-color-light;
-    min-height: 56px;
-    // Positioning context for the mobile navigation icon
-    position: fixed;
-    width:100%;
-    margin:auto;
     background-color: $color_oscuro;
     color: $color_claro;
-    z-index:1;
-}
 
+    .wrapper {
+        display: grid;
+        grid-template-areas: "title navigation" "subtitle languages";
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 6px 16px;
+        padding-top: 10px;
+        padding-bottom: 10px;
 
+        &::after {
+            display: none; // The shared wrapper's clearfix is unnecessary in a grid.
+        }
+    }
 
+    a,
+    a:visited {
+        color: inherit;
+    }
 
-.site-title {
-    font-size: 26px;
-    line-height: 56px;
-    letter-spacing: -1px;
-    margin-bottom: 0;
-    float: left;
+    a:hover,
+    a[aria-current="page"] {
+        text-decoration: underline;
+    }
 
-    color: $color_claro;
+    :focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 3px;
+    }
 
-    &,
-    &:visited {
-        color: $grey-color-light;
+    @include media-query($on-palm) {
+        position: static;
+
+        .wrapper {
+            grid-template-areas: "title navigation" "subtitle subtitle" "languages languages";
+            align-items: start;
+        }
     }
 }
 
+.site-title {
+    grid-area: title;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
 
-span .page-link-claro {
-        color: $color_claro;        
+    @include media-query($on-palm) {
+        align-self: start;
+        padding-top: 8px;
+        font-size: 22px;
+    }
+}
+
+.site-navigation {
+    grid-area: navigation;
+    text-align: right;
+}
+
+.site-nav,
+.site-languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-size: 16px;
 }
 
 .site-nav {
-    float: right;
-    line-height: 56px;
+    justify-content: flex-end;
 
-    .menu-icon {
+    &[hidden] {
         display: none;
     }
 
-    .page-link {
-        color: $text-color;
-        line-height: $base-line-height;
-
-        // Gaps between nav items, but not on the first one
-        &:not(:first-child) {
-            margin-left: 20px;
-        }
-
-    }
-
-.page-link-claro {
-        color: $color_claro;        
-}
-
-
-
-
     @include media-query($on-palm) {
-        position: absolute;
-        top: 9px;
-        right: 30px;
-        background-color: $background-color;
-        border: 1px solid $grey-color-light;
-        border-radius: 5px;
+        flex-direction: column;
+        gap: 0;
         text-align: right;
 
-        .menu-icon {
-            display: block;
-            float: right;
-            width: 36px;
-            height: 26px;
-            line-height: 0;
-            padding-top: 10px;
-            text-align: center;
-
-            > svg {
-                width: 18px;
-                height: 15px;
-
-                path {
-                    fill: $grey-color-dark;
-                }
-            }
-        }
-
-        .trigger {
-            clear: both;
-            display: none;
-        }
-
-        &:hover .trigger {
-            display: block;
-            padding-bottom: 5px;
-        }
-
-        .page-link {
-            display: block;
-            padding: 5px 10px;
+        a {
+            padding: 10px 2px;
         }
     }
 }
 
+.site-menu-button {
+    min-height: 44px;
+    padding: 5px 12px;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font-size: 16px;
+}
 
+.site-subtitle {
+    grid-area: subtitle;
+    margin: 0;
+    text-align: start;
+}
+
+.site-languages {
+    grid-area: languages;
+    justify-content: flex-end;
+
+    @include media-query($on-palm) {
+        justify-content: flex-start;
+    }
+}
+
+.site-skip-link {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    z-index: 3;
+    padding: 8px 14px;
+    transform: translateY(-110%);
+    background: $background-color;
+
+    &:focus {
+        transform: translateY(0);
+    }
+}
 
 /**
  * Site footer

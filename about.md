@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Sobre mi
+title: Sobre mí
 lang: es
 ref: about
 order: 2

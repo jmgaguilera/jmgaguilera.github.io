@@ -11,6 +11,6 @@ excerpt: Translation to spanish of the book Rust in easy english of David MacLeo
 url-image: /images/rust-logo.svg
 ---
 
-I started to study Rust in 2021. I has new concepts to me like Onwership, borrowed types and traits (something like aspect oriented programming). As usual, I serached for a book which I could translate as part of my learning. Now I finished after more than one year translating in holidays. [You can find it here](http://www.jmgaguilera.com/rust_facil/).
+I started to study Rust in 2021. I has new concepts to me like Onwership, borrowed types and traits (something like aspect oriented programming). As usual, I serached for a book which I could translate as part of my learning. Now I finished after more than one year translating in holidays. [You can find it here](https://www.jmgaguilera.com/rust_facil/).
 
 I hope this translation will facilitate the learning of this compiled language to Spanish-speaking people. I appreciate your feedback if you find mistakes I can correct.

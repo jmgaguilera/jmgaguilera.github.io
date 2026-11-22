@@ -25,7 +25,7 @@ El 31 de mayo de este año, recuperé el código *LaTeX*, lo pasé de mercurial 
 Y ahora, al final de mis vacaciones, he completado la traducción y edición. Como plus adicional, he generado una versión medianamente legible en HTML:
 
 * **PDF**: [http://github.com/jmgaguilera/inmersionenpython3/releases](http://github.com/jmgaguilera/inmersionenpython3/releases)
-* **HTML**: [http://www.jmgaguilera.com/inmersionenpython3html](http://www.jmgaguilera.com/inmersionenpython3html)
+* **HTML**: [https://www.jmgaguilera.com/inmersionenpython3html](https://www.jmgaguilera.com/inmersionenpython3html)
 * Código **LaTeX**: [http://github.com/jmgaguilera/inmersionenpython3](https://github.com/jmgaguilera/inmersionenpython3)
 
 Espero que sea de utilidad para facilitar el aprendizaje de este elegante lenguaje dinámico y orientado a objetos. Agradezco que me remitáis las erratas que encontréis.

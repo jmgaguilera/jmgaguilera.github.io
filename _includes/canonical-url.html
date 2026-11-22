@@ -1,0 +1,5 @@
+{%- if include.path == '/index.html' -%}
+  {{- '/' | absolute_url | escape -}}
+{%- else -%}
+  {{- include.path | absolute_url | escape -}}
+{%- endif -%}

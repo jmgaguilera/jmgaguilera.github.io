@@ -1,44 +1,27 @@
-<div class="site-header">
-
+{% assign labels = site.t[page.lang] %}
+{% assign navigation_pages = site.pages | where: 'lang', page.lang | where_exp: 'item', 'item.order' | sort: 'order' %}
+<header class="site-header">
   <div class="wrapper">
+    <a class="site-title" href="{{ labels.home.url | relative_url }}">{{ labels.title }}</a>
 
-    <span style="margin-bottom:0;">
-      <a class="site-title" href="{{ site.baseurl }}/{{ site.t[page.lang].home.url }}">{{ site.t[page.lang].title }}</a>
-    </span>
-    <span>
-      <nav class="site-nav">
-
-      <div class="trigger">
-        {%  assign pages = site.pages | where:"lang", page.lang | sort: "order" %}
-        &mdash;
-        {% for page in pages %}
-          {% if page.title %}
-          <a class="page-link-claro" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-			&mdash;
-          {% endif %}
-
+    <div class="site-navigation">
+      <button type="button" class="site-menu-button" aria-controls="site-nav-links" aria-expanded="false" hidden>{{ labels.menu }}</button>
+      <nav class="site-nav" id="site-nav-links" aria-label="{{ labels.navigation }}">
+        {% for item in navigation_pages %}
+          <a href="{{ item.url | relative_url }}"{% if item.url == page.url %} aria-current="page"{% endif %}>{{ item.title | escape }}</a>
         {% endfor %}
+      </nav>
+    </div>
 
-        
-
-      </div>
-      
-    </nav>
-  
-
-  <span style="float:left; margin-bottom:0;"><em>{{ site.t[page.lang].subtitle }}</em></span>
-  <span style="float:right; margin-bottom:0;">
-          &mdash;{% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
-        {% for post in posts %}
-            <a class="page-link-claro" href="{{ post.url }}">{{ post.lang }}</a> &mdash;
+    <p class="site-subtitle"><em>{{ labels.subtitle }}</em></p>
+    {% if translations.size > 1 %}
+      <nav class="site-languages" aria-label="{{ labels.languages }}">
+        {% for translation in translations %}
+          {% assign translation_path = translation.url %}
+          {% if translation_path == '/index.html' %}{% assign translation_path = '/' %}{% endif %}
+          <a href="{{ translation_path | relative_url }}" lang="{{ translation.lang }}" hreflang="{{ translation.lang }}"{% if translation.url == page.url %} aria-current="page"{% endif %}>{{ site.t[translation.lang].language_name }}</a>
         {% endfor %}
-
-        {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}
-        {% for page in pages %}
-            <a class="page-link-claro" href="{{ page.url }}">{{ page.lang }}</a>  &mdash;
-        {% endfor %}
-   </span>
+      </nav>
+    {% endif %}
   </div>
-  
-
-</div>
+</header>

@@ -1,32 +1,22 @@
 ---
-layout:
+layout: null
 permalink: /sitemaps.xml
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  {% for post in site.posts %}
-    {% if post.id contains "404" %}{% else %}
-      <url>
-        <loc>{{site.base}}{{ post.url }}</loc>
-        {% assign versions=site.posts | where:"ref", post.ref %}
-        {% for version in versions %}
-          <xhtml:link rel="alternate" hreflang="{{ version.lang }}" href="{{site.base}}{{ version.url }}" />
-        {% endfor %}
-        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-        <changefreq>weekly</changefreq>
-      </url>
-    {% endif %}
-  {% endfor %}
-  {% for page in site.pages %}
-    {% if page.id contains "404" %}{% else %}
-      <url>
-        <loc>{{site.base}}{{ page.url }}</loc>
-        {% assign versions=site.pages | where:"ref", page.ref %}
-        {% for version in versions %}
-          <xhtml:link rel="alternate" hreflang="{{ version.lang }}" href="{{site.base}}{{ version.url }}" />
-        {% endfor %}
-        <changefreq>weekly</changefreq>
-      </url>
-    {% endif %}
+  {% assign content_pages = site.pages | where_exp: 'item', 'item.lang and item.ref' %}
+  {% assign documents = site.posts | concat: content_pages %}
+  {% for document in documents %}
+    <url>
+      <loc>{% include canonical-url.html path=document.url %}</loc>
+      {% if document.ref %}
+        {% assign versions = documents | where: 'ref', document.ref | sort: 'lang' %}
+        {% if versions.size > 1 %}
+          {% for version in versions %}
+            <xhtml:link rel="alternate" hreflang="{{ version.lang }}" href="{% include canonical-url.html path=version.url %}" />
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    </url>
   {% endfor %}
 </urlset>
