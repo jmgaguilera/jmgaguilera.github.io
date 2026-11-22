@@ -264,6 +264,10 @@
 .post-content {
     margin-bottom: $spacing-unit;
 
+    a {
+        overflow-wrap: anywhere;
+    }
+
     h2 {
         font-size: 32px;
 

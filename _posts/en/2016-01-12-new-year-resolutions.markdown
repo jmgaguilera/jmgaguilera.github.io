@@ -213,7 +213,7 @@ url-image: /images/propositos_anyo_nuevo/game_of_life.png
         btnReset5.addEventListener('click', reset5);
       }
 
-      window.onload = init;
+      window.addEventListener('DOMContentLoaded', init, { once: true });
 
     </script>
 
@@ -287,9 +287,9 @@ se mueven. Entre sí han alcanzado una situación estable. Nada cambia.
 ¿Una utopía? o ¿Una distopía?.
 
 
-<div style="margin:auto">
+<div class="life-demo">
   <div>
-    <canvas id="drawing1" width="400" height="400" style="border:2px solid #000000;">
+    <canvas id="drawing1" width="400" height="400">
     </canvas>
   </div>
   <div>
@@ -314,9 +314,9 @@ A veces, las vidas parecen que se mueven, pero ¿lo hacen en realidad?
 Tal vez solo cambian por cambiar. El cambio por sí mismo no es nada. Lo
 importante es el objetivo a conseguir.
 
-<div style="margin:auto">
+<div class="life-demo">
   <div>
-    <canvas id="drawing2" width="400" height="400" style="border:2px solid #000000;">
+    <canvas id="drawing2" width="400" height="400">
     </canvas>
   </div>
   <div>
@@ -338,9 +338,9 @@ repite a sí mismo eternamente.
 El planeador es un caminante, se mueve hacia un objetivo. Descubre
 nuevos horizontes a lo largo del espacio que puede explorar.
 
-<div style="margin:auto">
+<div class="life-demo">
   <div>
-    <canvas id="drawing3" width="400" height="400" style="border:2px solid #000000;">
+    <canvas id="drawing3" width="400" height="400">
     </canvas>
   </div>
   <div>
@@ -362,9 +362,9 @@ En un mundo cerrado, las vidas estáticas pueden sobrevivir. A veces,
 cuando un elemento externo las altera, son capaces de sobreponerse y
 contagiar al elemento externo de su estatismo.
 
-<div style="margin:auto">
+<div class="life-demo">
   <div>
-    <canvas id="drawing4" width="400" height="400" style="border:2px solid #000000;">
+    <canvas id="drawing4" width="400" height="400">
     </canvas>
   </div>
   <div>
@@ -387,9 +387,9 @@ Sin embargo, otras veces, las vidas estáticas, al alterarse por un
 elemento externo, se contagian del mismo y su forma de sobrevivir es
 adaptarse al cambio y evolucionar permanentemente.
 
-<div style="margin:auto">
+<div class="life-demo">
   <div>
-    <canvas id="drawing5" width="400" height="400" style="border:2px solid #000000;">
+    <canvas id="drawing5" width="400" height="400">
     </canvas>
   </div>
   <div>

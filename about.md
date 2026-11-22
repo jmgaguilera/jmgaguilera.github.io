@@ -7,7 +7,7 @@ order: 2
 permalink: /about/
 ---
 
-![](/images/jmga.jpg){: .center-block .img-circle style="max-width:100px"}
+![](/images/jmga.jpg){: .profile-photo}
 
 Soy José Miguel González Aguilera, Ingeniero Superior en Informática y
 Licenciado en Economía. En este blog publico aquellos temas
